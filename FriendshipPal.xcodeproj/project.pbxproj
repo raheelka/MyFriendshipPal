@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		AF0CC70D1B8C132F000611DB /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF0CC70C1B8C132F000611DB /* DetailViewController.swift */; };
+		AF0CC7111B8E8EE9000611DB /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF0CC7101B8E8EE9000611DB /* User.swift */; };
 		AF486C721B8A912600948FEF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF486C711B8A912600948FEF /* AppDelegate.swift */; };
 		AF486C741B8A912600948FEF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF486C731B8A912600948FEF /* ViewController.swift */; };
 		AF486C771B8A912600948FEF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AF486C751B8A912600948FEF /* Main.storyboard */; };
@@ -31,6 +32,7 @@
 
 /* Begin PBXFileReference section */
 		AF0CC70C1B8C132F000611DB /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		AF0CC7101B8E8EE9000611DB /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		AF486C6C1B8A912600948FEF /* FriendshipPal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FriendshipPal.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AF486C701B8A912600948FEF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AF486C711B8A912600948FEF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -94,6 +96,7 @@
 				AF486C711B8A912600948FEF /* AppDelegate.swift */,
 				AF486C731B8A912600948FEF /* ViewController.swift */,
 				AF0CC70C1B8C132F000611DB /* DetailViewController.swift */,
+				AF0CC7101B8E8EE9000611DB /* User.swift */,
 				AF486C751B8A912600948FEF /* Main.storyboard */,
 				AF486C781B8A912600948FEF /* Images.xcassets */,
 				AF486C7A1B8A912600948FEF /* LaunchScreen.xib */,
@@ -227,6 +230,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AF0CC7111B8E8EE9000611DB /* User.swift in Sources */,
 				AF0CC70D1B8C132F000611DB /* DetailViewController.swift in Sources */,
 				AF486C741B8A912600948FEF /* ViewController.swift in Sources */,
 				AF486C721B8A912600948FEF /* AppDelegate.swift in Sources */,

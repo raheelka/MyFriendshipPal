@@ -10,7 +10,7 @@ import UIKit
 
 class DetailViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
-    var friends = [String]()
+    var userProfile : User?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,8 +22,9 @@ class DetailViewController: UIViewController, UITableViewDataSource, UITableView
         // Dispose of any resources that can be recreated.
     }
     
+    
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.friends.count
+        return self.userProfile!.friends.count
     }
     
     
@@ -31,7 +32,8 @@ class DetailViewController: UIViewController, UITableViewDataSource, UITableView
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         var cell = UITableViewCell(style: UITableViewCellStyle.Subtitle, reuseIdentifier: "Default")
         
-        cell.textLabel!.text = "\(self.friends[indexPath.row])"
+        cell.textLabel!.text = "\(userProfile!.friends[indexPath.row].name)"
+        cell.imageView!.image = userProfile!.friends[indexPath.row].profilePic
         return cell
     }
     

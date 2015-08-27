@@ -12,6 +12,8 @@ import FBSDKLoginKit
 
 class ViewController: UIViewController, FBSDKLoginButtonDelegate {
 
+    var uf : User = User()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.createLoginButton()
@@ -23,10 +25,9 @@ class ViewController: UIViewController, FBSDKLoginButtonDelegate {
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        println(segue.identifier!)
         if(segue.identifier == "detailView") {
             var detailViewController = segue.destinationViewController as! DetailViewController
-            //detailViewController.receiver = FBSDKProfile.currentProfile().name
+            detailViewController.userProfile = uf
         }
     }
     
@@ -51,9 +52,11 @@ class ViewController: UIViewController, FBSDKLoginButtonDelegate {
             println("User not logged in")
         }
         else{
-            var firstName : String! = FBSDKProfile.currentProfile().name
-            println("Logged in user is  \(firstName)")
+            var fullname : String! = FBSDKProfile.currentProfile().name
+            println("Logged in user is  \(fullname)")
+            uf.name = fullname
             getAllFriendsData(afterStr: "")
+            println("Finished adding all friends")
             
         }
     }
@@ -68,19 +71,35 @@ class ViewController: UIViewController, FBSDKLoginButtonDelegate {
         }
     }
     
+    func getProfilePicFromURL(profilePicLink : String)-> UIImage{
+        var image : UIImage
+        if let url = NSURL(string: profilePicLink) {
+            if let data = NSData(contentsOfURL: url){
+                image = UIImage(data: data)!
+                return image
+            }
+        }
+        return UIImage() //This should return nothing if it does not have an image
+    }
+    
     func getAllFriendsData(afterStr afts : String = ""){
 
         
         if((FBSDKAccessToken.currentAccessToken()) != nil){
-            FBSDKGraphRequest(graphPath: "me/taggable_friends", parameters: ["fields":"name", "before" : "", "after" : afts, "next" : ""]).startWithCompletionHandler({ (connection, result, error) -> Void in
+            FBSDKGraphRequest(graphPath: "me/taggable_friends", parameters: ["fields":"name, email, picture", "before" : "", "after" : afts, "next" : ""]).startWithCompletionHandler({ (connection, result, error) -> Void in
                 if (error == nil){
                     var resultDict = result as! NSDictionary
                     var data : NSArray = resultDict.objectForKey("data") as! NSArray
                     if data.count > 0 {
                         for i in 0...data.count-1 {
                             let valueDict : NSDictionary = data[i] as! NSDictionary
-                            let name = valueDict.objectForKey("name") as! String
-                            println("the name is \(name)")
+                            var name = valueDict.objectForKey("name") as? String
+                            var profilePicLink = valueDict.objectForKey("picture")?.objectForKey("data")?.objectForKey("url") as? String
+                            var profilePic : UIImage = self.getProfilePicFromURL(profilePicLink!)
+                            self.uf.addFriend(name!, profilePic: profilePic)
+                            println("Added "+name!)
+                            
+
                         }
                     }
                     
