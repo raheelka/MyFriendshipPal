@@ -55,8 +55,10 @@ class ViewController: UIViewController, FBSDKLoginButtonDelegate {
             var fullname : String! = FBSDKProfile.currentProfile().name
             println("Logged in user is  \(fullname)")
             uf.name = fullname
-            getAllFriendsData(afterStr: "")
-            println("Finished adding all friends")
+            dispatch_async(dispatch_get_main_queue()) {
+                self.getAllFriendsData(afterStr: "")
+                println("Finished adding all friends")
+            }
             
         }
     }

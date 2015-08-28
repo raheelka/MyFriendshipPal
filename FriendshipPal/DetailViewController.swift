@@ -30,11 +30,14 @@ class DetailViewController: UIViewController, UITableViewDataSource, UITableView
     
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        var cell = UITableViewCell(style: UITableViewCellStyle.Subtitle, reuseIdentifier: "Default")
+        var cell = tableView.dequeueReusableCellWithIdentifier("CELL") as? UITableViewCell
+        if cell == nil {
+            cell = UITableViewCell(style: UITableViewCellStyle.Subtitle, reuseIdentifier: "CELL")
+        }
         
-        cell.textLabel!.text = "\(userProfile!.friends[indexPath.row].name)"
-        cell.imageView!.image = userProfile!.friends[indexPath.row].profilePic
-        return cell
+        cell!.textLabel!.text = "\(userProfile!.friends[indexPath.row].name)"
+        cell!.imageView!.image = userProfile!.friends[indexPath.row].profilePic
+        return cell!
     }
     
     

@@ -17,12 +17,22 @@ struct Person {
 
 class User {
     
-    var friends : [Person] = []
-    var name : String = ""
+    var friends : [User] = []
+    var name : String!
+    var profilePic : UIImage?
+    
+    init(){}
+    
+    init(name : String, profilePic : UIImage)
+    {
+        self.name = name
+        self.profilePic = profilePic
+    }
+    
     
     func addFriend(name : String, profilePic : UIImage)
     {
-        var f : Person = Person(name: name, profilePic: profilePic)
+        var f : User = User(name: name, profilePic: profilePic)
         friends.append(f)
     }
     
