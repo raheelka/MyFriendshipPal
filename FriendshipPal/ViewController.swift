@@ -43,6 +43,14 @@ class ViewController: UIViewController, FBSDKLoginButtonDelegate {
         
         FBSDKProfile.enableUpdatesOnAccessTokenChange(true)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "onProfileUpdated:", name:FBSDKProfileDidChangeNotification, object: nil)
+        
+        if FBSDKAccessToken.currentAccessToken() == nil {
+            println("Please Log in")
+        }
+        else
+        {
+            self.downloadAllData()
+        }
     }
     
     
@@ -52,14 +60,18 @@ class ViewController: UIViewController, FBSDKLoginButtonDelegate {
             println("User not logged in")
         }
         else{
-            var fullname : String! = FBSDKProfile.currentProfile().name
-            println("Logged in user is  \(fullname)")
-            uf.name = fullname
-            dispatch_async(dispatch_get_main_queue()) {
-                self.getAllFriendsData(afterStr: "")
-                println("Finished adding all friends")
-            }
-            
+            self.downloadAllData()
+        }
+    }
+    
+    func downloadAllData()
+    {
+        var fullname : String! = FBSDKProfile.currentProfile().name
+        println("Logged in user is  \(fullname)")
+        uf.name = fullname
+        dispatch_async(dispatch_get_main_queue()) {
+            self.getAllFriendsData(afterStr: "")
+            println("Finished adding all friends")
         }
     }
 
@@ -97,8 +109,8 @@ class ViewController: UIViewController, FBSDKLoginButtonDelegate {
                             let valueDict : NSDictionary = data[i] as! NSDictionary
                             var name = valueDict.objectForKey("name") as? String
                             var profilePicLink = valueDict.objectForKey("picture")?.objectForKey("data")?.objectForKey("url") as? String
-                            var profilePic : UIImage = self.getProfilePicFromURL(profilePicLink!)
-                            self.uf.addFriend(name!, profilePic: profilePic)
+                            //var profilePic : UIImage = self.getProfilePicFromURL(profilePicLink!)
+                            self.uf.addFriend(name!, profilePic: profilePicLink!)
                             println("Added "+name!)
                             
 

@@ -27,7 +27,16 @@ class DetailViewController: UIViewController, UITableViewDataSource, UITableView
         return self.userProfile!.friends.count
     }
     
-    
+    func getProfilePicFromURL(profilePicLink : String)-> UIImage{
+        var image : UIImage
+        if let url = NSURL(string: profilePicLink) {
+            if let data = NSData(contentsOfURL: url){
+                image = UIImage(data: data)!
+                return image
+            }
+        }
+        return UIImage() //This should return nothing if it does not have an image
+    }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         var cell = tableView.dequeueReusableCellWithIdentifier("CELL") as? UITableViewCell
@@ -36,7 +45,7 @@ class DetailViewController: UIViewController, UITableViewDataSource, UITableView
         }
         
         cell!.textLabel!.text = "\(userProfile!.friends[indexPath.row].name)"
-        cell!.imageView!.image = userProfile!.friends[indexPath.row].profilePic
+        cell!.imageView!.image = getProfilePicFromURL(userProfile!.friends[indexPath.row].profilePic!)
         return cell!
     }
     

@@ -12,25 +12,25 @@ import UIKit
 
 struct Person {
     var name : String!
-    var profilePic : UIImage?
+    var profilePic : String?
 }
 
 class User {
     
     var friends : [User] = []
     var name : String!
-    var profilePic : UIImage?
+    var profilePic : String?
     
     init(){}
     
-    init(name : String, profilePic : UIImage)
+    init(name : String, profilePic : String)
     {
         self.name = name
         self.profilePic = profilePic
     }
     
     
-    func addFriend(name : String, profilePic : UIImage)
+    func addFriend(name : String, profilePic : String)
     {
         var f : User = User(name: name, profilePic: profilePic)
         friends.append(f)
