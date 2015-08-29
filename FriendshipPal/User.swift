@@ -9,32 +9,84 @@
 import Foundation
 import UIKit
 
-
-struct Person {
-    var name : String!
-    var profilePic : String?
+// This enum contains all the possible states a photo record can be in
+enum PhotoRecordState {
+    case New, Downloaded, Failed
 }
 
 class User {
     
     var friends : [User] = []
-    var name : String!
-    var profilePic : String?
+    var name : String
+    var profilePic : NSURL
+    var profilePicState = PhotoRecordState.New
+    var image = UIImage(named: "Placeholder")
     
-    init(){}
+    init()
+    {
+        self.name = "Unknown"
+        self.profilePic = NSURL()
+    }
     
-    init(name : String, profilePic : String)
+    init(name : String, profilePic : NSURL)
     {
         self.name = name
         self.profilePic = profilePic
     }
     
     
-    func addFriend(name : String, profilePic : String)
+    func addFriend(name : String, profilePic : NSURL)
     {
         var f : User = User(name: name, profilePic: profilePic)
         friends.append(f)
     }
     
     
+}
+
+class PendingOperations {
+    lazy var downloadsInProgress = [NSIndexPath:NSOperation]()
+    lazy var downloadQueue:NSOperationQueue = {
+        var queue = NSOperationQueue()
+        queue.name = "Download queue"
+        queue.maxConcurrentOperationCount = 1
+        return queue
+        }()
+}
+
+
+class ImageDownloader: NSOperation {
+    //1
+    let user_photoRecord: User
+    
+    //2
+    init(user_photoRecord: User) {
+        self.user_photoRecord = user_photoRecord
+    }
+    
+    //3
+    override func main() {
+        //4
+        if self.cancelled {
+            return
+        }
+        //5
+        let imageData = NSData(contentsOfURL:self.user_photoRecord.profilePic)
+        
+        //6
+        if self.cancelled {
+            return
+        }
+        
+        //7
+        if imageData?.length > 0 {
+            self.user_photoRecord.image = UIImage(data:imageData!)!
+            self.user_photoRecord.profilePicState = .Downloaded
+        }
+        else
+        {
+            self.user_photoRecord.profilePicState = .Failed
+            self.user_photoRecord.image = UIImage(named: "Failed")!
+        }
+    }
 }

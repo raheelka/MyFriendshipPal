@@ -20,48 +20,40 @@
                     <navigationItem key="navigationItem" id="qCm-YI-KUZ">
                         <barButtonItem key="rightBarButtonItem" title="Details" id="0S7-Yk-79l">
                             <connections>
-                                <segue destination="dl5-7D-MeU" kind="show" identifier="detailView" id="Zhe-0J-KJC"/>
+                                <segue destination="FKM-Pw-3MO" kind="show" identifier="detailView" id="jPw-eS-LP0"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1090" y="286"/>
+            <point key="canvasLocation" x="773" y="254"/>
         </scene>
         <!--Detail View Controller-->
-        <scene sceneID="Fbv-lq-ETB">
+        <scene sceneID="YbI-io-cnu">
             <objects>
-                <viewController id="dl5-7D-MeU" customClass="DetailViewController" customModule="FriendshipPal" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="v3V-aq-4HA"/>
-                        <viewControllerLayoutGuide type="bottom" id="AFi-JZ-F6V"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="af0-VB-zCf">
+                <tableViewController id="FKM-Pw-3MO" customClass="DetailViewController" customModule="FriendshipPal" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="V1O-Mb-JPn">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="9Ni-BD-WSf">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <connections>
-                                    <outlet property="dataSource" destination="dl5-7D-MeU" id="9xY-K4-SSh"/>
-                                    <outlet property="delegate" destination="dl5-7D-MeU" id="nqP-bv-ncg"/>
-                                </connections>
-                            </tableView>
-                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstAttribute="trailing" secondItem="9Ni-BD-WSf" secondAttribute="trailing" id="5B5-ST-a5f"/>
-                            <constraint firstItem="9Ni-BD-WSf" firstAttribute="bottom" secondItem="AFi-JZ-F6V" secondAttribute="top" id="C8W-OU-jOy"/>
-                            <constraint firstItem="9Ni-BD-WSf" firstAttribute="top" secondItem="af0-VB-zCf" secondAttribute="top" id="CbJ-X3-hFu"/>
-                            <constraint firstItem="9Ni-BD-WSf" firstAttribute="leading" secondItem="af0-VB-zCf" secondAttribute="leading" id="Yqu-ul-fGY"/>
-                        </constraints>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="nQE-OW-t8U" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="CellIdentifier" id="Zeb-d3-SpH">
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Zeb-d3-SpH" id="2GP-fb-Mcb">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="FKM-Pw-3MO" id="PrA-6Q-Bti"/>
+                            <outlet property="delegate" destination="FKM-Pw-3MO" id="QV6-U1-7ys"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8ud-9n-SjR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1759" y="272"/>
+            <point key="canvasLocation" x="1490" y="254"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="zCI-Xc-dyo">
@@ -79,7 +71,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GTr-Ho-pLZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="278" y="286"/>
+            <point key="canvasLocation" x="78" y="254"/>
         </scene>
     </scenes>
 </document>

@@ -12,7 +12,7 @@ import FBSDKLoginKit
 
 class ViewController: UIViewController, FBSDKLoginButtonDelegate {
 
-    var uf : User = User()
+    var uf = User()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,6 +30,16 @@ class ViewController: UIViewController, FBSDKLoginButtonDelegate {
             detailViewController.userProfile = uf
         }
     }
+    
+//    override func performSegueWithIdentifier(identifier: String?, sender: AnyObject?) {
+//        if(identifier == "detailView") {
+//            UIStoryboardSegue
+//            UIStoryboardSegue
+//            var detailViewController = self.destinationViewController as! DetailViewController
+//            detailViewController.userProfile = uf
+//        }
+//    }
+    
     
     
     /* MARK - Core functions start here */
@@ -50,6 +60,7 @@ class ViewController: UIViewController, FBSDKLoginButtonDelegate {
         else
         {
             self.downloadAllData()
+            //self.performSegueWithIdentifier(<#identifier: String?#>, sender: <#AnyObject?#>)
         }
     }
     
@@ -69,10 +80,10 @@ class ViewController: UIViewController, FBSDKLoginButtonDelegate {
         var fullname : String! = FBSDKProfile.currentProfile().name
         println("Logged in user is  \(fullname)")
         uf.name = fullname
-        dispatch_async(dispatch_get_main_queue()) {
-            self.getAllFriendsData(afterStr: "")
-            println("Finished adding all friends")
-        }
+        self.getAllFriendsData(afterStr: "")
+        println("Finished adding all friends")
+        
+        
     }
 
     
@@ -85,21 +96,8 @@ class ViewController: UIViewController, FBSDKLoginButtonDelegate {
         }
     }
     
-    func getProfilePicFromURL(profilePicLink : String)-> UIImage{
-        var image : UIImage
-        if let url = NSURL(string: profilePicLink) {
-            if let data = NSData(contentsOfURL: url){
-                image = UIImage(data: data)!
-                return image
-            }
-        }
-        return UIImage() //This should return nothing if it does not have an image
-    }
-    
     func getAllFriendsData(afterStr afts : String = ""){
-
         
-        if((FBSDKAccessToken.currentAccessToken()) != nil){
             FBSDKGraphRequest(graphPath: "me/taggable_friends", parameters: ["fields":"name, email, picture", "before" : "", "after" : afts, "next" : ""]).startWithCompletionHandler({ (connection, result, error) -> Void in
                 if (error == nil){
                     var resultDict = result as! NSDictionary
@@ -108,15 +106,13 @@ class ViewController: UIViewController, FBSDKLoginButtonDelegate {
                         for i in 0...data.count-1 {
                             let valueDict : NSDictionary = data[i] as! NSDictionary
                             var name = valueDict.objectForKey("name") as? String
-                            var profilePicLink = valueDict.objectForKey("picture")?.objectForKey("data")?.objectForKey("url") as? String
-                            //var profilePic : UIImage = self.getProfilePicFromURL(profilePicLink!)
+                            var profilePicStr = valueDict.objectForKey("picture")?.objectForKey("data")?.objectForKey("url") as? String
+                            var profilePicLink = NSURL(string: profilePicStr!)
                             self.uf.addFriend(name!, profilePic: profilePicLink!)
                             println("Added "+name!)
-                            
 
                         }
                     }
-                    
                     
                     var pagingDict : NSDictionary? = resultDict.objectForKey("paging") as? NSDictionary
                     var cursorsDict : NSDictionary? = pagingDict?.objectForKey("cursors") as? NSDictionary
@@ -127,7 +123,8 @@ class ViewController: UIViewController, FBSDKLoginButtonDelegate {
                     
                 }
             })
-        }
+        
+        
         
     }
     
