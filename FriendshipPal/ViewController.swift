@@ -19,29 +19,14 @@ class ViewController: UIViewController, FBSDKLoginButtonDelegate {
         self.createLoginButton()
     }
     
+    @IBOutlet weak var getFriendsActivityIndicator: UIActivityIndicatorView!
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if(segue.identifier == "detailView") {
-            var detailViewController = segue.destinationViewController as! DetailViewController
-            detailViewController.userProfile = uf
-        }
-    }
-    
-//    override func performSegueWithIdentifier(identifier: String?, sender: AnyObject?) {
-//        if(identifier == "detailView") {
-//            UIStoryboardSegue
-//            UIStoryboardSegue
-//            var detailViewController = self.destinationViewController as! DetailViewController
-//            detailViewController.userProfile = uf
-//        }
-//    }
-    
-    
-    
+
+
     /* MARK - Core functions start here */
     
     func createLoginButton(){
@@ -54,35 +39,24 @@ class ViewController: UIViewController, FBSDKLoginButtonDelegate {
         FBSDKProfile.enableUpdatesOnAccessTokenChange(true)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "onProfileUpdated:", name:FBSDKProfileDidChangeNotification, object: nil)
         
-        if FBSDKAccessToken.currentAccessToken() == nil {
-            println("Please Log in")
-        }
-        else
-        {
+        if FBSDKAccessToken.currentAccessToken() != nil {
             self.downloadAllData()
-            //self.performSegueWithIdentifier(<#identifier: String?#>, sender: <#AnyObject?#>)
         }
     }
     
     
     func onProfileUpdated(notification: NSNotification){
-        println("Profile was updated")
-        if FBSDKAccessToken.currentAccessToken() == nil {
-            println("User not logged in")
-        }
-        else{
+        //Get all friends if user has logged in
+        if FBSDKAccessToken.currentAccessToken() != nil {
             self.downloadAllData()
         }
     }
     
     func downloadAllData()
     {
-        var fullname : String! = FBSDKProfile.currentProfile().name
-        println("Logged in user is  \(fullname)")
-        uf.name = fullname
-        self.getAllFriendsData(afterStr: "")
-        println("Finished adding all friends")
-        
+        self.getCurrentUserData()
+        self.getFriendsActivityIndicator.startAnimating()
+        self.getAllTaggableFriendsData(afterStr: "")
         
     }
 
@@ -96,7 +70,7 @@ class ViewController: UIViewController, FBSDKLoginButtonDelegate {
         }
     }
     
-    func getAllFriendsData(afterStr afts : String = ""){
+    func getAllTaggableFriendsData(afterStr afts : String = ""){
         
             FBSDKGraphRequest(graphPath: "me/taggable_friends", parameters: ["fields":"name, email, picture", "before" : "", "after" : afts, "next" : ""]).startWithCompletionHandler({ (connection, result, error) -> Void in
                 if (error == nil){
@@ -109,7 +83,6 @@ class ViewController: UIViewController, FBSDKLoginButtonDelegate {
                             var profilePicStr = valueDict.objectForKey("picture")?.objectForKey("data")?.objectForKey("url") as? String
                             var profilePicLink = NSURL(string: profilePicStr!)
                             self.uf.addFriend(name!, profilePic: profilePicLink!)
-                            println("Added "+name!)
 
                         }
                     }
@@ -117,7 +90,11 @@ class ViewController: UIViewController, FBSDKLoginButtonDelegate {
                     var pagingDict : NSDictionary? = resultDict.objectForKey("paging") as? NSDictionary
                     var cursorsDict : NSDictionary? = pagingDict?.objectForKey("cursors") as? NSDictionary
                     if let afterS: AnyObject  = cursorsDict?.objectForKey("after"){
-                        self.getAllFriendsData(afterStr: "\(afterS as! String)")
+                        self.getAllTaggableFriendsData(afterStr: "\(afterS as! String)")
+                    }
+                    else
+                    {
+                        self.showTaggableFriendList()
                     }
                 
                     
@@ -128,11 +105,22 @@ class ViewController: UIViewController, FBSDKLoginButtonDelegate {
         
     }
     
-    func getFBUserData(){
+    
+    func showTaggableFriendList()
+    {
+        self.getFriendsActivityIndicator.stopAnimating()
+        let detailViewController = self.storyboard!.instantiateViewControllerWithIdentifier("DetailViewController") as! DetailViewController
+        detailViewController.userProfile = self.uf
+        self.navigationController!.pushViewController(detailViewController, animated: true)
+        
+    }
+    
+    func getCurrentUserData(){
         if((FBSDKAccessToken.currentAccessToken()) != nil){
             FBSDKGraphRequest(graphPath: "me", parameters: ["fields": "id, name, first_name, last_name, picture.type(large), email"]).startWithCompletionHandler({ (connection, result, error) -> Void in
                 if (error == nil){
-                    println(result)
+                    var fullname : String! = FBSDKProfile.currentProfile().name
+                    self.uf.name = fullname
                 }
             })
         }

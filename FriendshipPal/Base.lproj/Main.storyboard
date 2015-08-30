@@ -15,15 +15,21 @@
                     <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="Vjc-vz-Cqo">
+                                <rect key="frame" x="290" y="160" width="20" height="20"/>
+                            </activityIndicatorView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Vjc-vz-Cqo" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="96" id="bd6-UO-e7v"/>
+                            <constraint firstItem="Vjc-vz-Cqo" firstAttribute="centerX" secondItem="kh9-bI-dsS" secondAttribute="centerX" id="ysw-bU-qVJ"/>
+                        </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="qCm-YI-KUZ">
-                        <barButtonItem key="rightBarButtonItem" title="Details" id="0S7-Yk-79l">
-                            <connections>
-                                <segue destination="FKM-Pw-3MO" kind="show" identifier="detailView" id="jPw-eS-LP0"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" id="qCm-YI-KUZ"/>
+                    <connections>
+                        <outlet property="getFriendsActivityIndicator" destination="Vjc-vz-Cqo" id="3hy-LV-bYT"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
@@ -32,7 +38,7 @@
         <!--Detail View Controller-->
         <scene sceneID="YbI-io-cnu">
             <objects>
-                <tableViewController id="FKM-Pw-3MO" customClass="DetailViewController" customModule="FriendshipPal" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="DetailViewController" id="FKM-Pw-3MO" customClass="DetailViewController" customModule="FriendshipPal" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="V1O-Mb-JPn">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
