@@ -113,9 +113,15 @@ class ViewController: UIViewController, FBSDKLoginButtonDelegate {
     {
         self.loadMsg.text = ""
         self.getFriendsActivityIndicator.stopAnimating()
-        let uiTabController = self.storyboard!.instantiateViewControllerWithIdentifier("tabBarController") as! TabBarViewController
-        uiTabController.uf = self.uf
-        self.navigationController!.pushViewController(uiTabController, animated: true)
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let tabBarController = self.storyboard!.instantiateViewControllerWithIdentifier("tabBarController") as! TabBarViewController
+        tabBarController.uf = self.uf
+        presentViewController(tabBarController, animated: true, completion: nil)
+        
+        
+//        let uiTabController = self.storyboard!.instantiateViewControllerWithIdentifier("tabBarController") as! TabBarViewController
+//        uiTabController.uf = self.uf
+//        self.navigationController!.pushViewController(uiTabController, animated: true)
         
     }
     
