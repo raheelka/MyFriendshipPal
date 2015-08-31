@@ -16,19 +16,39 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
+                            <imageView userInteractionEnabled="NO" alpha="0.69999999999999996" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Background" translatesAutoresizingMaskIntoConstraints="NO" id="U7D-EH-FYS">
+                                <rect key="frame" x="0.0" y="64" width="600" height="536"/>
+                            </imageView>
                             <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="Vjc-vz-Cqo">
-                                <rect key="frame" x="290" y="160" width="20" height="20"/>
+                                <rect key="frame" x="290" y="248" width="20" height="20"/>
                             </activityIndicatorView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ii5-MC-gnX">
+                                <rect key="frame" x="212" y="217" width="177" height="23"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="177" id="pyX-15-Ygf"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="Vjc-vz-Cqo" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="96" id="bd6-UO-e7v"/>
-                            <constraint firstItem="Vjc-vz-Cqo" firstAttribute="centerX" secondItem="kh9-bI-dsS" secondAttribute="centerX" id="ysw-bU-qVJ"/>
+                            <constraint firstAttribute="trailing" secondItem="U7D-EH-FYS" secondAttribute="trailing" id="QER-ba-aBB"/>
+                            <constraint firstItem="Vjc-vz-Cqo" firstAttribute="top" secondItem="ii5-MC-gnX" secondAttribute="bottom" constant="8" symbolic="YES" id="VbQ-Eh-PUp"/>
+                            <constraint firstItem="U7D-EH-FYS" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" id="aFD-rp-EBV"/>
+                            <constraint firstItem="Vjc-vz-Cqo" firstAttribute="centerX" secondItem="U7D-EH-FYS" secondAttribute="centerX" id="bIo-Do-RDQ"/>
+                            <constraint firstItem="ii5-MC-gnX" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="153" id="d4A-ZV-Pdc"/>
+                            <constraint firstItem="ii5-MC-gnX" firstAttribute="centerX" secondItem="Vjc-vz-Cqo" secondAttribute="centerX" id="hag-Wf-PEX"/>
+                            <constraint firstItem="Vjc-vz-Cqo" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="184" id="lMc-yv-r2k"/>
+                            <constraint firstItem="U7D-EH-FYS" firstAttribute="bottom" secondItem="2fi-mo-0CV" secondAttribute="top" id="njo-Jo-HgA"/>
+                            <constraint firstItem="U7D-EH-FYS" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="xXr-9r-RjE"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="qCm-YI-KUZ"/>
                     <connections>
                         <outlet property="getFriendsActivityIndicator" destination="Vjc-vz-Cqo" id="3hy-LV-bYT"/>
+                        <outlet property="loadMsg" destination="ii5-MC-gnX" id="R1N-kO-597"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
@@ -80,4 +100,7 @@
             <point key="canvasLocation" x="78" y="254"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Background" width="1698" height="1131"/>
+    </resources>
 </document>

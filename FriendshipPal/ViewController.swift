@@ -14,6 +14,8 @@ class ViewController: UIViewController, FBSDKLoginButtonDelegate {
 
     var uf = User()
     
+    @IBOutlet weak var loadMsg: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.createLoginButton()
@@ -56,6 +58,7 @@ class ViewController: UIViewController, FBSDKLoginButtonDelegate {
     {
         self.getCurrentUserData()
         self.getFriendsActivityIndicator.startAnimating()
+        self.loadMsg.text = "Getting Friend List"
         self.getAllTaggableFriendsData(afterStr: "")
         
     }
@@ -108,6 +111,7 @@ class ViewController: UIViewController, FBSDKLoginButtonDelegate {
     
     func showTaggableFriendList()
     {
+        self.loadMsg.text = ""
         self.getFriendsActivityIndicator.stopAnimating()
         let detailViewController = self.storyboard!.instantiateViewControllerWithIdentifier("DetailViewController") as! DetailViewController
         detailViewController.userProfile = self.uf
