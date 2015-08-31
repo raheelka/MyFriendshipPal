@@ -11,7 +11,7 @@ import CoreImage
 
 class DetailViewController: UITableViewController, UITableViewDataSource, UITableViewDelegate {
 
-    var userProfile : User?
+    var userProfile : User = User()
     let pendingOperations = PendingOperations()
     
     override func viewDidLoad() {
@@ -26,7 +26,7 @@ class DetailViewController: UITableViewController, UITableViewDataSource, UITabl
     
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.userProfile!.friends.count
+        return self.userProfile.friends.count
     }
     
     
@@ -41,7 +41,7 @@ class DetailViewController: UITableViewController, UITableViewDataSource, UITabl
         let indicator = cell.accessoryView as! UIActivityIndicatorView
         
         //2
-        let friend = self.userProfile!.friends[indexPath.row]
+        let friend = self.userProfile.friends[indexPath.row]
         
         //3
         cell.textLabel?.text = friend.name

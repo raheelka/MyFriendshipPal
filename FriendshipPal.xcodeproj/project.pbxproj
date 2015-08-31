@@ -18,6 +18,7 @@
 		AF486C941B8A913300948FEF /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF486C911B8A913300948FEF /* FBSDKCoreKit.framework */; };
 		AF486C951B8A913300948FEF /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF486C921B8A913300948FEF /* FBSDKLoginKit.framework */; };
 		AF486C961B8A913300948FEF /* FBSDKShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF486C931B8A913300948FEF /* FBSDKShareKit.framework */; };
+		AF853EA31B93EEE400BC9308 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF853EA21B93EEE400BC9308 /* TabBarViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,6 +47,7 @@
 		AF486C911B8A913300948FEF /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKCoreKit.framework; path = "../../../../Downloads/FacebookSDKs-iOS-20150813/FBSDKCoreKit.framework"; sourceTree = "<group>"; };
 		AF486C921B8A913300948FEF /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKLoginKit.framework; path = "../../../../Downloads/FacebookSDKs-iOS-20150813/FBSDKLoginKit.framework"; sourceTree = "<group>"; };
 		AF486C931B8A913300948FEF /* FBSDKShareKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKShareKit.framework; path = "../../../../Downloads/FacebookSDKs-iOS-20150813/FBSDKShareKit.framework"; sourceTree = "<group>"; };
+		AF853EA21B93EEE400BC9308 /* TabBarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,6 +97,7 @@
 			children = (
 				AF486C711B8A912600948FEF /* AppDelegate.swift */,
 				AF486C731B8A912600948FEF /* ViewController.swift */,
+				AF853EA21B93EEE400BC9308 /* TabBarViewController.swift */,
 				AF0CC70C1B8C132F000611DB /* DetailViewController.swift */,
 				AF0CC7101B8E8EE9000611DB /* User.swift */,
 				AF486C751B8A912600948FEF /* Main.storyboard */,
@@ -233,6 +236,7 @@
 				AF0CC7111B8E8EE9000611DB /* User.swift in Sources */,
 				AF0CC70D1B8C132F000611DB /* DetailViewController.swift in Sources */,
 				AF486C741B8A912600948FEF /* ViewController.swift in Sources */,
+				AF853EA31B93EEE400BC9308 /* TabBarViewController.swift in Sources */,
 				AF486C721B8A912600948FEF /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
