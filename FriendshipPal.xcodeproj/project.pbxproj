@@ -18,6 +18,7 @@
 		AF486C941B8A913300948FEF /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF486C911B8A913300948FEF /* FBSDKCoreKit.framework */; };
 		AF486C951B8A913300948FEF /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF486C921B8A913300948FEF /* FBSDKLoginKit.framework */; };
 		AF486C961B8A913300948FEF /* FBSDKShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF486C931B8A913300948FEF /* FBSDKShareKit.framework */; };
+		AF649BF11B9525B8000C7D29 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF649BF01B9525B8000C7D29 /* SettingsViewController.swift */; };
 		AF853EA31B93EEE400BC9308 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF853EA21B93EEE400BC9308 /* TabBarViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -47,6 +48,7 @@
 		AF486C911B8A913300948FEF /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKCoreKit.framework; path = "../../../../Downloads/FacebookSDKs-iOS-20150813/FBSDKCoreKit.framework"; sourceTree = "<group>"; };
 		AF486C921B8A913300948FEF /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKLoginKit.framework; path = "../../../../Downloads/FacebookSDKs-iOS-20150813/FBSDKLoginKit.framework"; sourceTree = "<group>"; };
 		AF486C931B8A913300948FEF /* FBSDKShareKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKShareKit.framework; path = "../../../../Downloads/FacebookSDKs-iOS-20150813/FBSDKShareKit.framework"; sourceTree = "<group>"; };
+		AF649BF01B9525B8000C7D29 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		AF853EA21B93EEE400BC9308 /* TabBarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -96,6 +98,7 @@
 			isa = PBXGroup;
 			children = (
 				AF486C711B8A912600948FEF /* AppDelegate.swift */,
+				AF649BF01B9525B8000C7D29 /* SettingsViewController.swift */,
 				AF486C731B8A912600948FEF /* ViewController.swift */,
 				AF853EA21B93EEE400BC9308 /* TabBarViewController.swift */,
 				AF0CC70C1B8C132F000611DB /* DetailViewController.swift */,
@@ -238,6 +241,7 @@
 				AF486C741B8A912600948FEF /* ViewController.swift in Sources */,
 				AF853EA31B93EEE400BC9308 /* TabBarViewController.swift in Sources */,
 				AF486C721B8A912600948FEF /* AppDelegate.swift in Sources */,
+				AF649BF11B9525B8000C7D29 /* SettingsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
