@@ -56,29 +56,29 @@ class PendingOperations {
 
 
 class ImageDownloader: NSOperation {
-    //1
+
     let user_photoRecord: User
     
-    //2
+
     init(user_photoRecord: User) {
         self.user_photoRecord = user_photoRecord
     }
     
-    //3
+
     override func main() {
         //4
         if self.cancelled {
             return
         }
-        //5
+
         let imageData = NSData(contentsOfURL:self.user_photoRecord.profilePic)
         
-        //6
+
         if self.cancelled {
             return
         }
         
-        //7
+
         if imageData?.length > 0 {
             self.user_photoRecord.image = UIImage(data:imageData!)!
             self.user_photoRecord.profilePicState = .Downloaded

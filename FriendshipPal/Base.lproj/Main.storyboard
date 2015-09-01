@@ -66,7 +66,7 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </tabBar>
                     <connections>
-                        <segue destination="FKM-Pw-3MO" kind="relationship" relationship="viewControllers" id="0NZ-Pb-iIW"/>
+                        <segue destination="aSe-fc-5qV" kind="relationship" relationship="viewControllers" id="DbS-27-ChX"/>
                         <segue destination="WyG-1m-iMJ" kind="relationship" relationship="viewControllers" id="ywL-A7-Chq"/>
                     </connections>
                 </tabBarController>
@@ -75,31 +75,48 @@
             <point key="canvasLocation" x="1422" y="254"/>
         </scene>
         <!--Friend List View Controller-->
-        <scene sceneID="YbI-io-cnu">
+        <scene sceneID="gYi-hX-gpp">
             <objects>
-                <tableViewController storyboardIdentifier="FBFriendListController" id="FKM-Pw-3MO" customClass="FBFriendListViewController" customModule="FriendshipPal" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="V1O-Mb-JPn">
+                <viewController id="aSe-fc-5qV" customClass="FBFriendListViewController" customModule="FriendshipPal" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="cjd-W2-EYW"/>
+                        <viewControllerLayoutGuide type="bottom" id="tOd-fI-ckI"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Sgo-kX-jmJ">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="HGh-fg-08I">
+                                <rect key="frame" x="0.0" y="20" width="600" height="580"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="friendCell" id="S4O-rf-ij8">
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" tableViewCell="S4O-rf-ij8" id="qxh-3w-r5P">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="aSe-fc-5qV" id="6bk-bP-fvt"/>
+                                    <outlet property="delegate" destination="aSe-fc-5qV" id="ofI-Ao-xCU"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="CellIdentifier" id="Zeb-d3-SpH">
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Zeb-d3-SpH" id="2GP-fb-Mcb">
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="FKM-Pw-3MO" id="PrA-6Q-Bti"/>
-                            <outlet property="delegate" destination="FKM-Pw-3MO" id="QV6-U1-7ys"/>
-                        </connections>
-                    </tableView>
-                    <tabBarItem key="tabBarItem" systemItem="contacts" id="21S-7I-xko"/>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="8ud-9n-SjR" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                        <constraints>
+                            <constraint firstItem="HGh-fg-08I" firstAttribute="top" secondItem="cjd-W2-EYW" secondAttribute="bottom" id="YXK-Op-kwe"/>
+                            <constraint firstItem="HGh-fg-08I" firstAttribute="leading" secondItem="Sgo-kX-jmJ" secondAttribute="leading" id="jdC-3G-Dpy"/>
+                            <constraint firstAttribute="trailing" secondItem="HGh-fg-08I" secondAttribute="trailing" id="vml-u3-vUW"/>
+                            <constraint firstAttribute="bottom" secondItem="HGh-fg-08I" secondAttribute="bottom" id="xGs-7R-zJh"/>
+                        </constraints>
+                    </view>
+                    <tabBarItem key="tabBarItem" systemItem="contacts" id="2iw-QR-srk"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9IO-1E-8PC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2272" y="90"/>
+            <point key="canvasLocation" x="2272" y="112"/>
         </scene>
         <!--Settings View Controller-->
         <scene sceneID="ffc-9l-qMY">
