@@ -15,7 +15,7 @@ class TabBarViewController: UITabBarController, UITabBarControllerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.delegate = self
-        var friendListView = self.viewControllers![0] as! DetailViewController
+        var friendListView = self.viewControllers![0] as! FBFriendListViewController
         friendListView.userProfile = uf!
         // Do any additional setup after loading the view.
     }
@@ -27,7 +27,7 @@ class TabBarViewController: UITabBarController, UITabBarControllerDelegate {
     }
     
     func tabBarController(tabBarController: UITabBarController, didSelectViewController viewController: UIViewController) {
-        var friendListView = self.viewControllers![0] as! DetailViewController
+        var friendListView = self.viewControllers![0] as! FBFriendListViewController
         friendListView.userProfile = uf!
     }
     

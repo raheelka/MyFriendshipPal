@@ -9,7 +9,7 @@
 import UIKit
 import CoreImage
 
-class DetailViewController: UITableViewController, UITableViewDataSource, UITableViewDelegate {
+class FBFriendListViewController: UITableViewController, UITableViewDataSource, UITableViewDelegate {
 
     var userProfile : User = User()
     let pendingOperations = PendingOperations()

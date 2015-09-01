@@ -16,7 +16,7 @@ class SettingsViewController: UIViewController {
         if FBSDKAccessToken.currentAccessToken() != nil {
             FBSDKLoginManager().logOut()
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            let loginViewController = self.storyboard!.instantiateViewControllerWithIdentifier("loginViewController") as! ViewController
+            let loginViewController = self.storyboard!.instantiateViewControllerWithIdentifier("loginViewController") as! LoginViewController
             presentViewController(loginViewController, animated: true, completion: nil)
             
         }

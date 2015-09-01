@@ -7,10 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		AF0CC70D1B8C132F000611DB /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF0CC70C1B8C132F000611DB /* DetailViewController.swift */; };
+		AF0CC70D1B8C132F000611DB /* FBFriendListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF0CC70C1B8C132F000611DB /* FBFriendListController.swift */; };
 		AF0CC7111B8E8EE9000611DB /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF0CC7101B8E8EE9000611DB /* User.swift */; };
 		AF486C721B8A912600948FEF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF486C711B8A912600948FEF /* AppDelegate.swift */; };
-		AF486C741B8A912600948FEF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF486C731B8A912600948FEF /* ViewController.swift */; };
+		AF486C741B8A912600948FEF /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF486C731B8A912600948FEF /* LoginViewController.swift */; };
 		AF486C771B8A912600948FEF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AF486C751B8A912600948FEF /* Main.storyboard */; };
 		AF486C791B8A912600948FEF /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AF486C781B8A912600948FEF /* Images.xcassets */; };
 		AF486C7C1B8A912600948FEF /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = AF486C7A1B8A912600948FEF /* LaunchScreen.xib */; };
@@ -33,12 +33,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		AF0CC70C1B8C132F000611DB /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		AF0CC70C1B8C132F000611DB /* FBFriendListController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FBFriendListController.swift; sourceTree = "<group>"; };
 		AF0CC7101B8E8EE9000611DB /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		AF486C6C1B8A912600948FEF /* FriendshipPal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FriendshipPal.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AF486C701B8A912600948FEF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AF486C711B8A912600948FEF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		AF486C731B8A912600948FEF /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		AF486C731B8A912600948FEF /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		AF486C761B8A912600948FEF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		AF486C781B8A912600948FEF /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		AF486C7B1B8A912600948FEF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
@@ -99,9 +99,9 @@
 			children = (
 				AF486C711B8A912600948FEF /* AppDelegate.swift */,
 				AF649BF01B9525B8000C7D29 /* SettingsViewController.swift */,
-				AF486C731B8A912600948FEF /* ViewController.swift */,
+				AF486C731B8A912600948FEF /* LoginViewController.swift */,
 				AF853EA21B93EEE400BC9308 /* TabBarViewController.swift */,
-				AF0CC70C1B8C132F000611DB /* DetailViewController.swift */,
+				AF0CC70C1B8C132F000611DB /* FBFriendListController.swift */,
 				AF0CC7101B8E8EE9000611DB /* User.swift */,
 				AF486C751B8A912600948FEF /* Main.storyboard */,
 				AF486C781B8A912600948FEF /* Images.xcassets */,
@@ -237,8 +237,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				AF0CC7111B8E8EE9000611DB /* User.swift in Sources */,
-				AF0CC70D1B8C132F000611DB /* DetailViewController.swift in Sources */,
-				AF486C741B8A912600948FEF /* ViewController.swift in Sources */,
+				AF0CC70D1B8C132F000611DB /* FBFriendListController.swift in Sources */,
+				AF486C741B8A912600948FEF /* LoginViewController.swift in Sources */,
 				AF853EA31B93EEE400BC9308 /* TabBarViewController.swift in Sources */,
 				AF486C721B8A912600948FEF /* AppDelegate.swift in Sources */,
 				AF649BF11B9525B8000C7D29 /* SettingsViewController.swift in Sources */,
