@@ -11,6 +11,8 @@ import CoreImage
 
 class FBFriendListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
+    @IBOutlet weak var tableView: UITableView!
+    
     var userProfile : User = User()
     let pendingOperations = PendingOperations()
     
@@ -27,6 +29,17 @@ class FBFriendListViewController: UIViewController, UITableViewDataSource, UITab
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.userProfile.friends.count
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "showFBFriend"{
+            if let destination = segue.destinationViewController as? FBFriendDetailViewController {
+            if let userIndexPath = self.tableView.indexPathForSelectedRow(){
+                    destination.userProfile = self.userProfile.friends[userIndexPath.row]
+                }
+            }
+        
+        }
     }
     
     
@@ -46,7 +59,7 @@ class FBFriendListViewController: UIViewController, UITableViewDataSource, UITab
         case .Failed:
             cell.textLabel?.text = "Failed to load"
         case .New:
-            self.startOperationsForPhotoRecord(friend,indexPath:indexPath,tableView: tableView)
+            self.startOperationsForPhotoRecord(friend,indexPath:indexPath)
         default:
             break
             //Do Nothing
@@ -57,16 +70,16 @@ class FBFriendListViewController: UIViewController, UITableViewDataSource, UITab
     
     
     
-    func startOperationsForPhotoRecord(friend: User, indexPath: NSIndexPath, tableView: UITableView){
+    func startOperationsForPhotoRecord(friend: User, indexPath: NSIndexPath){
         switch (friend.profilePicState) {
         case .New:
-            startDownloadForRecord(friend, indexPath: indexPath, tableView: tableView)
+            startDownloadForRecord(friend, indexPath: indexPath)
         default:
             NSLog("do nothing")
         }
     }
 
-    func startDownloadForRecord(friend: User, indexPath: NSIndexPath, tableView: UITableView){
+    func startDownloadForRecord(friend: User, indexPath: NSIndexPath){
 
         if let downloadOperation = pendingOperations.downloadsInProgress[indexPath] {
             return
@@ -81,7 +94,7 @@ class FBFriendListViewController: UIViewController, UITableViewDataSource, UITab
             }
             dispatch_async(dispatch_get_main_queue(), {
                 self.pendingOperations.downloadsInProgress.removeValueForKey(indexPath)
-                tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+                self.tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
             })
         }
 

@@ -37,6 +37,7 @@
 		AF8E55631B9671A200B8456D /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = AF8E55621B9671A200B8456D /* libsqlite3.dylib */; };
 		AF8E55651B9671B300B8456D /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF8E55641B9671B300B8456D /* Accounts.framework */; };
 		AF8E55671B9671BD00B8456D /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF8E55661B9671BD00B8456D /* Social.framework */; };
+		AF8E55691B96761B00B8456D /* FBFriendDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF8E55681B96761B00B8456D /* FBFriendDetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -84,6 +85,7 @@
 		AF8E55621B9671A200B8456D /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		AF8E55641B9671B300B8456D /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
 		AF8E55661B9671BD00B8456D /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
+		AF8E55681B96761B00B8456D /* FBFriendDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FBFriendDetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -168,6 +170,7 @@
 				AF486C711B8A912600948FEF /* AppDelegate.swift */,
 				AF649BF01B9525B8000C7D29 /* SettingsViewController.swift */,
 				AF486C731B8A912600948FEF /* LoginViewController.swift */,
+				AF8E55681B96761B00B8456D /* FBFriendDetailViewController.swift */,
 				AF853EA21B93EEE400BC9308 /* TabBarViewController.swift */,
 				AF0CC70C1B8C132F000611DB /* FBFriendListController.swift */,
 				AF0CC7101B8E8EE9000611DB /* User.swift */,
@@ -309,6 +312,7 @@
 				AF486C741B8A912600948FEF /* LoginViewController.swift in Sources */,
 				AF853EA31B93EEE400BC9308 /* TabBarViewController.swift in Sources */,
 				AF486C721B8A912600948FEF /* AppDelegate.swift in Sources */,
+				AF8E55691B96761B00B8456D /* FBFriendDetailViewController.swift in Sources */,
 				AF649BF11B9525B8000C7D29 /* SettingsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

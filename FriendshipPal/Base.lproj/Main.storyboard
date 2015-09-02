@@ -96,6 +96,9 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" tableViewCell="S4O-rf-ij8" id="qxh-3w-r5P">
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="9th-v7-h9F" kind="show" identifier="showFBFriend" id="NJa-5f-RBt"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
@@ -113,10 +116,47 @@
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" systemItem="contacts" id="2iw-QR-srk"/>
+                    <connections>
+                        <outlet property="tableView" destination="HGh-fg-08I" id="vuS-id-ffz"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9IO-1E-8PC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2272" y="112"/>
+            <point key="canvasLocation" x="2264" y="97"/>
+        </scene>
+        <!--Friend Detail View Controller-->
+        <scene sceneID="LQz-og-TJw">
+            <objects>
+                <viewController storyboardIdentifier="fbFriendDetail" id="9th-v7-h9F" customClass="FBFriendDetailViewController" customModule="FriendshipPal" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="mJe-1e-SlM"/>
+                        <viewControllerLayoutGuide type="bottom" id="ZZR-gr-egY"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="TwV-4c-ZTR">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="maI-HJ-Q2w">
+                                <rect key="frame" x="152" y="82" width="296" height="298"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="296" id="F2g-7c-QMA"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="maI-HJ-Q2w" firstAttribute="top" secondItem="mJe-1e-SlM" secondAttribute="bottom" constant="62" id="Jeg-09-3OM"/>
+                            <constraint firstItem="maI-HJ-Q2w" firstAttribute="centerX" secondItem="TwV-4c-ZTR" secondAttribute="centerX" id="aIo-P0-Pbm"/>
+                            <constraint firstItem="ZZR-gr-egY" firstAttribute="top" secondItem="maI-HJ-Q2w" secondAttribute="bottom" constant="220" id="yuV-xM-V4w"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="profilePic" destination="maI-HJ-Q2w" id="FNK-lq-1i9"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="COh-J5-xzL" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2997" y="97"/>
         </scene>
         <!--Settings View Controller-->
         <scene sceneID="ffc-9l-qMY">
