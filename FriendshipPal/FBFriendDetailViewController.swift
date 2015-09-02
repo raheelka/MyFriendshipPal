@@ -21,6 +21,7 @@ class FBFriendDetailViewController: UIViewController {
     
     func setProfilePic(){
         profilePic.image = userProfile?.image
+        self.navigationItem.title = userProfile?.name
     }
 
     override func didReceiveMemoryWarning() {

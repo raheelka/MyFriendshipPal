@@ -13,7 +13,6 @@ class FBFriendListViewController: UIViewController, UITableViewDataSource, UITab
 
     @IBOutlet weak var tableView: UITableView!
     
-    var userProfile : User = User()
     let pendingOperations = PendingOperations()
     
     override func viewDidLoad() {
@@ -28,14 +27,14 @@ class FBFriendListViewController: UIViewController, UITableViewDataSource, UITab
     
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.userProfile.friends.count
+        return User.currentUser.friends.count
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "showFBFriend"{
             if let destination = segue.destinationViewController as? FBFriendDetailViewController {
             if let userIndexPath = self.tableView.indexPathForSelectedRow(){
-                    destination.userProfile = self.userProfile.friends[userIndexPath.row]
+                    destination.userProfile = User.currentUser.friends[userIndexPath.row]
                 }
             }
         
@@ -48,7 +47,7 @@ class FBFriendListViewController: UIViewController, UITableViewDataSource, UITab
         
         cell.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator
 
-        let friend = self.userProfile.friends[indexPath.row]
+        let friend = User.currentUser.friends[indexPath.row]
         
 
         cell.textLabel?.text = friend.name

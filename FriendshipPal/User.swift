@@ -15,6 +15,7 @@ enum PhotoRecordState {
 }
 
 class User {
+    static let currentUser = User()
     
     var friends : [User] = []
     var name : String

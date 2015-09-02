@@ -12,8 +12,6 @@ import FBSDKLoginKit
 import Parse
 
 class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
-
-    var uf = User()
     
     @IBOutlet weak var loadMsg: UILabel!
     
@@ -86,7 +84,7 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
                             var name = valueDict.objectForKey("name") as? String
                             var profilePicStr = valueDict.objectForKey("picture")?.objectForKey("data")?.objectForKey("url") as? String
                             var profilePicLink = NSURL(string: profilePicStr!)
-                            self.uf.addFriend(name!, profilePic: profilePicLink!)
+                            User.currentUser.addFriend(name!, profilePic: profilePicLink!)
 
                         }
                     }
@@ -116,7 +114,6 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
         self.getFriendsActivityIndicator.stopAnimating()
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let tabBarController = self.storyboard!.instantiateViewControllerWithIdentifier("tabBarController") as! TabBarViewController
-        tabBarController.uf = self.uf
         presentViewController(tabBarController, animated: true, completion: nil)
         
         
@@ -131,7 +128,7 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
             FBSDKGraphRequest(graphPath: "me", parameters: ["fields": "id, name, first_name, last_name, picture.type(large), email"]).startWithCompletionHandler({ (connection, result, error) -> Void in
                 if (error == nil){
                     var fullname : String! = FBSDKProfile.currentProfile().name
-                    self.uf.name = fullname
+                    User.currentUser.name = fullname
                 }
             })
         }
