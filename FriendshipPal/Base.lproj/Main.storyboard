@@ -171,6 +171,7 @@
                     </view>
                     <connections>
                         <outlet property="profilePic" destination="maI-HJ-Q2w" id="FNK-lq-1i9"/>
+                        <outlet property="titleBar" destination="pVG-YJ-3db" id="Nkr-nH-gLt"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="COh-J5-xzL" userLabel="First Responder" sceneMemberID="firstResponder"/>

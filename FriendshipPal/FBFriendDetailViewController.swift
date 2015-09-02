@@ -13,6 +13,8 @@ class FBFriendDetailViewController: UIViewController {
     @IBOutlet weak var profilePic: UIImageView!
     var userProfile : User?
     
+    @IBOutlet weak var titleBar: UINavigationItem!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setProfilePic()
@@ -21,7 +23,8 @@ class FBFriendDetailViewController: UIViewController {
     
     func setProfilePic(){
         profilePic.image = userProfile?.image
-        self.navigationItem.title = userProfile?.name
+        titleBar.title = userProfile?.name
+        
     }
 
     override func didReceiveMemoryWarning() {
