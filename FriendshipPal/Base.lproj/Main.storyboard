@@ -186,6 +186,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="likeDislikeLabel" destination="zlS-uT-XJU" id="Ffh-fV-crn"/>
                         <outlet property="profilePic" destination="maI-HJ-Q2w" id="FNK-lq-1i9"/>
                         <outlet property="titleBar" destination="pVG-YJ-3db" id="Nkr-nH-gLt"/>
                     </connections>

@@ -8,15 +8,18 @@
 
 import UIKit
 
+
 class FBFriendDetailViewController: UIViewController {
 
     @IBOutlet weak var profilePic: UIImageView!
     var userProfile : User?
     
+    @IBOutlet weak var likeDislikeLabel: UIButton!
     @IBOutlet weak var titleBar: UINavigationItem!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setButtonLabel()
         setProfilePic()
         // Do any additional setup after loading the view.
     }
@@ -32,18 +35,42 @@ class FBFriendDetailViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    func setButtonLabel(){
+        if !contains(User.currentUser.liked_friends,userProfile!)
+        {
+            likeDislikeLabel.setTitle("Like", forState: UIControlState.Normal)
+        }
+        else
+        {
+            likeDislikeLabel.setTitle("Unlike", forState: UIControlState.Normal)
+        }
+        
+    }
+    
+    func toggleButtonLabel(){
+        if likeDislikeLabel.titleLabel?.text == "Like"
+        {
+            likeDislikeLabel.setTitle("Unlike", forState: UIControlState.Normal)
+        }
+        else
+        {
+            likeDislikeLabel.setTitle("Like", forState: UIControlState.Normal)
+        }
+    }
+    
     @IBAction func addFriendToLikedList(sender: AnyObject) {
-        User.currentUser.me_likey(userProfile!)
+        if (likeDislikeLabel.titleLabel?.text == "Like")
+        {
+            User.currentUser.me_likey(userProfile!)
+        }
+        else
+        {
+            User.currentUser.liked_friends.removeObject(self.userProfile!)
+        }
+        
+        self.toggleButtonLabel()
+        
     }
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

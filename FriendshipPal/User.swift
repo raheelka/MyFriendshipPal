@@ -14,8 +14,25 @@ enum PhotoRecordState {
     case New, Downloaded, Failed
 }
 
+extension Array {
+    mutating func removeObject<U: Equatable>(object: U) -> Bool {
+        for (idx, objectToCompare) in enumerate(self) {
+            if let to = objectToCompare as? U {
+                if object == to {
+                    self.removeAtIndex(idx)
+                    return true
+                }
+            }
+        }
+        return false
+    }
+}
 
-class User {
+func ==(lhs: User, rhs: User) -> Bool {
+    return lhs.hashValue == rhs.hashValue
+}
+
+class User : Hashable{
     static let currentUser = User()
     
     var friends : [User] = []
@@ -26,7 +43,7 @@ class User {
     var image = UIImage(named: "Placeholder")
     
     var hashValue: Int {
-        return self.profilePic.hashValue
+        return self.name.hashValue
     }
 
     
