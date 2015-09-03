@@ -245,7 +245,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="sPy-K5-mfQ">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="sPy-K5-mfQ">
                                 <rect key="frame" x="0.0" y="20" width="600" height="580"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
@@ -264,6 +264,12 @@
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="sPy-K5-mfQ" firstAttribute="top" secondItem="hDc-V4-SHv" secondAttribute="bottom" id="Rj7-3Q-9KR"/>
+                            <constraint firstAttribute="bottom" secondItem="sPy-K5-mfQ" secondAttribute="bottom" id="bvu-zM-Rwu"/>
+                            <constraint firstAttribute="trailing" secondItem="sPy-K5-mfQ" secondAttribute="trailing" id="eWN-IM-kNa"/>
+                            <constraint firstItem="sPy-K5-mfQ" firstAttribute="leading" secondItem="AIl-uY-GQ4" secondAttribute="leading" id="ece-jz-cut"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" systemItem="mostViewed" id="Nu6-KK-PHu"/>
                 </viewController>
