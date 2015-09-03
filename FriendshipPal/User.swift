@@ -14,14 +14,21 @@ enum PhotoRecordState {
     case New, Downloaded, Failed
 }
 
+
 class User {
     static let currentUser = User()
     
     var friends : [User] = []
+    var liked_friends : [User] = []
     var name : String
     var profilePic : NSURL
     var profilePicState = PhotoRecordState.New
     var image = UIImage(named: "Placeholder")
+    
+    var hashValue: Int {
+        return self.profilePic.hashValue
+    }
+
     
     init()
     {
@@ -41,6 +48,11 @@ class User {
         var f : User = User(name: name, profilePic: profilePic)
         friends.append(f)
     }
+    
+    func me_likey(friend : User){
+        liked_friends.append(friend)
+    }
+    
     
     
 }

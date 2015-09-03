@@ -32,6 +32,9 @@ class FBFriendDetailViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    @IBAction func addFriendToLikedList(sender: AnyObject) {
+        User.currentUser.me_likey(userProfile!)
+    }
 
     /*
     // MARK: - Navigation
