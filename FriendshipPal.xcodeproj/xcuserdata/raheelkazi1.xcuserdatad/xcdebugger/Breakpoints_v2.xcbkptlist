@@ -24,11 +24,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FriendshipPal/LoginViewController.swift"
-            timestampString = "462942761.27181"
+            timestampString = "462999708.318974"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "85"
-            endingLineNumber = "85"
+            startingLineNumber = "89"
+            endingLineNumber = "89"
             landmarkName = "getAllTaggableFriendsData(afterStr:)"
             landmarkType = "5">
          </BreakpointContent>

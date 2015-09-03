@@ -74,7 +74,7 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
     
     func getAllTaggableFriendsData(afterStr afts : String = ""){
         
-            FBSDKGraphRequest(graphPath: "me/taggable_friends", parameters: ["fields":"name, email, picture", "before" : "", "after" : afts, "next" : ""]).startWithCompletionHandler({ (connection, result, error) -> Void in
+            FBSDKGraphRequest(graphPath: "me/taggable_friends", parameters: ["fields":"name, picture", "before" : "", "after" : afts, "next" : ""]).startWithCompletionHandler({ (connection, result, error) -> Void in
                 if (error == nil){
                     var resultDict = result as! NSDictionary
                     var data : NSArray = resultDict.objectForKey("data") as! NSArray
@@ -115,11 +115,7 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let tabBarController = self.storyboard!.instantiateViewControllerWithIdentifier("tabBarController") as! TabBarViewController
         presentViewController(tabBarController, animated: true, completion: nil)
-        
-        
-//        let uiTabController = self.storyboard!.instantiateViewControllerWithIdentifier("tabBarController") as! TabBarViewController
-//        uiTabController.uf = self.uf
-//        self.navigationController!.pushViewController(uiTabController, animated: true)
+
         
     }
     
