@@ -2,7 +2,6 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Login View Controller-->
@@ -67,7 +66,7 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </tabBar>
                     <connections>
-                        <segue destination="aSe-fc-5qV" kind="relationship" relationship="viewControllers" id="DbS-27-ChX"/>
+                        <segue destination="aab-da-mBr" kind="relationship" relationship="viewControllers" id="DbS-27-ChX"/>
                         <segue destination="WyG-1m-iMJ" kind="relationship" relationship="viewControllers" id="ywL-A7-Chq"/>
                         <segue destination="DuB-yL-Cs7" kind="relationship" relationship="viewControllers" id="aTM-rW-TIo"/>
                     </connections>
@@ -76,7 +75,7 @@
             </objects>
             <point key="canvasLocation" x="1422" y="254"/>
         </scene>
-        <!--Friend List View Controller-->
+        <!--Friends-->
         <scene sceneID="gYi-hX-gpp">
             <objects>
                 <viewController id="aSe-fc-5qV" customClass="FBFriendListViewController" customModule="FriendshipPal" sceneMemberID="viewController">
@@ -111,20 +110,20 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="HGh-fg-08I" firstAttribute="top" secondItem="cjd-W2-EYW" secondAttribute="bottom" id="YXK-Op-kwe"/>
-                            <constraint firstItem="HGh-fg-08I" firstAttribute="leading" secondItem="Sgo-kX-jmJ" secondAttribute="leading" id="jdC-3G-Dpy"/>
-                            <constraint firstAttribute="trailing" secondItem="HGh-fg-08I" secondAttribute="trailing" id="vml-u3-vUW"/>
-                            <constraint firstAttribute="bottom" secondItem="HGh-fg-08I" secondAttribute="bottom" id="xGs-7R-zJh"/>
+                            <constraint firstItem="HGh-fg-08I" firstAttribute="top" secondItem="Sgo-kX-jmJ" secondAttribute="top" constant="20" symbolic="YES" id="hBT-xO-yJ6"/>
+                            <constraint firstAttribute="bottom" secondItem="HGh-fg-08I" secondAttribute="bottom" id="lxq-D0-jQj"/>
+                            <constraint firstItem="HGh-fg-08I" firstAttribute="leading" secondItem="Sgo-kX-jmJ" secondAttribute="leading" id="qwE-vD-zbU"/>
+                            <constraint firstAttribute="trailing" secondItem="HGh-fg-08I" secondAttribute="trailing" id="tHj-gm-ill"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" systemItem="contacts" id="2iw-QR-srk"/>
+                    <navigationItem key="navigationItem" title="Friends" id="Que-eM-Gzn"/>
                     <connections>
                         <outlet property="tableView" destination="HGh-fg-08I" id="vuS-id-ffz"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9IO-1E-8PC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2264" y="97"/>
+            <point key="canvasLocation" x="3076" y="97"/>
         </scene>
         <!--Friend Detail View Controller-->
         <scene sceneID="LQz-og-TJw">
@@ -138,33 +137,18 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KKx-FZ-p24">
-                                <rect key="frame" x="6" y="20" width="589" height="44"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="44" id="PJ4-wf-36Z"/>
-                                </constraints>
-                                <items>
-                                    <navigationItem title="Friend" id="pVG-YJ-3db">
-                                        <barButtonItem key="leftBarButtonItem" title="&lt; Back" id="teC-V8-4gV">
-                                            <connections>
-                                                <segue destination="UuV-hx-FGe" kind="show" identifier="backToTabBar" id="GrZ-vh-zFN"/>
-                                            </connections>
-                                        </barButtonItem>
-                                    </navigationItem>
-                                </items>
-                            </navigationBar>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="maI-HJ-Q2w">
                                 <rect key="frame" x="152" y="120" width="296" height="298"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="296" id="RhY-wd-W7X"/>
-                                    <constraint firstAttribute="height" constant="298" id="oRP-QQ-Ljc"/>
+                                    <constraint firstAttribute="width" constant="296" id="6Hh-6k-jcO"/>
+                                    <constraint firstAttribute="height" constant="298" id="eVs-RO-fjX"/>
                                 </constraints>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zlS-uT-XJU">
                                 <rect key="frame" x="272" y="458" width="57" height="30"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="keF-ns-okk"/>
-                                    <constraint firstAttribute="width" constant="57" id="s1z-na-MA7"/>
+                                    <constraint firstAttribute="width" constant="57" id="8bh-Ye-IT3"/>
+                                    <constraint firstAttribute="height" constant="30" id="RzQ-6u-XdC"/>
                                 </constraints>
                                 <state key="normal" title="Like">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -176,24 +160,20 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="KKx-FZ-p24" firstAttribute="leading" secondItem="TwV-4c-ZTR" secondAttribute="leadingMargin" constant="-10" id="89W-bI-zXK"/>
-                            <constraint firstItem="maI-HJ-Q2w" firstAttribute="top" secondItem="KKx-FZ-p24" secondAttribute="bottom" constant="56" id="dqz-Pc-67F"/>
-                            <constraint firstItem="zlS-uT-XJU" firstAttribute="top" secondItem="maI-HJ-Q2w" secondAttribute="bottom" constant="40" id="iRE-n7-1xU"/>
-                            <constraint firstAttribute="centerX" secondItem="zlS-uT-XJU" secondAttribute="centerX" id="rzV-hS-mP5"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="KKx-FZ-p24" secondAttribute="trailing" constant="-11" id="tjV-za-VHs"/>
-                            <constraint firstItem="KKx-FZ-p24" firstAttribute="top" secondItem="mJe-1e-SlM" secondAttribute="bottom" id="upZ-d7-emq"/>
-                            <constraint firstAttribute="centerX" secondItem="maI-HJ-Q2w" secondAttribute="centerX" id="z3q-Iz-Jsg"/>
+                            <constraint firstAttribute="centerX" secondItem="zlS-uT-XJU" secondAttribute="centerX" id="4hh-1k-zU2"/>
+                            <constraint firstItem="zlS-uT-XJU" firstAttribute="top" secondItem="maI-HJ-Q2w" secondAttribute="bottom" constant="40" id="lAu-1P-wHU"/>
+                            <constraint firstItem="maI-HJ-Q2w" firstAttribute="top" secondItem="mJe-1e-SlM" secondAttribute="bottom" constant="56" id="wtJ-Hq-LaY"/>
+                            <constraint firstAttribute="centerX" secondItem="maI-HJ-Q2w" secondAttribute="centerX" id="zit-i9-MMm"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="likeDislikeLabel" destination="zlS-uT-XJU" id="Ffh-fV-crn"/>
                         <outlet property="profilePic" destination="maI-HJ-Q2w" id="FNK-lq-1i9"/>
-                        <outlet property="titleBar" destination="pVG-YJ-3db" id="Nkr-nH-gLt"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="COh-J5-xzL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3142" y="97"/>
+            <point key="canvasLocation" x="3954" y="97"/>
         </scene>
         <!--Settings View Controller-->
         <scene sceneID="ffc-9l-qMY">
@@ -277,6 +257,25 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fYS-5U-F0r" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2272" y="1499"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="wad-PH-Zvo">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="aab-da-mBr" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" systemItem="contacts" id="2iw-QR-srk"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="lbY-D6-EZc">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="aSe-fc-5qV" kind="relationship" relationship="rootViewController" id="L1g-hG-SIA"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="XPA-Ho-DEz" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2264" y="97"/>
         </scene>
     </scenes>
     <resources>

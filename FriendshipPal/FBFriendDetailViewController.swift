@@ -15,7 +15,6 @@ class FBFriendDetailViewController: UIViewController {
     var userProfile : User?
     
     @IBOutlet weak var likeDislikeLabel: UIButton!
-    @IBOutlet weak var titleBar: UINavigationItem!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,7 +25,6 @@ class FBFriendDetailViewController: UIViewController {
     
     func setProfilePic(){
         profilePic.image = userProfile?.image
-        titleBar.title = userProfile?.name
         
     }
 
