@@ -9,8 +9,6 @@
 import UIKit
 import FBSDKCoreKit
 import FBSDKLoginKit
-import Parse
-import Bolts
 
 
 @UIApplicationMain
@@ -24,14 +22,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // [Optional] Power your app with Local Datastore. For more info, go to
         // https://parse.com/docs/ios_guide#localdatastore/iOS
-        Parse.enableLocalDatastore()
-        
-        // Initialize Parse.
-        Parse.setApplicationId("CiWI8C34LOJrza0IiTKooEd7mheZFkrUKpV4ez0Y",
-            clientKey: "6VrGE6oCp0npyj853SaxuVwfdqaD5S8Vekn6O91U")
-        
-        // [Optional] Track statistics around application opens.
-        PFAnalytics.trackAppOpenedWithLaunchOptions(launchOptions)
+//        Parse.enableLocalDatastore()
+//        
+//        // Initialize Parse.
+//        Parse.setApplicationId("CiWI8C34LOJrza0IiTKooEd7mheZFkrUKpV4ez0Y",
+//            clientKey: "6VrGE6oCp0npyj853SaxuVwfdqaD5S8Vekn6O91U")
+//        
+//        // [Optional] Track statistics around application opens.
+//        PFAnalytics.trackAppOpenedWithLaunchOptions(launchOptions)
         
         
         

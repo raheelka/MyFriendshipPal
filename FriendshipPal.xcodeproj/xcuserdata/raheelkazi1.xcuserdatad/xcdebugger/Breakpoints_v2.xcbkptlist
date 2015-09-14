@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FriendshipPal/FBFriendListController.swift"
-            timestampString = "462985314.71297"
+            timestampString = "463544142.318822"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "113"
-            endingLineNumber = "113">
+            startingLineNumber = "129"
+            endingLineNumber = "129">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -31,54 +31,6 @@
             endingLineNumber = "89"
             landmarkName = "getAllTaggableFriendsData(afterStr:)"
             landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "FriendshipPal/FBFriendListController.swift"
-            timestampString = "462985314.71297"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "57"
-            endingLineNumber = "57"
-            landmarkName = "tableView(_:cellForRowAtIndexPath:)"
-            landmarkType = "5">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "FriendshipPal.FBFriendListViewController.tableView (FriendshipPal.FBFriendListViewController)(ObjectiveC.UITableView, cellForRowAtIndexPath : ObjectiveC.NSIndexPath) -&gt; ObjectiveC.UITableViewCell"
-                  moduleName = "FriendshipPal"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/raheelkazi1/Desktop/programming/SwiftProjects/FriendshipPal/FriendshipPal/FBFriendListController.swift"
-                  timestampString = "462985036.016963"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "59"
-                  endingLineNumber = "59"
-                  offsetFromSymbolStart = "1128">
-               </Location>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "FriendshipPal.FBFriendListViewController.(tableView (FriendshipPal.FBFriendListViewController) -&gt; (ObjectiveC.UITableView, cellForRowAtIndexPath : ObjectiveC.NSIndexPath) -&gt; ObjectiveC.UITableViewCell).(closure #2)"
-                  moduleName = "FriendshipPal"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/raheelkazi1/Desktop/programming/SwiftProjects/FriendshipPal/FriendshipPal/FBFriendListController.swift"
-                  timestampString = "462985036.017139"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "60"
-                  endingLineNumber = "60"
-                  offsetFromSymbolStart = "12">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
