@@ -253,6 +253,9 @@
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" systemItem="mostViewed" id="Nu6-KK-PHu"/>
+                    <connections>
+                        <outlet property="likedFriendsTable" destination="sPy-K5-mfQ" id="aHQ-SX-3iv"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fYS-5U-F0r" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

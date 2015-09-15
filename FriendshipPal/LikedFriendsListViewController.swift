@@ -10,10 +10,16 @@ import UIKit
 
 class LikedFriendsListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
+    @IBOutlet weak var likedFriendsTable: UITableView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        self.likedFriendsTable.reloadData()
     }
 
     override func didReceiveMemoryWarning() {

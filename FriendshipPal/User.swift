@@ -32,7 +32,7 @@ func ==(lhs: User, rhs: User) -> Bool {
     return lhs.hashValue == rhs.hashValue
 }
 
-class User : Hashable{
+class User : Hashable, Printable{
     static let currentUser = User()
     
     var friends : [User] = []
@@ -41,6 +41,10 @@ class User : Hashable{
     var profilePic : NSURL
     var profilePicState = PhotoRecordState.New
     var image = UIImage(named: "Placeholder")
+    
+    var description: String {
+        return "Name: \(name)"
+    }
     
     var hashValue: Int {
         return self.name.hashValue
