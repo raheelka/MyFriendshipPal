@@ -236,6 +236,9 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="hlW-Kg-CNG" id="Ls3-1l-9uw">
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="GNs-w0-bev" kind="show" identifier="showLikedFriend" id="Vf6-ci-kgs"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
@@ -260,6 +263,40 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fYS-5U-F0r" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2824" y="1591"/>
+        </scene>
+        <!--Liked Friend Detail View Controller-->
+        <scene sceneID="eBv-Ke-dJ5">
+            <objects>
+                <viewController id="GNs-w0-bev" customClass="LikedFriendDetailViewController" customModule="FriendshipPal" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Yde-wa-1Ni"/>
+                        <viewControllerLayoutGuide type="bottom" id="Hqa-1p-iQd"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="WeH-2O-g78">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="yqH-9R-p0Z">
+                                <rect key="frame" x="138" y="102" width="325" height="312"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="325" id="nBX-Qh-rts"/>
+                                    <constraint firstAttribute="height" constant="312" id="ugK-SH-EnQ"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="yqH-9R-p0Z" firstAttribute="top" secondItem="Yde-wa-1Ni" secondAttribute="bottom" constant="38" id="5lJ-zh-1z5"/>
+                            <constraint firstAttribute="centerX" secondItem="yqH-9R-p0Z" secondAttribute="centerX" id="a16-tx-jhy"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="profilePic" destination="yqH-9R-p0Z" id="7yx-U9-RW7"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="olu-Se-TNv" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3745" y="1591"/>
         </scene>
         <!--Friends-->
         <scene sceneID="wad-PH-Zvo">

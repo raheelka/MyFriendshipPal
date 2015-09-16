@@ -31,6 +31,17 @@ class LikedFriendsListViewController: UIViewController, UITableViewDataSource, U
         return User.currentUser.liked_friends.count
     }
     
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "showLikedFriend"{
+            if let destination = segue.destinationViewController as? LikedFriendDetailViewController {
+                if let userIndexPath = self.likedFriendsTable.indexPathForSelectedRow(){
+                    destination.userProfile = User.currentUser.liked_friends[userIndexPath.row]
+                }
+            }
+            
+        }
+    }
+    
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("likedfriendCell", forIndexPath: indexPath) as! UITableViewCell
         

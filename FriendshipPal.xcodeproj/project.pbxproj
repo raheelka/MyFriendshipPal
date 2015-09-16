@@ -20,6 +20,7 @@
 		AF486C961B8A913300948FEF /* FBSDKShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF486C931B8A913300948FEF /* FBSDKShareKit.framework */; };
 		AF649BF11B9525B8000C7D29 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF649BF01B9525B8000C7D29 /* SettingsViewController.swift */; };
 		AF853EA31B93EEE400BC9308 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF853EA21B93EEE400BC9308 /* TabBarViewController.swift */; };
+		AF855A561BA8EEBD00370B2C /* LikedFriendDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF855A551BA8EEBD00370B2C /* LikedFriendDetailViewController.swift */; };
 		AF8E55691B96761B00B8456D /* FBFriendDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF8E55681B96761B00B8456D /* FBFriendDetailViewController.swift */; };
 		AFD625611B98A0CC0008D079 /* LikedFriendsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFD625601B98A0CC0008D079 /* LikedFriendsListViewController.swift */; };
 /* End PBXBuildFile section */
@@ -52,6 +53,7 @@
 		AF486C931B8A913300948FEF /* FBSDKShareKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKShareKit.framework; path = "../../../../Downloads/FacebookSDKs-iOS-20150813/FBSDKShareKit.framework"; sourceTree = "<group>"; };
 		AF649BF01B9525B8000C7D29 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		AF853EA21B93EEE400BC9308 /* TabBarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
+		AF855A551BA8EEBD00370B2C /* LikedFriendDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LikedFriendDetailViewController.swift; sourceTree = "<group>"; };
 		AF8E55681B96761B00B8456D /* FBFriendDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FBFriendDetailViewController.swift; sourceTree = "<group>"; };
 		AFD625601B98A0CC0008D079 /* LikedFriendsListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LikedFriendsListViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -105,6 +107,7 @@
 				AF649BF01B9525B8000C7D29 /* SettingsViewController.swift */,
 				AF486C731B8A912600948FEF /* LoginViewController.swift */,
 				AFD625601B98A0CC0008D079 /* LikedFriendsListViewController.swift */,
+				AF855A551BA8EEBD00370B2C /* LikedFriendDetailViewController.swift */,
 				AF8E55681B96761B00B8456D /* FBFriendDetailViewController.swift */,
 				AF853EA21B93EEE400BC9308 /* TabBarViewController.swift */,
 				AF0CC70C1B8C132F000611DB /* FBFriendListController.swift */,
@@ -249,6 +252,7 @@
 				AF486C721B8A912600948FEF /* AppDelegate.swift in Sources */,
 				AF8E55691B96761B00B8456D /* FBFriendDetailViewController.swift in Sources */,
 				AFD625611B98A0CC0008D079 /* LikedFriendsListViewController.swift in Sources */,
+				AF855A561BA8EEBD00370B2C /* LikedFriendDetailViewController.swift in Sources */,
 				AF649BF11B9525B8000C7D29 /* SettingsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
