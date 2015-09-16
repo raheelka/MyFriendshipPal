@@ -67,8 +67,8 @@
                     </tabBar>
                     <connections>
                         <segue destination="aab-da-mBr" kind="relationship" relationship="viewControllers" id="DbS-27-ChX"/>
+                        <segue destination="3cv-2G-Jvw" kind="relationship" relationship="viewControllers" id="aTM-rW-TIo"/>
                         <segue destination="WyG-1m-iMJ" kind="relationship" relationship="viewControllers" id="ywL-A7-Chq"/>
-                        <segue destination="DuB-yL-Cs7" kind="relationship" relationship="viewControllers" id="aTM-rW-TIo"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vcm-hr-LAj" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -175,7 +175,7 @@
             </objects>
             <point key="canvasLocation" x="3954" y="97"/>
         </scene>
-        <!--Settings View Controller-->
+        <!--Settings-->
         <scene sceneID="ffc-9l-qMY">
             <objects>
                 <viewController id="WyG-1m-iMJ" customClass="SettingsViewController" customModule="FriendshipPal" sceneMemberID="viewController">
@@ -208,13 +208,13 @@
                             <constraint firstItem="UIi-d3-H6K" firstAttribute="top" secondItem="Ku7-vW-3Wr" secondAttribute="bottom" constant="225" id="weo-Wz-4F9"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" systemItem="mostRecent" id="UEe-b4-vrJ"/>
+                    <tabBarItem key="tabBarItem" title="Settings" image="settings" id="UEe-b4-vrJ"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rpe-Uo-7oK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2272" y="793"/>
         </scene>
-        <!--Liked Friends List View Controller-->
+        <!--Liked Friends-->
         <scene sceneID="UGt-D5-7S1">
             <objects>
                 <viewController storyboardIdentifier="likeFriendsListViewController" id="DuB-yL-Cs7" customClass="LikedFriendsListViewController" customModule="FriendshipPal" customModuleProvider="target" sceneMemberID="viewController">
@@ -246,26 +246,26 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="sPy-K5-mfQ" firstAttribute="top" secondItem="hDc-V4-SHv" secondAttribute="bottom" id="Rj7-3Q-9KR"/>
-                            <constraint firstAttribute="bottom" secondItem="sPy-K5-mfQ" secondAttribute="bottom" id="bvu-zM-Rwu"/>
-                            <constraint firstAttribute="trailing" secondItem="sPy-K5-mfQ" secondAttribute="trailing" id="eWN-IM-kNa"/>
-                            <constraint firstItem="sPy-K5-mfQ" firstAttribute="leading" secondItem="AIl-uY-GQ4" secondAttribute="leading" id="ece-jz-cut"/>
+                            <constraint firstItem="sPy-K5-mfQ" firstAttribute="leading" secondItem="AIl-uY-GQ4" secondAttribute="leading" id="13V-aX-L7Z"/>
+                            <constraint firstAttribute="trailing" secondItem="sPy-K5-mfQ" secondAttribute="trailing" id="mHa-qx-AOJ"/>
+                            <constraint firstItem="sPy-K5-mfQ" firstAttribute="top" secondItem="AIl-uY-GQ4" secondAttribute="top" constant="20" symbolic="YES" id="xLf-gF-Bg4"/>
+                            <constraint firstAttribute="bottom" secondItem="sPy-K5-mfQ" secondAttribute="bottom" id="zHh-ID-obH"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" systemItem="mostViewed" id="Nu6-KK-PHu"/>
+                    <navigationItem key="navigationItem" title="Liked Friends" id="0qv-Cm-6n1"/>
                     <connections>
                         <outlet property="likedFriendsTable" destination="sPy-K5-mfQ" id="aHQ-SX-3iv"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fYS-5U-F0r" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2272" y="1499"/>
+            <point key="canvasLocation" x="2824" y="1591"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Friends-->
         <scene sceneID="wad-PH-Zvo">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="aab-da-mBr" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" systemItem="contacts" id="2iw-QR-srk"/>
+                    <tabBarItem key="tabBarItem" title="Friends" image="friends" id="2iw-QR-srk"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="lbY-D6-EZc">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -280,9 +280,31 @@
             </objects>
             <point key="canvasLocation" x="2264" y="97"/>
         </scene>
+        <!--Liked-->
+        <scene sceneID="wrd-G8-CHk">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="3cv-2G-Jvw" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Liked" image="liked" id="Nu6-KK-PHu"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Jm6-Yf-OH1">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="DuB-yL-Cs7" kind="relationship" relationship="rootViewController" id="KbL-aX-T8i"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2yW-57-jkI" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2012" y="1591"/>
+        </scene>
     </scenes>
     <resources>
         <image name="Background" width="960" height="640"/>
+        <image name="friends" width="26" height="26"/>
+        <image name="liked" width="24" height="24"/>
         <image name="logout" width="400" height="93"/>
+        <image name="settings" width="25" height="25"/>
     </resources>
 </document>

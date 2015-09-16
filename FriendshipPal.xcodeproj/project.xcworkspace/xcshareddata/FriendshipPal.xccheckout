@@ -7,14 +7,14 @@
 	<key>IDESourceControlProjectIdentifier</key>
 	<string>6FBA4DEB-974F-43B2-B668-5098479C6736</string>
 	<key>IDESourceControlProjectName</key>
-	<string>FriendshipPal</string>
+	<string>project</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
 		<key>F186FB5D5D70705714CCE912A26C7122E9198586</key>
 		<string>https://github.com/raheelka/MyFriendshipPal.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>FriendshipPal.xcodeproj</string>
+	<string>FriendshipPal.xcodeproj/project.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>F186FB5D5D70705714CCE912A26C7122E9198586</key>
