@@ -8,19 +8,34 @@
 
 import UIKit
 
-class LikedFriendsListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class LikedFriendsListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate {
 
     @IBOutlet weak var likedFriendsTable: UITableView!
+    @IBOutlet weak var searchBar: UISearchBar!
+    
+    var searchActive : Bool = false
+    
+    
+    var filteredFriendList:[User] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
     }
     
+
     override func viewDidAppear(animated: Bool) {
+        self.setSearchActivity()
+        filteredFriendList=self.calculateFilteredFriendList(searchBar.text)
         self.likedFriendsTable.reloadData()
     }
+    
+    func setSearchActivity(){
+        if (searchBar.text != ""){
+            searchActive = true
+        }
+    }
+    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -28,28 +43,45 @@ class LikedFriendsListViewController: UIViewController, UITableViewDataSource, U
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return User.currentUser.liked_friends.count
+        if(searchActive)
+        {
+            return filteredFriendList.count
+        }
+        else
+        {
+            return User.currentUser.liked_friends.count
+        }
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "showLikedFriend"{
             if let destination = segue.destinationViewController as? LikedFriendDetailViewController {
+                
                 if let userIndexPath = self.likedFriendsTable.indexPathForSelectedRow(){
-                    destination.userProfile = User.currentUser.liked_friends[userIndexPath.row]
+                    if(searchActive){
+                        destination.userProfile = filteredFriendList[userIndexPath.row]
+                    }
+                    else{
+                        destination.userProfile = User.currentUser.liked_friends[userIndexPath.row]
+                    }
                 }
             }
-            
         }
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("likedfriendCell", forIndexPath: indexPath) as! UITableViewCell
         
+        
+        var friend : User!
+        if(searchActive){
+            friend = filteredFriendList[indexPath.row]
+        }
+        else{
+            friend = User.currentUser.liked_friends[indexPath.row]
+        }
+        
         cell.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator
-        
-        let friend = User.currentUser.liked_friends[indexPath.row]
-        
-        
         cell.textLabel?.text = friend.name
         cell.imageView?.image = friend.image
         
@@ -58,15 +90,51 @@ class LikedFriendsListViewController: UIViewController, UITableViewDataSource, U
     }
     
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    func searchBarTextDidBeginEditing(searchBar: UISearchBar) {
+        setSearchActivity()
     }
-    */
+    
+    func searchBarTextDidEndEditing(searchBar: UISearchBar) {
+        setSearchActivity()
+    }
+    
+    func searchBarCancelButtonClicked(searchBar: UISearchBar) {
+        setSearchActivity()
+        self.view.endEditing(true)
+    }
+    
+    func searchBarSearchButtonClicked(searchBar: UISearchBar) {
+        setSearchActivity()
+        self.view.endEditing(true)
+    }
+    
+    func calculateFilteredFriendList(searchText : String) -> [User]{
+        if (searchActive){
+            var allFriends:[User] = User.currentUser.liked_friends
+            
+            filteredFriendList = allFriends.filter( { (friend: User) -> Bool in
+                return friend.name.contains(searchText)
+            })
+            
+            return filteredFriendList
+            
+        }
+        return []
+    }
+    
+    func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
+        searchActive = true
+        
+        filteredFriendList = calculateFilteredFriendList(searchText)
+        
+        if(filteredFriendList.count == 0){
+            searchActive = false;
+        } else {
+            searchActive = true;
+        }
+        self.likedFriendsTable.reloadData()
+    }
+    
+
 
 }

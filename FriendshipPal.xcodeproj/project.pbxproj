@@ -21,6 +21,7 @@
 		AF649BF11B9525B8000C7D29 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF649BF01B9525B8000C7D29 /* SettingsViewController.swift */; };
 		AF853EA31B93EEE400BC9308 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF853EA21B93EEE400BC9308 /* TabBarViewController.swift */; };
 		AF855A561BA8EEBD00370B2C /* LikedFriendDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF855A551BA8EEBD00370B2C /* LikedFriendDetailViewController.swift */; };
+		AF8D7F881BAA393D0046338B /* UtilityExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF8D7F871BAA393D0046338B /* UtilityExtensions.swift */; };
 		AF8E55691B96761B00B8456D /* FBFriendDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF8E55681B96761B00B8456D /* FBFriendDetailViewController.swift */; };
 		AFD625611B98A0CC0008D079 /* LikedFriendsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFD625601B98A0CC0008D079 /* LikedFriendsListViewController.swift */; };
 /* End PBXBuildFile section */
@@ -54,6 +55,7 @@
 		AF649BF01B9525B8000C7D29 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		AF853EA21B93EEE400BC9308 /* TabBarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		AF855A551BA8EEBD00370B2C /* LikedFriendDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LikedFriendDetailViewController.swift; sourceTree = "<group>"; };
+		AF8D7F871BAA393D0046338B /* UtilityExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UtilityExtensions.swift; sourceTree = "<group>"; };
 		AF8E55681B96761B00B8456D /* FBFriendDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FBFriendDetailViewController.swift; sourceTree = "<group>"; };
 		AFD625601B98A0CC0008D079 /* LikedFriendsListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LikedFriendsListViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -116,6 +118,7 @@
 				AF486C781B8A912600948FEF /* Images.xcassets */,
 				AF486C7A1B8A912600948FEF /* LaunchScreen.xib */,
 				AF486C6F1B8A912600948FEF /* Supporting Files */,
+				AF8D7F871BAA393D0046338B /* UtilityExtensions.swift */,
 			);
 			path = FriendshipPal;
 			sourceTree = "<group>";
@@ -253,6 +256,7 @@
 				AF8E55691B96761B00B8456D /* FBFriendDetailViewController.swift in Sources */,
 				AFD625611B98A0CC0008D079 /* LikedFriendsListViewController.swift in Sources */,
 				AF855A561BA8EEBD00370B2C /* LikedFriendDetailViewController.swift in Sources */,
+				AF8D7F881BAA393D0046338B /* UtilityExtensions.swift in Sources */,
 				AF649BF11B9525B8000C7D29 /* SettingsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
