@@ -9,9 +9,14 @@
 import UIKit
 import CoreImage
 
-class FBFriendListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class FBFriendListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate {
 
     @IBOutlet weak var tableView: UITableView!
+    
+    @IBOutlet weak var searchBar: UISearchBar!
+    
+    var searchActive : Bool = false
+    var filteredFriendList : [User] = []
     
     let pendingOperations = PendingOperations()
     
@@ -19,22 +24,50 @@ class FBFriendListViewController: UIViewController, UITableViewDataSource, UITab
         super.viewDidLoad()
         // Do any additional setup after loading the view.
     }
+    
+    override func viewDidAppear(animated: Bool) {
+        self.setSearchActivity()
+        filteredFriendList=self.calculateFilteredFriendList(searchBar.text)
+        if (searchActive){
+            self.tableView.reloadData()
+        }
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
+    func setSearchActivity(){
+        if (searchBar.text != ""){
+            searchActive = true
+        }
+        else
+        {
+            searchActive = false
+        }
+    }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return User.currentUser.friends.count
+        if(searchActive)
+        {
+            return filteredFriendList.count
+        }
+        else{
+            return User.currentUser.friends.count
+        }
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "showFBFriend"{
             if let destination = segue.destinationViewController as? FBFriendDetailViewController {
             if let userIndexPath = self.tableView.indexPathForSelectedRow(){
-                    destination.userProfile = User.currentUser.friends[userIndexPath.row]
+                if (searchActive){
+                        destination.userProfile = filteredFriendList[userIndexPath.row]
+                    }
+                else{
+                        destination.userProfile = User.currentUser.friends[userIndexPath.row]
+                    }
                 }
             }
         
@@ -46,9 +79,14 @@ class FBFriendListViewController: UIViewController, UITableViewDataSource, UITab
         let cell = tableView.dequeueReusableCellWithIdentifier("friendCell", forIndexPath: indexPath) as! UITableViewCell
         
         cell.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator
-
-        let friend = User.currentUser.friends[indexPath.row]
+        var friend = User()
         
+        if (searchActive){
+            friend = filteredFriendList[indexPath.row]
+        }
+        else{
+            friend = User.currentUser.friends[indexPath.row]
+        }
 
         cell.textLabel?.text = friend.name
         cell.imageView?.image = friend.image
@@ -102,7 +140,39 @@ class FBFriendListViewController: UIViewController, UITableViewDataSource, UITab
         pendingOperations.downloadQueue.addOperation(downloader)
     }
     
+    func calculateFilteredFriendList(searchText : String) -> [User]{
+        if (searchActive){
+            var allFriends:[User] = User.currentUser.friends
+            
+            filteredFriendList = allFriends.filter( { (friend: User) -> Bool in
+                return friend.name.contains(searchText)
+            })
+            
+            return filteredFriendList
+            
+        }
+        return []
+    }
     
+    func searchBarCancelButtonClicked(searchBar: UISearchBar) {
+        self.setSearchActivity()
+        self.view.endEditing(true)
+        
+    }
+    
+    func searchBarSearchButtonClicked(searchBar: UISearchBar) {
+        self.setSearchActivity()
+        self.view.endEditing(true)
+    }
+    
+    func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
+        self.setSearchActivity()
+        
+        filteredFriendList = calculateFilteredFriendList(searchText)
+        
+        self.tableView.reloadData()
+        
+    }
     
 
 

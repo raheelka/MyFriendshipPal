@@ -123,15 +123,10 @@ class LikedFriendsListViewController: UIViewController, UITableViewDataSource, U
     }
     
     func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
-        searchActive = true
+        self.setSearchActivity()
         
         filteredFriendList = calculateFilteredFriendList(searchText)
         
-        if(filteredFriendList.count == 0){
-            searchActive = false;
-        } else {
-            searchActive = true;
-        }
         self.likedFriendsTable.reloadData()
     }
     
