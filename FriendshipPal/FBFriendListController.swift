@@ -39,21 +39,19 @@ class FBFriendListViewController: UIViewController, UITableViewDataSource, UITab
     }
     
     func setSearchActivity(){
-        if (searchBar.text != ""){
+        if (searchBar.text != "") {
             searchActive = true
         }
-        else
-        {
+        else {
             searchActive = false
         }
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if(searchActive)
-        {
+        if(searchActive) {
             return filteredFriendList.count
         }
-        else{
+        else {
             return User.currentUser.friends.count
         }
     }
@@ -99,9 +97,7 @@ class FBFriendListViewController: UIViewController, UITableViewDataSource, UITab
             self.startOperationsForPhotoRecord(friend,indexPath:indexPath)
         default:
             break
-            //Do Nothing
         }
-        
         return cell
     }
     
@@ -117,14 +113,10 @@ class FBFriendListViewController: UIViewController, UITableViewDataSource, UITab
     }
 
     func startDownloadForRecord(friend: User, indexPath: NSIndexPath){
-
         if let downloadOperation = pendingOperations.downloadsInProgress[indexPath] {
             return
         }
-        
-
         let downloader = ImageDownloader(user_photoRecord: friend)
-
         downloader.completionBlock = {
             if downloader.cancelled {
                 return
@@ -134,22 +126,17 @@ class FBFriendListViewController: UIViewController, UITableViewDataSource, UITab
                 self.tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
             })
         }
-
         pendingOperations.downloadsInProgress[indexPath] = downloader
-
         pendingOperations.downloadQueue.addOperation(downloader)
     }
     
     func calculateFilteredFriendList(searchText : String) -> [User]{
         if (searchActive){
             var allFriends:[User] = User.currentUser.friends
-            
             filteredFriendList = allFriends.filter( { (friend: User) -> Bool in
                 return friend.name.contains(searchText)
             })
-            
             return filteredFriendList
-            
         }
         return []
     }
@@ -167,9 +154,7 @@ class FBFriendListViewController: UIViewController, UITableViewDataSource, UITab
     
     func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
         self.setSearchActivity()
-        
         filteredFriendList = calculateFilteredFriendList(searchText)
-        
         self.tableView.reloadData()
         
     }

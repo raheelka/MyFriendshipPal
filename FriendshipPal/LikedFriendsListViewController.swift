@@ -34,6 +34,9 @@ class LikedFriendsListViewController: UIViewController, UITableViewDataSource, U
         if (searchBar.text != ""){
             searchActive = true
         }
+        else {
+            searchActive = false
+        }
     }
     
 
