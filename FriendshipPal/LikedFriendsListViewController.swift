@@ -85,6 +85,7 @@ class LikedFriendsListViewController: UIViewController, UITableViewDataSource, U
         }
         
         cell.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator
+        var cellImageLayer: CALayer = cell.roundCell()
         cell.textLabel?.text = friend.name
         cell.imageView?.image = friend.image
         

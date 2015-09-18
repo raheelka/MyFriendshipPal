@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 
 extension String {
@@ -28,5 +29,14 @@ extension Array {
             }
         }
         return false
+    }
+}
+
+extension UITableViewCell{
+    func roundCell() -> CALayer{
+        var cellImageLayer: CALayer?  = self.imageView!.layer
+        cellImageLayer!.cornerRadius = 20
+        cellImageLayer!.masksToBounds = true
+        return cellImageLayer!
     }
 }

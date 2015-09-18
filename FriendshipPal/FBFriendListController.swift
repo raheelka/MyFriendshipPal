@@ -85,6 +85,8 @@ class FBFriendListViewController: UIViewController, UITableViewDataSource, UITab
         else{
             friend = User.currentUser.friends[indexPath.row]
         }
+        
+        var cellImageLayer: CALayer = cell.roundCell()
 
         cell.textLabel?.text = friend.name
         cell.imageView?.image = friend.image
