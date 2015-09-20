@@ -14,11 +14,12 @@ class FBFriendDetailViewController: UIViewController {
     @IBOutlet weak var profilePic: UIImageView!
     var userProfile : User?
     
-    @IBOutlet weak var likeDislikeLabel: UIButton!
+    @IBOutlet weak var dislikeButton: UIButton!
+    @IBOutlet weak var likeButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setButtonLabel()
+        setButtonAbility()
         setProfilePic()
         // Do any additional setup after loading the view.
     }
@@ -33,42 +34,50 @@ class FBFriendDetailViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    func setButtonLabel(){
+    func enableLikeButton(){
+        likeButton.enabled = true
+        likeButton.alpha = 1
+        dislikeButton.enabled = false
+        dislikeButton.alpha = 0.5
+    }
+    
+    func enableDislikeButton(){
+        likeButton.enabled = false
+        likeButton.alpha = 0.5
+        dislikeButton.enabled = true
+        dislikeButton.alpha = 1
+    }
+    
+    
+    func setButtonAbility()
+    {
         if !User.currentUser.liked_friends.contains(userProfile!)
         {
-            likeDislikeLabel.setTitle("Like", forState: UIControlState.Normal)
+            enableLikeButton()
         }
         else
         {
-            likeDislikeLabel.setTitle("Unlike", forState: UIControlState.Normal)
+            enableDislikeButton()
         }
+    }
+    
+    
+    @IBAction func likeFriend(sender: UIButton) {
         
-    }
-    
-    func toggleButtonLabel(){
-        if likeDislikeLabel.titleLabel?.text == "Like"
-        {
-            likeDislikeLabel.setTitle("Unlike", forState: UIControlState.Normal)
-        }
-        else
-        {
-            likeDislikeLabel.setTitle("Like", forState: UIControlState.Normal)
-        }
-    }
-    
-    @IBAction func addFriendToLikedList(sender: AnyObject) {
-        if (likeDislikeLabel.titleLabel?.text == "Like")
-        {
+        if !User.currentUser.liked_friends.contains(self.userProfile!){
             User.currentUser.me_likey(userProfile!)
+            setButtonAbility()
         }
-        else
-        {
-            User.currentUser.liked_friends.removeObject(self.userProfile!)
-        }
-        
-        self.toggleButtonLabel()
         
     }
+    
+    @IBAction func unlikeFriend(sender: UIButton) {
+        if User.currentUser.liked_friends.contains(self.userProfile!){
+            User.currentUser.liked_friends.removeObject(self.userProfile!)
+            setButtonAbility()
+        }
+    }
+
 
 
 }
