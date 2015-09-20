@@ -19,7 +19,7 @@ func ==(lhs: User, rhs: User) -> Bool {
     return lhs.hashValue == rhs.hashValue
 }
 
-class User : Hashable, Printable{
+class User : Hashable, CustomStringConvertible{
     static let currentUser = User()
     
     var friends : [User] = []
@@ -53,7 +53,7 @@ class User : Hashable, Printable{
     
     func addFriend(name : String, profilePic : NSURL)
     {
-        var f : User = User(name: name, profilePic: profilePic)
+        let f : User = User(name: name, profilePic: profilePic)
         friends.append(f)
     }
     

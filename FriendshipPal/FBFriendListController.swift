@@ -27,7 +27,7 @@ class FBFriendListViewController: UIViewController, UITableViewDataSource, UITab
     
     override func viewDidAppear(animated: Bool) {
         self.setSearchActivity()
-        filteredFriendList=self.calculateFilteredFriendList(searchBar.text)
+        filteredFriendList=self.calculateFilteredFriendList(searchBar.text!)
         if (searchActive){
             self.tableView.reloadData()
         }
@@ -59,7 +59,7 @@ class FBFriendListViewController: UIViewController, UITableViewDataSource, UITab
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "showFBFriend"{
             if let destination = segue.destinationViewController as? FBFriendDetailViewController {
-            if let userIndexPath = self.tableView.indexPathForSelectedRow(){
+            if let userIndexPath = self.tableView.indexPathForSelectedRow{
                 if (searchActive){
                         destination.userProfile = filteredFriendList[userIndexPath.row]
                     }
@@ -74,7 +74,7 @@ class FBFriendListViewController: UIViewController, UITableViewDataSource, UITab
     
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("friendCell", forIndexPath: indexPath) as! UITableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("friendCell", forIndexPath: indexPath) 
         
         cell.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator
         var friend = User()
@@ -86,7 +86,7 @@ class FBFriendListViewController: UIViewController, UITableViewDataSource, UITab
             friend = User.currentUser.friends[indexPath.row]
         }
         
-        var cellImageLayer: CALayer = cell.roundCell()
+        cell.roundCell()
 
         cell.textLabel?.text = friend.name
         cell.imageView?.image = friend.image
@@ -115,7 +115,7 @@ class FBFriendListViewController: UIViewController, UITableViewDataSource, UITab
     }
 
     func startDownloadForRecord(friend: User, indexPath: NSIndexPath){
-        if let downloadOperation = pendingOperations.downloadsInProgress[indexPath] {
+        if let _ = pendingOperations.downloadsInProgress[indexPath] {
             return
         }
         let downloader = ImageDownloader(user_photoRecord: friend)
@@ -134,7 +134,7 @@ class FBFriendListViewController: UIViewController, UITableViewDataSource, UITab
     
     func calculateFilteredFriendList(searchText : String) -> [User]{
         if (searchActive){
-            var allFriends:[User] = User.currentUser.friends
+            let allFriends:[User] = User.currentUser.friends
             filteredFriendList = allFriends.filter( { (friend: User) -> Bool in
                 return friend.name.contains(searchText)
             })

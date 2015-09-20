@@ -26,7 +26,7 @@ class LikedFriendsListViewController: UIViewController, UITableViewDataSource, U
 
     override func viewDidAppear(animated: Bool) {
         self.setSearchActivity()
-        filteredFriendList=self.calculateFilteredFriendList(searchBar.text)
+        filteredFriendList=self.calculateFilteredFriendList(searchBar.text!)
         self.likedFriendsTable.reloadData()
     }
     
@@ -60,7 +60,7 @@ class LikedFriendsListViewController: UIViewController, UITableViewDataSource, U
         if segue.identifier == "showLikedFriend"{
             if let destination = segue.destinationViewController as? LikedFriendDetailViewController {
                 
-                if let userIndexPath = self.likedFriendsTable.indexPathForSelectedRow(){
+                if let userIndexPath = self.likedFriendsTable.indexPathForSelectedRow{
                     if(searchActive){
                         destination.userProfile = filteredFriendList[userIndexPath.row]
                     }
@@ -73,7 +73,7 @@ class LikedFriendsListViewController: UIViewController, UITableViewDataSource, U
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("likedfriendCell", forIndexPath: indexPath) as! UITableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("likedfriendCell", forIndexPath: indexPath) 
         
         
         var friend : User!
@@ -85,7 +85,7 @@ class LikedFriendsListViewController: UIViewController, UITableViewDataSource, U
         }
         
         cell.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator
-        var cellImageLayer: CALayer = cell.roundCell()
+        cell.roundCell()
         cell.textLabel?.text = friend.name
         cell.imageView?.image = friend.image
         
@@ -114,7 +114,7 @@ class LikedFriendsListViewController: UIViewController, UITableViewDataSource, U
     
     func calculateFilteredFriendList(searchText : String) -> [User]{
         if (searchActive){
-            var allFriends:[User] = User.currentUser.liked_friends
+            let allFriends:[User] = User.currentUser.liked_friends
             
             filteredFriendList = allFriends.filter( { (friend: User) -> Bool in
                 return friend.name.contains(searchText)

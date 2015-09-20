@@ -34,7 +34,7 @@ class FBFriendDetailViewController: UIViewController {
     }
     
     func setButtonLabel(){
-        if !contains(User.currentUser.liked_friends,userProfile!)
+        if !User.currentUser.liked_friends.contains(userProfile!)
         {
             likeDislikeLabel.setTitle("Like", forState: UIControlState.Normal)
         }

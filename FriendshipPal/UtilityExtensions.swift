@@ -20,7 +20,7 @@ extension String {
 
 extension Array {
     mutating func removeObject<U: Equatable>(object: U) -> Bool {
-        for (idx, objectToCompare) in enumerate(self) {
+        for (idx, objectToCompare) in self.enumerate() {
             if let to = objectToCompare as? U {
                 if object == to {
                     self.removeAtIndex(idx)
@@ -34,7 +34,7 @@ extension Array {
 
 extension UITableViewCell{
     func roundCell() -> CALayer{
-        var cellImageLayer: CALayer?  = self.imageView!.layer
+        let cellImageLayer: CALayer?  = self.imageView!.layer
         cellImageLayer!.cornerRadius = 20
         cellImageLayer!.masksToBounds = true
         return cellImageLayer!
