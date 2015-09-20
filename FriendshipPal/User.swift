@@ -101,7 +101,8 @@ class ImageDownloader: NSOperation {
         
 
         if imageData?.length > 0 {
-            self.user_photoRecord.image = UIImage(data:imageData!)!
+            let img = UIImage(data:imageData!)
+            self.user_photoRecord.image = img!.imageResize(img!,thumbnail: true) // Utility Extension code
             self.user_photoRecord.profilePicState = .Downloaded
         }
         else

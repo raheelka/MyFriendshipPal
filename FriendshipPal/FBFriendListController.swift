@@ -89,6 +89,7 @@ class FBFriendListViewController: UIViewController, UITableViewDataSource, UITab
         cell.roundCell()
 
         cell.textLabel?.text = friend.name
+
         cell.imageView?.image = friend.image
         
 

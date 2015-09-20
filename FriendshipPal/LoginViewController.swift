@@ -71,7 +71,7 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
     
     func getAllTaggableFriendsData(afterStr afts : String = ""){
         
-            FBSDKGraphRequest(graphPath: "me/taggable_friends", parameters: ["fields":"name, picture", "before" : "", "after" : afts, "next" : ""]).startWithCompletionHandler({ (connection, result, error) -> Void in
+            FBSDKGraphRequest(graphPath: "me/taggable_friends", parameters: ["fields":"name, picture.type(large)", "before" : "", "after" : afts, "next" : ""]).startWithCompletionHandler({ (connection, result, error) -> Void in
                 if (error == nil){
                     let resultDict = result as! NSDictionary
                     let data : NSArray = resultDict.objectForKey("data") as! NSArray
