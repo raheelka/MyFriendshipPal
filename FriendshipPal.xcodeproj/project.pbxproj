@@ -15,9 +15,9 @@
 		AF486C791B8A912600948FEF /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AF486C781B8A912600948FEF /* Images.xcassets */; };
 		AF486C7C1B8A912600948FEF /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = AF486C7A1B8A912600948FEF /* LaunchScreen.xib */; };
 		AF486C881B8A912600948FEF /* FriendshipPalTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF486C871B8A912600948FEF /* FriendshipPalTests.swift */; };
-		AF486C941B8A913300948FEF /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF486C911B8A913300948FEF /* FBSDKCoreKit.framework */; };
-		AF486C951B8A913300948FEF /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF486C921B8A913300948FEF /* FBSDKLoginKit.framework */; };
-		AF486C961B8A913300948FEF /* FBSDKShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF486C931B8A913300948FEF /* FBSDKShareKit.framework */; };
+		AF4AB7161BAE5B6900EC0698 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF4AB7131BAE5B6900EC0698 /* FBSDKCoreKit.framework */; settings = {ASSET_TAGS = (); }; };
+		AF4AB7171BAE5B6900EC0698 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF4AB7141BAE5B6900EC0698 /* FBSDKLoginKit.framework */; settings = {ASSET_TAGS = (); }; };
+		AF4AB7181BAE5B6900EC0698 /* FBSDKShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF4AB7151BAE5B6900EC0698 /* FBSDKShareKit.framework */; settings = {ASSET_TAGS = (); }; };
 		AF649BF11B9525B8000C7D29 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF649BF01B9525B8000C7D29 /* SettingsViewController.swift */; };
 		AF853EA31B93EEE400BC9308 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF853EA21B93EEE400BC9308 /* TabBarViewController.swift */; };
 		AF855A561BA8EEBD00370B2C /* LikedFriendDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF855A551BA8EEBD00370B2C /* LikedFriendDetailViewController.swift */; };
@@ -49,9 +49,9 @@
 		AF486C811B8A912600948FEF /* FriendshipPalTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FriendshipPalTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		AF486C861B8A912600948FEF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AF486C871B8A912600948FEF /* FriendshipPalTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendshipPalTests.swift; sourceTree = "<group>"; };
-		AF486C911B8A913300948FEF /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKCoreKit.framework; path = "../../../../Downloads/FacebookSDKs-iOS-20150813/FBSDKCoreKit.framework"; sourceTree = "<group>"; };
-		AF486C921B8A913300948FEF /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKLoginKit.framework; path = "../../../../Downloads/FacebookSDKs-iOS-20150813/FBSDKLoginKit.framework"; sourceTree = "<group>"; };
-		AF486C931B8A913300948FEF /* FBSDKShareKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKShareKit.framework; path = "../../../../Downloads/FacebookSDKs-iOS-20150813/FBSDKShareKit.framework"; sourceTree = "<group>"; };
+		AF4AB7131BAE5B6900EC0698 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
+		AF4AB7141BAE5B6900EC0698 /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
+		AF4AB7151BAE5B6900EC0698 /* FBSDKShareKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKShareKit.framework; sourceTree = "<group>"; };
 		AF649BF01B9525B8000C7D29 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		AF853EA21B93EEE400BC9308 /* TabBarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		AF855A551BA8EEBD00370B2C /* LikedFriendDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LikedFriendDetailViewController.swift; sourceTree = "<group>"; };
@@ -65,9 +65,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AF486C941B8A913300948FEF /* FBSDKCoreKit.framework in Frameworks */,
-				AF486C951B8A913300948FEF /* FBSDKLoginKit.framework in Frameworks */,
-				AF486C961B8A913300948FEF /* FBSDKShareKit.framework in Frameworks */,
+				AF4AB7171BAE5B6900EC0698 /* FBSDKLoginKit.framework in Frameworks */,
+				AF4AB7161BAE5B6900EC0698 /* FBSDKCoreKit.framework in Frameworks */,
+				AF4AB7181BAE5B6900EC0698 /* FBSDKShareKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -84,12 +84,12 @@
 		AF486C631B8A912600948FEF = {
 			isa = PBXGroup;
 			children = (
-				AF486C911B8A913300948FEF /* FBSDKCoreKit.framework */,
-				AF486C921B8A913300948FEF /* FBSDKLoginKit.framework */,
-				AF486C931B8A913300948FEF /* FBSDKShareKit.framework */,
 				AF486C6E1B8A912600948FEF /* FriendshipPal */,
 				AF486C841B8A912600948FEF /* FriendshipPalTests */,
 				AF486C6D1B8A912600948FEF /* Products */,
+				AF4AB7131BAE5B6900EC0698 /* FBSDKCoreKit.framework */,
+				AF4AB7141BAE5B6900EC0698 /* FBSDKLoginKit.framework */,
+				AF4AB7151BAE5B6900EC0698 /* FBSDKShareKit.framework */,
 			);
 			sourceTree = "<group>";
 		};
@@ -338,7 +338,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -376,7 +376,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
