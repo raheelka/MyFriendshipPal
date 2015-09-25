@@ -12,6 +12,10 @@ import FBSDKLoginKit
 
 class SettingsViewController: UIViewController {
 
+    @IBOutlet weak var currentUserName: UILabel!
+    @IBOutlet weak var profilePic: UIImageView!
+    
+    
     @IBAction func logoutUser(sender: AnyObject) {
         if FBSDKAccessToken.currentAccessToken() != nil {
             FBSDKLoginManager().logOut()
@@ -24,9 +28,28 @@ class SettingsViewController: UIViewController {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
+        setProfilePic()
+        setUserLabel()
         
 
         // Do any additional setup after loading the view.
+    }
+    
+    func setProfilePic(){
+        let session = NSURLSession.sharedSession()
+        let task = session.dataTaskWithURL(User.currentUser.profilePic) { (data, response, error) -> Void in
+            
+            let img = UIImage(data: data!)
+            
+            dispatch_async(dispatch_get_main_queue(), {
+               self.profilePic.image = img
+            })
+        }
+        task.resume()
+    }
+    
+    func setUserLabel(){
+        currentUserName.text = User.currentUser.name
     }
 
     override func didReceiveMemoryWarning() {

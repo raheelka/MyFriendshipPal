@@ -104,7 +104,7 @@
                                         <rect key="frame" x="0.0" y="130" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" tableViewCell="S4O-rf-ij8" id="qxh-3w-r5P">
-                                            <rect key="frame" x="0.0" y="0.0" width="567" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="567" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                         <connections>
@@ -212,9 +212,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ku7-vW-3Wr">
-                                <rect key="frame" x="172" y="274" width="256" height="52"/>
+                                <rect key="frame" x="172" y="449" width="256" height="52"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="256" id="mCf-Bc-od1"/>
+                                    <constraint firstAttribute="height" constant="52" id="gGb-t4-YS0"/>
+                                    <constraint firstAttribute="width" constant="256" id="u0E-dl-yOi"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="8"/>
                                 <state key="normal" image="logout">
@@ -224,15 +225,38 @@
                                     <action selector="logoutUser:" destination="WyG-1m-iMJ" eventType="touchUpInside" id="lRP-pj-isE"/>
                                 </connections>
                             </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="FuQ-RG-zJ8">
+                                <rect key="frame" x="180" y="48" width="240" height="206"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="206" id="am8-ke-edg"/>
+                                    <constraint firstAttribute="width" constant="240" id="dPA-GT-yoJ"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QP0-QB-N7c">
+                                <rect key="frame" x="239" y="289" width="122" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="122" id="Trr-4f-JNZ"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="Ku7-vW-3Wr" firstAttribute="centerX" secondItem="KVG-wl-fHN" secondAttribute="centerX" id="WcT-Kr-vlz"/>
-                            <constraint firstItem="Ku7-vW-3Wr" firstAttribute="centerY" secondItem="KVG-wl-fHN" secondAttribute="centerY" id="ZUc-X5-nUa"/>
-                            <constraint firstItem="UIi-d3-H6K" firstAttribute="top" secondItem="Ku7-vW-3Wr" secondAttribute="bottom" constant="225" id="weo-Wz-4F9"/>
+                            <constraint firstItem="QP0-QB-N7c" firstAttribute="centerX" secondItem="KVG-wl-fHN" secondAttribute="centerX" id="4zk-Qb-6e4"/>
+                            <constraint firstItem="UIi-d3-H6K" firstAttribute="top" secondItem="Ku7-vW-3Wr" secondAttribute="bottom" constant="50" id="Svb-Cy-hxw"/>
+                            <constraint firstItem="FuQ-RG-zJ8" firstAttribute="centerX" secondItem="KVG-wl-fHN" secondAttribute="centerX" id="bBz-lf-bGp"/>
+                            <constraint firstItem="Ku7-vW-3Wr" firstAttribute="centerX" secondItem="KVG-wl-fHN" secondAttribute="centerX" id="dGK-TE-ySW"/>
+                            <constraint firstItem="FuQ-RG-zJ8" firstAttribute="top" secondItem="9eu-hN-jfV" secondAttribute="bottom" constant="28" id="fNy-TY-JBy"/>
+                            <constraint firstItem="QP0-QB-N7c" firstAttribute="top" secondItem="FuQ-RG-zJ8" secondAttribute="bottom" constant="35" id="oiV-tq-71h"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Settings" image="settings" id="UEe-b4-vrJ"/>
+                    <connections>
+                        <outlet property="currentUserName" destination="QP0-QB-N7c" id="Es4-MB-Sb1"/>
+                        <outlet property="profilePic" destination="FuQ-RG-zJ8" id="PMq-VJ-QmL"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rpe-Uo-7oK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -266,7 +290,7 @@
                                         <rect key="frame" x="0.0" y="130" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="hlW-Kg-CNG" id="Ls3-1l-9uw">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                         <connections>

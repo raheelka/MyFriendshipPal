@@ -119,8 +119,11 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
         if((FBSDKAccessToken.currentAccessToken()) != nil){
             FBSDKGraphRequest(graphPath: "me", parameters: ["fields": "id, name, first_name, last_name, picture.type(large), email"]).startWithCompletionHandler({ (connection, result, error) -> Void in
                 if (error == nil){
-                    let fullname : String! = FBSDKProfile.currentProfile().name!
-                    User.currentUser.name = fullname
+                    User.currentUser.name = FBSDKProfile.currentProfile().name!
+                    let valueDict : NSDictionary = result as! NSDictionary
+                    let profilePicStr = valueDict.objectForKey("picture")?.objectForKey("data")?.objectForKey("url") as? String
+                    User.currentUser.profilePic = NSURL(string: profilePicStr!)!
+                    print (result)
                 }
             })
         }
