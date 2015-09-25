@@ -47,6 +47,10 @@ class FBFriendListViewController: UIViewController, UITableViewDataSource, UITab
         }
     }
     
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        return 1
+    }
+    
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if(searchActive) {
             return filteredFriendList.count
@@ -126,7 +130,11 @@ class FBFriendListViewController: UIViewController, UITableViewDataSource, UITab
             }
             dispatch_async(dispatch_get_main_queue(), {
                 self.pendingOperations.downloadsInProgress.removeValueForKey(indexPath)
-                self.tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+                
+                if (indexPath.row < self.tableView.numberOfRowsInSection(0)){
+                    self.tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+                }
+                
             })
         }
         pendingOperations.downloadsInProgress[indexPath] = downloader
