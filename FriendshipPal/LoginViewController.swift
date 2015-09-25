@@ -123,7 +123,6 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
                     let valueDict : NSDictionary = result as! NSDictionary
                     let profilePicStr = valueDict.objectForKey("picture")?.objectForKey("data")?.objectForKey("url") as? String
                     User.currentUser.profilePic = NSURL(string: profilePicStr!)!
-                    print (result)
                 }
             })
         }
