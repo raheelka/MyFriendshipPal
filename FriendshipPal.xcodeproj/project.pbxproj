@@ -24,6 +24,7 @@
 		AF8D7F881BAA393D0046338B /* UtilityExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF8D7F871BAA393D0046338B /* UtilityExtensions.swift */; };
 		AF8E55691B96761B00B8456D /* FBFriendDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF8E55681B96761B00B8456D /* FBFriendDetailViewController.swift */; };
 		AFD625611B98A0CC0008D079 /* LikedFriendsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFD625601B98A0CC0008D079 /* LikedFriendsListViewController.swift */; };
+		AFED18BC1BB8CB7800B984CE /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFED18BB1BB8CB7800B984CE /* Reachability.swift */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,6 +59,7 @@
 		AF8D7F871BAA393D0046338B /* UtilityExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UtilityExtensions.swift; sourceTree = "<group>"; };
 		AF8E55681B96761B00B8456D /* FBFriendDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FBFriendDetailViewController.swift; sourceTree = "<group>"; };
 		AFD625601B98A0CC0008D079 /* LikedFriendsListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LikedFriendsListViewController.swift; sourceTree = "<group>"; };
+		AFED18BB1BB8CB7800B984CE /* Reachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -119,6 +121,7 @@
 				AF486C7A1B8A912600948FEF /* LaunchScreen.xib */,
 				AF486C6F1B8A912600948FEF /* Supporting Files */,
 				AF8D7F871BAA393D0046338B /* UtilityExtensions.swift */,
+				AFED18BB1BB8CB7800B984CE /* Reachability.swift */,
 			);
 			path = FriendshipPal;
 			sourceTree = "<group>";
@@ -257,6 +260,7 @@
 				AF486C721B8A912600948FEF /* AppDelegate.swift in Sources */,
 				AF8E55691B96761B00B8456D /* FBFriendDetailViewController.swift in Sources */,
 				AFD625611B98A0CC0008D079 /* LikedFriendsListViewController.swift in Sources */,
+				AFED18BC1BB8CB7800B984CE /* Reachability.swift in Sources */,
 				AF855A561BA8EEBD00370B2C /* LikedFriendDetailViewController.swift in Sources */,
 				AF8D7F881BAA393D0046338B /* UtilityExtensions.swift in Sources */,
 				AF649BF11B9525B8000C7D29 /* SettingsViewController.swift in Sources */,
