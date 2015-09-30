@@ -23,16 +23,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // [Optional] Power your app with Local Datastore. For more info, go to
         // https://parse.com/docs/ios_guide#localdatastore/iOS
 //        Parse.enableLocalDatastore()
-//        
-//        // Initialize Parse.
-//        Parse.setApplicationId("CiWI8C34LOJrza0IiTKooEd7mheZFkrUKpV4ez0Y",
-//            clientKey: "6VrGE6oCp0npyj853SaxuVwfdqaD5S8Vekn6O91U")
-//        
-//        // [Optional] Track statistics around application opens.
-//        PFAnalytics.trackAppOpenedWithLaunchOptions(launchOptions)
-        
-        
-        
+
+        Parse.setApplicationId("CiWI8C34LOJrza0IiTKooEd7mheZFkrUKpV4ez0Y",
+            clientKey: "6VrGE6oCp0npyj853SaxuVwfdqaD5S8Vekn6O91U")
+
+        PFAnalytics.trackAppOpenedWithLaunchOptions(launchOptions)
+        PFFacebookUtils.initializeFacebookWithApplicationLaunchOptions(launchOptions)
+
         return FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
     }
     
@@ -56,6 +53,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationDidBecomeActive(application: UIApplication) {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+        FBSDKAppEvents.activateApp()
     }
 
     func applicationWillTerminate(application: UIApplication) {

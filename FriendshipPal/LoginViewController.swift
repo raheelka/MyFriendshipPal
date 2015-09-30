@@ -14,11 +14,6 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
     
     @IBOutlet weak var loadMsg: UILabel!
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        self.createLoginButton()
-    }
-    
     @IBOutlet weak var getFriendsActivityIndicator: UIActivityIndicatorView!
     
     override func didReceiveMemoryWarning() {
@@ -27,6 +22,53 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
 
 
     /* MARK - Core functions start here */
+    
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.loginUser()
+        //self.createLoginButton()
+    }
+    
+    func loginUser(){
+        if let accessToken: FBSDKAccessToken = FBSDKAccessToken.currentAccessToken() {
+            loginWithAccessToken(accessToken)
+        } else {
+            let permissions = ["public_profile", "email"]
+            loginWithReadPermissions(permissions)
+            
+        }
+    }
+    
+    func loginWithAccessToken(accessToken : FBSDKAccessToken){
+        PFFacebookUtils.logInInBackgroundWithAccessToken(accessToken, block: {
+            (user: PFUser?, error: NSError?) -> Void in
+            if user != nil {
+                print(FBSDKProfile.currentProfile().name)
+                print(FBSDKProfile.currentProfile().userID)
+                print("Access token present ... User logged in through Facebook!")
+            } else {
+                print("Uh oh. There was an error logging in.")
+            }
+        })
+    }
+    
+    func loginWithReadPermissions(permissions : [String]){
+        PFFacebookUtils.logInInBackgroundWithReadPermissions(permissions, block: {
+            (user: PFUser?, error: NSError?) -> Void in
+            if let user = user {
+                if user.isNew {
+                    print("User signed up and logged in through Facebook!")
+                } else {
+                    print("User logged in through Facebook!")
+                }
+            } else {
+                print("Uh oh. The user cancelled the Facebook login.")
+            }
+        })
+    }
+    
+    
     
     func createLoginButton(){
         let loginButton = FBSDKLoginButton()
