@@ -14,6 +14,8 @@ class FBFriendDetailViewController: UIViewController {
 
     @IBOutlet weak var profilePic: UIImageView!
     
+    @IBOutlet weak var name_userInFocus: UILabel!
+    
     @IBOutlet weak var dislikeButton: UIButton!
     @IBOutlet weak var likeButton: UIButton!
     
@@ -47,6 +49,7 @@ class FBFriendDetailViewController: UIViewController {
             self.userInFocus = self.allUsers[0]
             let profilePicUrl : String = self.userInFocus?.valueForKey("profile_pic_url") as! String
             self.setImageFromRemoteLocation(profilePicUrl, imageView: profilePic)
+            name_userInFocus.text = self.userInFocus?.valueForKey("name") as? String
         }
         else
         {

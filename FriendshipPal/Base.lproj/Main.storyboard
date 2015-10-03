@@ -109,11 +109,23 @@
                                     <constraint firstAttribute="width" constant="296" id="vbI-bv-WYc"/>
                                 </constraints>
                             </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q2q-B7-GAg">
+                                <rect key="frame" x="226" y="408" width="148" height="21"/>
+                                <animations/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="148" id="p82-aI-Wat"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="q2q-B7-GAg" firstAttribute="top" secondItem="maI-HJ-Q2w" secondAttribute="bottom" constant="15" id="CHn-Xu-sbs"/>
                             <constraint firstItem="maI-HJ-Q2w" firstAttribute="centerX" secondItem="TwV-4c-ZTR" secondAttribute="centerX" id="Lfl-em-cc5"/>
+                            <constraint firstItem="q2q-B7-GAg" firstAttribute="centerX" secondItem="TwV-4c-ZTR" secondAttribute="centerX" id="QKU-4c-KVZ"/>
                             <constraint firstItem="WCD-jh-Yhb" firstAttribute="leading" secondItem="TwV-4c-ZTR" secondAttribute="leadingMargin" constant="14" id="RdB-Gd-0Yf"/>
                             <constraint firstItem="ZZR-gr-egY" firstAttribute="top" secondItem="WCD-jh-Yhb" secondAttribute="bottom" constant="23" id="SX4-Rb-JXb"/>
                             <constraint firstAttribute="trailingMargin" secondItem="j5V-nV-yl0" secondAttribute="trailing" constant="27" id="Wbv-sd-iw0"/>
@@ -125,6 +137,7 @@
                     <connections>
                         <outlet property="dislikeButton" destination="j5V-nV-yl0" id="S6f-qW-6bL"/>
                         <outlet property="likeButton" destination="WCD-jh-Yhb" id="QnC-vX-gPA"/>
+                        <outlet property="name_userInFocus" destination="q2q-B7-GAg" id="c1Y-A1-PV1"/>
                         <outlet property="profilePic" destination="maI-HJ-Q2w" id="FNK-lq-1i9"/>
                     </connections>
                 </viewController>
