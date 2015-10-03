@@ -19,6 +19,8 @@ class FBFriendDetailViewController: UIViewController {
     @IBOutlet weak var dislikeButton: UIButton!
     @IBOutlet weak var likeButton: UIButton!
     
+    //We need to have an info button showing more pics of the users
+    
     //Note this will only have 100 at max. Change query to get more if needed
     var allUsers : [PFObject] = []
     
