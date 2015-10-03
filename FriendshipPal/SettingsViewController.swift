@@ -18,8 +18,7 @@ class SettingsViewController: UIViewController {
     
     @IBAction func logoutUser(sender: AnyObject) {
         if FBSDKAccessToken.currentAccessToken() != nil {
-            FBSDKLoginManager().logOut()
-            _ = UIStoryboard(name: "Main", bundle: nil)
+            PFUser.logOut()
             let loginViewController = self.storyboard!.instantiateViewControllerWithIdentifier("loginViewController") as! LoginViewController
             presentViewController(loginViewController, animated: true, completion: nil)
             
@@ -37,7 +36,8 @@ class SettingsViewController: UIViewController {
     
     func setProfilePic(){
         let session = NSURLSession.sharedSession()
-        let task = session.dataTaskWithURL(User.currentUser.profilePic) { (data, response, error) -> Void in
+        let current_user_profile_pic = NSURL(string: PFUser.currentUser()?.valueForKey("profile_pic_url") as! String)
+        let task = session.dataTaskWithURL(current_user_profile_pic!) { (data, response, error) -> Void in
             
             let img = UIImage(data: data!)
             
@@ -49,7 +49,8 @@ class SettingsViewController: UIViewController {
     }
     
     func setUserLabel(){
-        currentUserName.text = User.currentUser.name
+        print(PFUser.currentUser()?.valueForKey("name") as? String)
+        currentUserName.text = PFUser.currentUser()?.valueForKey("name") as? String
     }
 
     override func didReceiveMemoryWarning() {
@@ -57,15 +58,5 @@ class SettingsViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

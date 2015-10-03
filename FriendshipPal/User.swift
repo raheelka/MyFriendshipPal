@@ -8,8 +8,8 @@
 
 import Foundation
 import UIKit
+import Parse
 
-// This enum contains all the possible states a photo record can be in
 enum PhotoRecordState {
     case New, Downloaded, Failed
 }
@@ -19,43 +19,20 @@ func ==(lhs: User, rhs: User) -> Bool {
     return lhs.hashValue == rhs.hashValue
 }
 
-class User : Hashable, CustomStringConvertible{
-    static let currentUser = User()
+class User : PFUser{
     
-    var friends : [User] = []
+    override init() {
+        super.init()
+        
+    }
+    
     var liked_friends : [User] = []
-    var name : String
-    var profilePic : NSURL
+    var name : String = ""
+    var userID : String = "NA"
+    var profilePic : NSURL = NSURL()
     var profilePicState = PhotoRecordState.New
     var image = UIImage(named: "Placeholder")
     
-    var description: String {
-        return "Name: \(name)"
-    }
-    
-    var hashValue: Int {
-        return self.name.hashValue
-    }
-
-    
-    init()
-    {
-        self.name = "Unknown"
-        self.profilePic = NSURL()
-    }
-    
-    init(name : String, profilePic : NSURL)
-    {
-        self.name = name
-        self.profilePic = profilePic
-    }
-    
-    
-    func addFriend(name : String, profilePic : NSURL)
-    {
-        let f : User = User(name: name, profilePic: profilePic)
-        friends.append(f)
-    }
     
     func me_likey(friend : User){
         liked_friends.append(friend)

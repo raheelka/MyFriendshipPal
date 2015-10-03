@@ -24,11 +24,11 @@ class LikedFriendsListViewController: UIViewController, UITableViewDataSource, U
     }
     
 
-    override func viewDidAppear(animated: Bool) {
-        self.setSearchActivity()
-        filteredFriendList=self.calculateFilteredFriendList(searchBar.text!)
-        self.likedFriendsTable.reloadData()
-    }
+//    override func viewDidAppear(animated: Bool) {
+//        self.setSearchActivity()
+//        filteredFriendList=self.calculateFilteredFriendList(searchBar.text!)
+//        self.likedFriendsTable.reloadData()
+//    }
     
     func setSearchActivity(){
         if (searchBar.text != ""){
@@ -46,29 +46,30 @@ class LikedFriendsListViewController: UIViewController, UITableViewDataSource, U
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if(searchActive)
-        {
-            return filteredFriendList.count
-        }
-        else
-        {
-            return User.currentUser.liked_friends.count
-        }
+        return 10
+//        if(searchActive)
+//        {
+//            return filteredFriendList.count
+//        }
+//        else
+//        {
+//            return User.currentUser.liked_friends.count
+//        }
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "showLikedFriend"{
-            if let destination = segue.destinationViewController as? LikedFriendDetailViewController {
-                
-                if let userIndexPath = self.likedFriendsTable.indexPathForSelectedRow{
-                    if(searchActive){
-                        destination.userProfile = filteredFriendList[userIndexPath.row]
-                    }
-                    else{
-                        destination.userProfile = User.currentUser.liked_friends[userIndexPath.row]
-                    }
-                }
-            }
+//            if let destination = segue.destinationViewController as? LikedFriendDetailViewController {
+//                
+//                if let userIndexPath = self.likedFriendsTable.indexPathForSelectedRow{
+//                    if(searchActive){
+//                        destination.userProfile = filteredFriendList[userIndexPath.row]
+//                    }
+//                    else{
+//                        destination.userProfile = User.currentUser.liked_friends[userIndexPath.row]
+//                    }
+//                }
+//            }
         }
     }
     
@@ -76,18 +77,18 @@ class LikedFriendsListViewController: UIViewController, UITableViewDataSource, U
         let cell = tableView.dequeueReusableCellWithIdentifier("likedfriendCell", forIndexPath: indexPath) 
         
         
-        var friend : User!
-        if(searchActive){
-            friend = filteredFriendList[indexPath.row]
-        }
-        else{
-            friend = User.currentUser.liked_friends[indexPath.row]
-        }
-        
-        cell.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator
-        cell.roundCell()
-        cell.textLabel?.text = friend.name
-        cell.imageView?.image = friend.image
+//        var friend : User!
+//        if(searchActive){
+//            friend = filteredFriendList[indexPath.row]
+//        }
+//        else{
+//            friend = User.currentUser.liked_friends[indexPath.row]
+//        }
+//        
+//        cell.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator
+//        cell.roundCell()
+//        cell.textLabel?.text = friend.name
+//        cell.imageView?.image = friend.image
         
         
         return cell
@@ -113,16 +114,16 @@ class LikedFriendsListViewController: UIViewController, UITableViewDataSource, U
     }
     
     func calculateFilteredFriendList(searchText : String) -> [User]{
-        if (searchActive){
-            let allFriends:[User] = User.currentUser.liked_friends
-            
-            filteredFriendList = allFriends.filter( { (friend: User) -> Bool in
-                return friend.name.contains(searchText)
-            })
-            
-            return filteredFriendList
-            
-        }
+//        if (searchActive){
+//            let allFriends:[User] = User.currentUser.liked_friends
+//            
+//            filteredFriendList = allFriends.filter( { (friend: User) -> Bool in
+//                return friend.name.contains(searchText)
+//            })
+//            
+//            return filteredFriendList
+//            
+//        }
         return []
     }
     

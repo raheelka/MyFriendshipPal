@@ -19,8 +19,8 @@ class FBFriendDetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setButtonAbility()
-        setProfilePic()
+//        setButtonAbility()
+//        setProfilePic()
         // Do any additional setup after loading the view.
     }
     
@@ -51,31 +51,31 @@ class FBFriendDetailViewController: UIViewController {
     
     func setButtonAbility()
     {
-        if !User.currentUser.liked_friends.contains(userProfile!)
-        {
-            enableLikeButton()
-        }
-        else
-        {
-            enableDislikeButton()
-        }
+//        if !User.currentUser.liked_friends.contains(userProfile!)
+//        {
+//            enableLikeButton()
+//        }
+//        else
+//        {
+//            enableDislikeButton()
+//        }
     }
     
     
     @IBAction func likeFriend(sender: UIButton) {
         
-        if !User.currentUser.liked_friends.contains(self.userProfile!){
-            User.currentUser.me_likey(userProfile!)
-            setButtonAbility()
-        }
+//        if !User.currentUser.liked_friends.contains(self.userProfile!){
+//            User.currentUser.me_likey(userProfile!)
+//            setButtonAbility()
+//        }
         
     }
     
     @IBAction func unlikeFriend(sender: UIButton) {
-        if User.currentUser.liked_friends.contains(self.userProfile!){
-            User.currentUser.liked_friends.removeObject(self.userProfile!)
-            setButtonAbility()
-        }
+//        if User.currentUser.liked_friends.contains(self.userProfile!){
+//            User.currentUser.liked_friends.removeObject(self.userProfile!)
+//            setButtonAbility()
+//        }
     }
 
 
