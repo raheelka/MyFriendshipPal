@@ -41,7 +41,6 @@ class SettingsViewController: UIViewController {
     }
     
     func setUserLabel(){
-        print(PFUser.currentUser()?.valueForKey("name") as? String)
         currentUserName.text = PFUser.currentUser()?.valueForKey("name") as? String
     }
 

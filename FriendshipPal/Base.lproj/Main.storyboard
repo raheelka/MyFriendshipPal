@@ -109,10 +109,11 @@
                                     <constraint firstAttribute="width" constant="296" id="vbI-bv-WYc"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q2q-B7-GAg">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q2q-B7-GAg">
                                 <rect key="frame" x="226" y="408" width="148" height="21"/>
                                 <animations/>
                                 <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="hTy-p8-Cjt"/>
                                     <constraint firstAttribute="width" constant="148" id="p82-aI-Wat"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
