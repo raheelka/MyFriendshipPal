@@ -53,6 +53,7 @@ class FBFriendDetailViewController: UIViewController {
         }
         else
         {
+            //Display a dummy image and grey out the like buttons
             //Display no more users to like and handle that case
         }
         
