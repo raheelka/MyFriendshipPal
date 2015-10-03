@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		AF0CC70D1B8C132F000611DB /* FBFriendListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF0CC70C1B8C132F000611DB /* FBFriendListController.swift */; };
 		AF0CC7111B8E8EE9000611DB /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF0CC7101B8E8EE9000611DB /* User.swift */; };
 		AF486C721B8A912600948FEF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF486C711B8A912600948FEF /* AppDelegate.swift */; };
 		AF486C741B8A912600948FEF /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF486C731B8A912600948FEF /* LoginViewController.swift */; };
@@ -54,7 +53,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		AF0CC70C1B8C132F000611DB /* FBFriendListController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FBFriendListController.swift; sourceTree = "<group>"; };
 		AF0CC7101B8E8EE9000611DB /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		AF486C6C1B8A912600948FEF /* FriendshipPal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FriendshipPal.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AF486C701B8A912600948FEF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -180,7 +178,6 @@
 				AF855A551BA8EEBD00370B2C /* LikedFriendDetailViewController.swift */,
 				AF8E55681B96761B00B8456D /* FBFriendDetailViewController.swift */,
 				AF853EA21B93EEE400BC9308 /* TabBarViewController.swift */,
-				AF0CC70C1B8C132F000611DB /* FBFriendListController.swift */,
 				AF0CC7101B8E8EE9000611DB /* User.swift */,
 				AF486C751B8A912600948FEF /* Main.storyboard */,
 				AF486C781B8A912600948FEF /* Images.xcassets */,
@@ -320,7 +317,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				AF0CC7111B8E8EE9000611DB /* User.swift in Sources */,
-				AF0CC70D1B8C132F000611DB /* FBFriendListController.swift in Sources */,
 				AF486C741B8A912600948FEF /* LoginViewController.swift in Sources */,
 				AF853EA31B93EEE400BC9308 /* TabBarViewController.swift in Sources */,
 				AF486C721B8A912600948FEF /* AppDelegate.swift in Sources */,

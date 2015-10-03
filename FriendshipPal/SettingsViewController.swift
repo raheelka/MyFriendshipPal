@@ -35,17 +35,9 @@ class SettingsViewController: UIViewController {
     }
     
     func setProfilePic(){
-        let session = NSURLSession.sharedSession()
-        let current_user_profile_pic = NSURL(string: PFUser.currentUser()?.valueForKey("profile_pic_url") as! String)
-        let task = session.dataTaskWithURL(current_user_profile_pic!) { (data, response, error) -> Void in
-            
-            let img = UIImage(data: data!)
-            
-            dispatch_async(dispatch_get_main_queue(), {
-               self.profilePic.image = img
-            })
-        }
-        task.resume()
+        let profilePicUrl : String = PFUser.currentUser()?.valueForKey("profile_pic_url") as! String
+        self.setImageFromRemoteLocation(profilePicUrl, imageView: profilePic)
+    
     }
     
     func setUserLabel(){

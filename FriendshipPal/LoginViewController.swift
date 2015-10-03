@@ -98,11 +98,13 @@ class LoginViewController: UIViewController {
                     let profilePicStr = valueDict.objectForKey("picture")?.objectForKey("data")?.objectForKey("url") as? String
                     let email = valueDict.objectForKey("email") as? String
                     let liked_friends : [String] = []
+                    let disliked_friends : [String] = []
                     user.email = email
                     user["name"] = valueDict.objectForKey("name") as? String
                     user["profile_pic_url"] = profilePicStr
                     user["user_id"] = valueDict.objectForKey("id") as? String
                     user["liked_friends"] = liked_friends
+                    user["disliked_friends"] = disliked_friends
                     user.saveInBackground()
                 }
             })

@@ -83,4 +83,20 @@ extension UIImage {
     
 }
 
+extension UIViewController {
+    func setImageFromRemoteLocation(url : String, imageView : UIImageView){
+        let session = NSURLSession.sharedSession()
+        let pic = NSURL(string: url)
+        let task = session.dataTaskWithURL(pic!) { (data, response, error) -> Void in
+            
+            let img = UIImage(data: data!)
+            
+            dispatch_async(dispatch_get_main_queue(), {
+                imageView.image = img
+            })
+        }
+        task.resume()
+    }
+}
+
 

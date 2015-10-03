@@ -7,25 +7,44 @@
 //
 
 import UIKit
+import Parse
 
 
 class FBFriendDetailViewController: UIViewController {
 
     @IBOutlet weak var profilePic: UIImageView!
-    var userProfile : User?
     
     @IBOutlet weak var dislikeButton: UIButton!
     @IBOutlet weak var likeButton: UIButton!
     
-    override func viewDidLoad() {
+    //Note this will only have 100 at max. Change query to get more if needed
+    var allUsers : [PFObject] = []
+    var userInFocus : PFObject?
+    
+    override func viewDidLoad(){
         super.viewDidLoad()
-//        setButtonAbility()
-//        setProfilePic()
-        // Do any additional setup after loading the view.
+        self.getNearByUsers()
+        
     }
     
     func setProfilePic(){
-        profilePic.image = userProfile?.image
+        
+//        profilePic.image = userProfile?.image
+        
+    }
+    
+    func getNearByUsers(){
+            let userQuery = PFQuery(className: "_User")
+            userQuery.findObjectsInBackgroundWithBlock({(objects : [PFObject]?, error : NSError?) in
+                self.allUsers = objects!
+                self.displayUserInFocus()
+            })
+    }
+    
+    func displayUserInFocus(){
+        self.userInFocus = self.allUsers[1]
+        let profilePicUrl : String = self.userInFocus?.valueForKey("profile_pic_url") as! String
+        self.setImageFromRemoteLocation(profilePicUrl, imageView: profilePic)
         
     }
 
