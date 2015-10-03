@@ -19,6 +19,7 @@ class FBFriendDetailViewController: UIViewController {
     
     //Note this will only have 100 at max. Change query to get more if needed
     var allUsers : [PFObject] = []
+    
     var userInFocus : PFObject?
     
     override func viewDidLoad(){
@@ -27,13 +28,13 @@ class FBFriendDetailViewController: UIViewController {
         
     }
     
-    func setProfilePic(){
-        
-//        profilePic.image = userProfile?.image
-        
-    }
     
     func getNearByUsers(){
+        // Get all those users who are
+        // 1. Not Disliked
+        // 2. Not Present in already liked list
+        // 3. Are near by 50 miles for now
+        
             let userQuery = PFQuery(className: "_User")
             userQuery.findObjectsInBackgroundWithBlock({(objects : [PFObject]?, error : NSError?) in
                 self.allUsers = objects!
@@ -42,9 +43,15 @@ class FBFriendDetailViewController: UIViewController {
     }
     
     func displayUserInFocus(){
-        self.userInFocus = self.allUsers[1]
-        let profilePicUrl : String = self.userInFocus?.valueForKey("profile_pic_url") as! String
-        self.setImageFromRemoteLocation(profilePicUrl, imageView: profilePic)
+        if (!self.allUsers.isEmpty){
+            self.userInFocus = self.allUsers[0]
+            let profilePicUrl : String = self.userInFocus?.valueForKey("profile_pic_url") as! String
+            self.setImageFromRemoteLocation(profilePicUrl, imageView: profilePic)
+        }
+        else
+        {
+            //Display no more users to like and handle that case
+        }
         
     }
 
@@ -68,33 +75,27 @@ class FBFriendDetailViewController: UIViewController {
     }
     
     
-    func setButtonAbility()
-    {
-//        if !User.currentUser.liked_friends.contains(userProfile!)
-//        {
-//            enableLikeButton()
-//        }
-//        else
-//        {
-//            enableDislikeButton()
-//        }
-    }
-    
     
     @IBAction func likeFriend(sender: UIButton) {
         
-//        if !User.currentUser.liked_friends.contains(self.userProfile!){
-//            User.currentUser.me_likey(userProfile!)
-//            setButtonAbility()
-//        }
+        if (!self.allUsers.isEmpty){
+            self.allUsers.removeAtIndex(0)
+            self.displayUserInFocus()
+        
+        //Add to users liked list
+        }
         
     }
     
     @IBAction func unlikeFriend(sender: UIButton) {
-//        if User.currentUser.liked_friends.contains(self.userProfile!){
-//            User.currentUser.liked_friends.removeObject(self.userProfile!)
-//            setButtonAbility()
-//        }
+        
+        if (!self.allUsers.isEmpty){
+            self.allUsers.removeAtIndex(0)
+            self.displayUserInFocus()
+            
+            //Add to users disliked list
+        }
+        
     }
 
 
