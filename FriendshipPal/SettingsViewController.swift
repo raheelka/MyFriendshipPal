@@ -17,7 +17,7 @@ class SettingsViewController: UIViewController {
     
     
     @IBAction func logoutUser(sender: AnyObject) {
-        if FBSDKAccessToken.currentAccessToken() != nil {
+        if PFUser.currentUser()?.sessionToken != nil {
             PFUser.logOut()
             let loginViewController = self.storyboard!.instantiateViewControllerWithIdentifier("loginViewController") as! LoginViewController
             presentViewController(loginViewController, animated: true, completion: nil)

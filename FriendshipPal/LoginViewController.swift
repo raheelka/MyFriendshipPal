@@ -41,7 +41,7 @@ class LoginViewController: UIViewController {
 
     
     func isUserLoggedIn() -> Bool {
-        if (FBSDKAccessToken.currentAccessToken() != nil)
+        if (PFUser.currentUser()?.sessionToken != nil)
         {
             return true
         }
@@ -97,7 +97,7 @@ class LoginViewController: UIViewController {
             FBSDKGraphRequest(graphPath: "me", parameters: ["fields": "id, name, first_name, last_name, picture.type(large), email"]).startWithCompletionHandler({ (connection, result, error) -> Void in
                 if (error == nil){
                     let valueDict : NSDictionary = result as! NSDictionary
-                    print(valueDict)
+                    //print(valueDict)
                     let profilePicStr = valueDict.objectForKey("picture")?.objectForKey("data")?.objectForKey("url") as? String
                     let email = valueDict.objectForKey("email") as? String
                     let liked_friends : [String] = []
