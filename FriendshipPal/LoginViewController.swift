@@ -71,20 +71,16 @@ class LoginViewController: UIViewController {
     
     func showFacebookFriendList()
     {
-            let tabBarController = self.storyboard!.instantiateViewControllerWithIdentifier("tabBarController") as! TabBarViewController
-            self.presentViewController(tabBarController, animated: true, completion: nil)
-
+        let tabBarController = self.storyboard!.instantiateViewControllerWithIdentifier("tabBarController") as! TabBarViewController
+        self.presentViewController(tabBarController, animated: true, completion: nil)
     }
     
     
-    // TODO This function should run only on first login
-    // TODO This function sets liked and disliked friends to []
     func getCurrentUserData(user : PFUser){
         if((FBSDKAccessToken.currentAccessToken()) != nil){
             FBSDKGraphRequest(graphPath: "me", parameters: ["fields": "id, name, first_name, last_name, picture.type(large), email"]).startWithCompletionHandler({ (connection, result, error) -> Void in
                 if (error == nil){
                     let valueDict : NSDictionary = result as! NSDictionary
-                    //print(valueDict)
                     let profilePicStr = valueDict.objectForKey("picture")?.objectForKey("data")?.objectForKey("url") as? String
                     let email = valueDict.objectForKey("email") as? String
                     let liked_friends : [String] = []
@@ -92,9 +88,14 @@ class LoginViewController: UIViewController {
                     user.email = email
                     user["name"] = valueDict.objectForKey("name") as? String
                     user["profile_pic_url"] = profilePicStr
-                    user["user_id"] = valueDict.objectForKey("id") as? String
-                    user["liked_friends"] = liked_friends
-                    user["disliked_friends"] = disliked_friends
+                    
+                    // Need to do this to avoid blanking out liked friends and disliked friends
+                    if(user["user_id"] == nil){
+                        user["user_id"] = valueDict.objectForKey("id") as? String
+                        user["liked_friends"] = liked_friends
+                        user["disliked_friends"] = disliked_friends
+                    }
+                    
                     user.saveInBackgroundWithBlock({ (success, error) -> Void in
                         if(success){
                             self.showFacebookFriendList()
