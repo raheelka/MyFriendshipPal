@@ -25,8 +25,9 @@ class LoginViewController: UIViewController {
     }
     
     override func viewDidAppear(animated: Bool) {
-        if(isUserLoggedIn()){
-            showFacebookFriendList()
+        if (FBSDKAccessToken.currentAccessToken() != nil)
+        {
+            loginWithAccessToken(FBSDKAccessToken.currentAccessToken())
         }
     }
     
@@ -38,17 +39,6 @@ class LoginViewController: UIViewController {
             loginWithReadPermissions(permissions)
         }
     }
-
-    
-    func isUserLoggedIn() -> Bool {
-        if (PFUser.currentUser()?.sessionToken != nil)
-        {
-            return true
-        }
-        else{
-            return false
-        }
-    }
     
     
     func loginWithAccessToken(accessToken : FBSDKAccessToken){
@@ -57,7 +47,6 @@ class LoginViewController: UIViewController {
             if user != nil {
                 self.getCurrentUserData(user!)
                 print("Access token present ... User logged in through Facebook!")
-                self.showFacebookFriendList()
             } else {
                 print("Uh oh. There was an error logging in.")
             }
@@ -69,9 +58,7 @@ class LoginViewController: UIViewController {
         PFFacebookUtils.logInInBackgroundWithReadPermissions(permissions, block: {
             (user: PFUser?, error: NSError?) -> Void in
             if let user = user {
-            
                 self.getCurrentUserData(user)
-                self.showFacebookFriendList()
                 print("User logged in through facebook")
                 
             } else {
@@ -108,7 +95,16 @@ class LoginViewController: UIViewController {
                     user["user_id"] = valueDict.objectForKey("id") as? String
                     user["liked_friends"] = liked_friends
                     user["disliked_friends"] = disliked_friends
-                    user.saveInBackground()
+                    user.saveInBackgroundWithBlock({ (success, error) -> Void in
+                        if(success){
+                            self.showFacebookFriendList()
+                        }
+                        else
+                        {
+                            print("Error in saving user to parse")
+                        }
+                        
+                    })
                 }
             })
         }

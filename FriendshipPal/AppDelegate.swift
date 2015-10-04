@@ -26,6 +26,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         Parse.setApplicationId("CiWI8C34LOJrza0IiTKooEd7mheZFkrUKpV4ez0Y",
             clientKey: "6VrGE6oCp0npyj853SaxuVwfdqaD5S8Vekn6O91U")
+        PFUser.enableRevocableSessionInBackground()
 
         PFAnalytics.trackAppOpenedWithLaunchOptions(launchOptions)
         PFFacebookUtils.initializeFacebookWithApplicationLaunchOptions(launchOptions)
