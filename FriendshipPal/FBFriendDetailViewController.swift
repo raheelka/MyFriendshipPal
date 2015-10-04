@@ -38,12 +38,30 @@ class FBFriendDetailViewController: UIViewController {
         // 1. Not Disliked
         // 2. Not Present in already liked list
         // 3. Are near by 50 miles for now
+
+            let currentUserId = PFUser.currentUser()?.valueForKey("user_id") as? String
+            let liked_friends : [String] = (PFUser.currentUser()?.valueForKey("liked_friends") as? [String])!
+
+//            let predicate = NSPredicate(format: "NOT (user_id IN %@) AND user_id != %@", liked_friends,currentUserId!)
+//        
+//            let userQuery = PFQuery(className: "_User", predicate: predicate)
+//            userQuery.findObjectsInBackgroundWithBlock({(objects : [PFObject]?, error : NSError?) in
+//                print(objects)
+//                self.allUsers = objects!
+//                self.displayUserInFocus()
+//            })
         
             let userQuery = PFQuery(className: "_User")
+            userQuery.whereKey("user_id", notContainedIn: liked_friends)
+            userQuery.whereKey("user_id", notEqualTo: currentUserId!)
+        
             userQuery.findObjectsInBackgroundWithBlock({(objects : [PFObject]?, error : NSError?) in
                 self.allUsers = objects!
                 self.displayUserInFocus()
             })
+        
+        
+        
     }
     
     func displayUserInFocus(){
