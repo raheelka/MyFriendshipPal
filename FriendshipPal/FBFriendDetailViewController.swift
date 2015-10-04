@@ -40,19 +40,12 @@ class FBFriendDetailViewController: UIViewController {
         // 3. Are near by 50 miles for now
 
             let currentUserId = PFUser.currentUser()?.valueForKey("user_id") as? String
-            let liked_friends : [String] = (PFUser.currentUser()?.valueForKey("liked_friends") as? [String])!
-
-//            let predicate = NSPredicate(format: "NOT (user_id IN %@) AND user_id != %@", liked_friends,currentUserId!)
-//        
-//            let userQuery = PFQuery(className: "_User", predicate: predicate)
-//            userQuery.findObjectsInBackgroundWithBlock({(objects : [PFObject]?, error : NSError?) in
-//                print(objects)
-//                self.allUsers = objects!
-//                self.displayUserInFocus()
-//            })
+            let liked_friends = (PFUser.currentUser()?.valueForKey("liked_friends") as? [String])!
+            //let disliked_friends = (PFUser.currentUser()?.valueForKey("disliked_friends") as? [String])!
         
             let userQuery = PFQuery(className: "_User")
             userQuery.whereKey("user_id", notContainedIn: liked_friends)
+            //userQuery.whereKey("user_id", notContainedIn: disliked_friends)
             userQuery.whereKey("user_id", notEqualTo: currentUserId!)
         
             userQuery.findObjectsInBackgroundWithBlock({(objects : [PFObject]?, error : NSError?) in
@@ -103,6 +96,13 @@ class FBFriendDetailViewController: UIViewController {
     @IBAction func likeFriend(sender: UIButton) {
         
         if (!self.allUsers.isEmpty){
+            
+            let user : PFUser = PFUser.currentUser()!
+            
+            var liked_friends : [String] = user["liked_friends"] as! [String]
+            liked_friends.append(userInFocus?.valueForKey("user_id") as! String)
+            user["liked_friends"] = liked_friends
+            user.saveInBackground()
             self.allUsers.removeAtIndex(0)
             self.displayUserInFocus()
         
@@ -114,6 +114,13 @@ class FBFriendDetailViewController: UIViewController {
     @IBAction func unlikeFriend(sender: UIButton) {
         
         if (!self.allUsers.isEmpty){
+            
+            let user : PFUser = PFUser.currentUser()!
+            
+            var disliked_friends : [String] = user["disliked_friends"] as! [String]
+            disliked_friends.append(userInFocus?.valueForKey("user_id") as! String)
+            user["disliked_friends"] = disliked_friends
+            user.saveInBackground()
             self.allUsers.removeAtIndex(0)
             self.displayUserInFocus()
             
