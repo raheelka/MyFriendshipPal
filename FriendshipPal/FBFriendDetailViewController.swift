@@ -39,19 +39,18 @@ class FBFriendDetailViewController: UIViewController {
         // 2. Not Present in already liked list
         // 3. Are near by 50 miles for now
 
-            let currentUserId = PFUser.currentUser()?.valueForKey("user_id") as? String
-            let liked_friends = (PFUser.currentUser()?.valueForKey("liked_friends") as? [String])!
-            //let disliked_friends = (PFUser.currentUser()?.valueForKey("disliked_friends") as? [String])!
-        
-            let userQuery = PFQuery(className: "_User")
-            userQuery.whereKey("user_id", notContainedIn: liked_friends)
-            //userQuery.whereKey("user_id", notContainedIn: disliked_friends)
-            userQuery.whereKey("user_id", notEqualTo: currentUserId!)
-        
-            userQuery.findObjectsInBackgroundWithBlock({(objects : [PFObject]?, error : NSError?) in
-                self.allUsers = objects!
-                self.displayUserInFocus()
-            })
+        let currentUserId = PFUser.currentUser()?.valueForKey("user_id") as? String
+        let liked_friends = (PFUser.currentUser()?.valueForKey("liked_friends") as? [String])!
+        let disliked_friends = (PFUser.currentUser()?.valueForKey("disliked_friends") as? [String])!
+    
+        let excludeLikedDislikedUserQuery = PFQuery(className: "_User")
+        excludeLikedDislikedUserQuery.whereKey("user_id", notContainedIn: liked_friends + disliked_friends)
+        excludeLikedDislikedUserQuery.whereKey("user_id", notEqualTo: currentUserId!)
+    
+        excludeLikedDislikedUserQuery.findObjectsInBackgroundWithBlock({(objects : [PFObject]?, error : NSError?) in
+            self.allUsers = objects!
+            self.displayUserInFocus()
+        })
         
         
         
