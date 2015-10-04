@@ -89,6 +89,9 @@ class LoginViewController: UIViewController {
 
     }
     
+    
+    // TODO This function should run only on first login
+    // TODO This function sets liked and disliked friends to []
     func getCurrentUserData(user : PFUser){
         if((FBSDKAccessToken.currentAccessToken()) != nil){
             FBSDKGraphRequest(graphPath: "me", parameters: ["fields": "id, name, first_name, last_name, picture.type(large), email"]).startWithCompletionHandler({ (connection, result, error) -> Void in
