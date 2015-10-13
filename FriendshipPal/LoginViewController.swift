@@ -81,31 +81,44 @@ class LoginViewController: UIViewController {
             FBSDKGraphRequest(graphPath: "me", parameters: ["fields": "id, name, first_name, last_name, picture.type(large), email"]).startWithCompletionHandler({ (connection, result, error) -> Void in
                 if (error == nil){
                     let valueDict : NSDictionary = result as! NSDictionary
-                    let profilePicStr = valueDict.objectForKey("picture")?.objectForKey("data")?.objectForKey("url") as? String
-                    let email = valueDict.objectForKey("email") as? String
-                    user.email = email
-                    user["name"] = valueDict.objectForKey("name") as? String
-                    user["profile_pic_url"] = profilePicStr
+                    
+                    self.setUserProfileFromJson(valueDict, user: user)
                     
                     // Need to do this to avoid blanking out liked friends and disliked friends
                     if(user["user_id"] == nil){
                         user["user_id"] = valueDict.objectForKey("id") as? String
                         self.createEmptyRelation(user)
                     }
-                    
-                    user.saveInBackgroundWithBlock({ (success, error) -> Void in
-                        if(success){
-                            self.showFacebookFriendList()
-                        }
-                        else
-                        {
-                            print("Error in saving user to parse")
-                        }
-                        
-                    })
+                    else{
+                        self.saveUserAndShowFriends(user)
+                    }
                 }
             })
         }
+    }
+    
+    func setUserProfileFromJson(valueDict : NSDictionary, user: PFUser)
+    {
+        let profilePicStr = valueDict.objectForKey("picture")?.objectForKey("data")?.objectForKey("url") as? String
+        let email = valueDict.objectForKey("email") as? String
+        user.email = email
+        user["name"] = valueDict.objectForKey("name") as? String
+        user["profile_pic_url"] = profilePicStr
+    }
+    
+    func saveUserAndShowFriends(user : PFUser)
+    {
+        user.saveInBackgroundWithBlock({ (success, error) -> Void in
+            if(success){
+                self.showFacebookFriendList()
+            }
+            else
+            {
+                print("Error in saving user to parse")
+            }
+            
+        })
+
     }
     
     func createEmptyRelation(user : PFUser){
@@ -117,7 +130,16 @@ class LoginViewController: UIViewController {
         relation["liked_friends"] = liked_friends
         relation["disliked_friends"] = disliked_friends
         relation["mutually_liked_friends"] = mutually_liked_friends
-        relation.saveInBackground()
+        
+        relation.saveInBackgroundWithBlock({(success, error) -> Void in
+            if(success){
+                self.saveUserAndShowFriends(user)
+            }
+            else{
+                print(error)
+            }
+        })
+        
     }
     
 
