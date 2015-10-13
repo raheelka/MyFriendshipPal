@@ -83,8 +83,6 @@ class LoginViewController: UIViewController {
                     let valueDict : NSDictionary = result as! NSDictionary
                     let profilePicStr = valueDict.objectForKey("picture")?.objectForKey("data")?.objectForKey("url") as? String
                     let email = valueDict.objectForKey("email") as? String
-                    let liked_friends : [String] = []
-                    let disliked_friends : [String] = []
                     user.email = email
                     user["name"] = valueDict.objectForKey("name") as? String
                     user["profile_pic_url"] = profilePicStr
@@ -92,8 +90,7 @@ class LoginViewController: UIViewController {
                     // Need to do this to avoid blanking out liked friends and disliked friends
                     if(user["user_id"] == nil){
                         user["user_id"] = valueDict.objectForKey("id") as? String
-                        user["liked_friends"] = liked_friends
-                        user["disliked_friends"] = disliked_friends
+                        self.createEmptyRelation(user)
                     }
                     
                     user.saveInBackgroundWithBlock({ (success, error) -> Void in
@@ -109,6 +106,18 @@ class LoginViewController: UIViewController {
                 }
             })
         }
+    }
+    
+    func createEmptyRelation(user : PFUser){
+        let relation = PFObject(className: "Relations")
+        relation["user"] = user
+        let liked_friends : [PFUser] = []
+        let disliked_friends : [PFUser] = []
+        let mutually_liked_friends : [PFUser] = []
+        relation["liked_friends"] = liked_friends
+        relation["disliked_friends"] = disliked_friends
+        relation["mutually_liked_friends"] = mutually_liked_friends
+        relation.saveInBackground()
     }
     
 

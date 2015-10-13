@@ -22,9 +22,9 @@ class FBFriendDetailViewController: UIViewController {
     //We need to have an info button showing more pics of the users
     
     //Note this will only have 100 at max. Change query to get more if needed
-    var allUsers : [PFObject] = []
+    var allUsers : [PFUser] = []
     
-    var userInFocus : PFObject?
+    var userInFocus : PFUser?
     
     override func viewDidLoad(){
         super.viewDidLoad()
@@ -38,19 +38,45 @@ class FBFriendDetailViewController: UIViewController {
         // 1. Not Disliked
         // 2. Not Present in already liked list
         // 3. Are near by 50 miles for now
-
-        let currentUserId = PFUser.currentUser()?.valueForKey("user_id") as? String
-        let liked_friends = (PFUser.currentUser()?.valueForKey("liked_friends") as? [String])!
-        let disliked_friends = (PFUser.currentUser()?.valueForKey("disliked_friends") as? [String])!
+        
+        let relation_query = PFQuery(className: "Relations")
+        relation_query.whereKey("user", equalTo: PFUser.currentUser()!)
+        
+        
+        var liked_friends : [PFUser] = []
+        var disliked_friends : [PFUser] = []
+        
+        
+        relation_query.getFirstObjectInBackgroundWithBlock {
+            (user_relation: PFObject?, error: NSError?) -> Void in
+            if error != nil {
+                print(error)
+            }
+            else if let user_relation = user_relation {
+                liked_friends = user_relation["liked_friends"] as! [PFUser]
+                disliked_friends = user_relation["disliked_friends"] as! [PFUser]
+            }
+        }
     
-        let excludeLikedDislikedUserQuery = PFQuery(className: "_User")
-        excludeLikedDislikedUserQuery.whereKey("user_id", notContainedIn: liked_friends + disliked_friends)
-        excludeLikedDislikedUserQuery.whereKey("user_id", notEqualTo: currentUserId!)
+        //This logic is messed up. Need to rethink on how to do this
+        
+        let excludeLikedDislikedUserQuery = PFQuery(className: "Relations")
+        excludeLikedDislikedUserQuery.whereKey("user", notContainedIn: liked_friends + disliked_friends)
+        excludeLikedDislikedUserQuery.whereKey("user", notEqualTo: PFUser.currentUser()!)
     
-        excludeLikedDislikedUserQuery.findObjectsInBackgroundWithBlock({(objects : [PFObject]?, error : NSError?) in
-            self.allUsers = objects!
-            self.displayUserInFocus()
-        })
+        excludeLikedDislikedUserQuery.findObjectsInBackgroundWithBlock{
+            (objects : [PFObject]?, error : NSError?) -> Void in
+            if(error != nil){
+                print(error)
+            }
+            else if let objects = objects{
+                for object in objects{
+                    self.allUsers.append(object["user"] as! PFUser)
+                }
+                self.displayUserInFocus()
+            }
+            
+        }
         
         
         
@@ -59,9 +85,16 @@ class FBFriendDetailViewController: UIViewController {
     func displayUserInFocus(){
         if (!self.allUsers.isEmpty){
             self.userInFocus = self.allUsers[0]
-            let profilePicUrl : String = self.userInFocus?.valueForKey("profile_pic_url") as! String
-            self.setImageFromRemoteLocation(profilePicUrl, imageView: profilePic)
-            name_userInFocus.text = self.userInFocus?.valueForKey("name") as? String
+            
+            userInFocus?.fetchInBackgroundWithBlock {
+                (object : PFObject?, error : NSError?) -> Void in
+                
+                let profilePicUrl : String = object?.valueForKey("profile_pic_url") as! String
+                self.setImageFromRemoteLocation(profilePicUrl, imageView: self.profilePic)
+                self.name_userInFocus.text = self.userInFocus?.valueForKey("name") as? String
+            
+            }
+
         }
         else
         {
@@ -98,14 +131,28 @@ class FBFriendDetailViewController: UIViewController {
             
             let user : PFUser = PFUser.currentUser()!
             
-            var liked_friends : [String] = user["liked_friends"] as! [String]
-            liked_friends.append(userInFocus?.valueForKey("user_id") as! String)
-            user["liked_friends"] = liked_friends
-            user.saveInBackground()
-            self.allUsers.removeAtIndex(0)
-            self.displayUserInFocus()
-        
-        //Add to users liked list
+            let relation_query = PFQuery(className: "Relations")
+            relation_query.whereKey("user", equalTo: user)
+            
+            var liked_friends : [PFUser] = []
+            
+            relation_query.getFirstObjectInBackgroundWithBlock {
+                (user_relation: PFObject?, error: NSError?) -> Void in
+                if error != nil {
+                    print(error)
+                }
+                else if let user_relation = user_relation {
+                    liked_friends = user_relation.valueForKey("liked_friends") as! [PFUser]
+                    liked_friends.append(self.userInFocus!)
+                    
+                    user_relation["liked_friends"] = liked_friends
+                    user_relation.saveInBackground()
+                    
+                    self.allUsers.removeAtIndex(0)
+                    self.displayUserInFocus()
+                }
+                
+            }
         }
         
     }
@@ -116,15 +163,30 @@ class FBFriendDetailViewController: UIViewController {
             
             let user : PFUser = PFUser.currentUser()!
             
-            var disliked_friends : [String] = user["disliked_friends"] as! [String]
-            disliked_friends.append(userInFocus?.valueForKey("user_id") as! String)
-            user["disliked_friends"] = disliked_friends
-            user.saveInBackground()
-            self.allUsers.removeAtIndex(0)
-            self.displayUserInFocus()
+            let relation_query = PFQuery(className: "Relations")
+            relation_query.whereKey("user", equalTo: user)
             
-            //Add to users disliked list
+            var disliked_friends : [PFUser] = []
+            
+            relation_query.getFirstObjectInBackgroundWithBlock {
+                (user_relation: PFObject?, error: NSError?) -> Void in
+                if error != nil {
+                    print(error)
+                }
+                else if let user_relation = user_relation {
+                    disliked_friends = user_relation.valueForKey("disliked_friends") as! [PFUser]
+                    disliked_friends.append(self.userInFocus!)
+                    
+                    user_relation["disliked_friends"] = disliked_friends
+                    user_relation.saveInBackground()
+                    
+                    self.allUsers.removeAtIndex(0)
+                    self.displayUserInFocus()
+                }
+                
+            }
         }
+
         
     }
 
