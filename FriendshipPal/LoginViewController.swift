@@ -90,6 +90,7 @@ class LoginViewController: UIViewController {
                         self.createEmptyRelation(user)
                     }
                     else{
+                        //Database validations should be done before proceeding. Make sure relations exists for the user
                         self.saveUserAndShowFriends(user)
                     }
                 }
@@ -136,7 +137,7 @@ class LoginViewController: UIViewController {
                 self.saveUserAndShowFriends(user)
             }
             else{
-                print(error)
+                print("Could not save Relations")
             }
         })
         

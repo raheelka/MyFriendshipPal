@@ -50,7 +50,7 @@ class FBFriendDetailViewController: UIViewController {
         relation_query.getFirstObjectInBackgroundWithBlock {
             (user_relation: PFObject?, error: NSError?) -> Void in
             if error != nil {
-                print(error)
+                print("Failed to get user from relation class")
             }
             else if let user_relation = user_relation {
                 liked_friends = user_relation["liked_friends"] as! [PFUser]
@@ -67,7 +67,7 @@ class FBFriendDetailViewController: UIViewController {
         excludeLikedDislikedUserQuery.findObjectsInBackgroundWithBlock{
             (objects : [PFObject]?, error : NSError?) -> Void in
             if(error != nil){
-                print(error)
+                print("Failed to execute query excludeLikedDisLikedUser")
             }
             else if let objects = objects{
                 for object in objects{
