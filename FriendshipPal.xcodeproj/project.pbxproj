@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3249D09793B394A6632B1CBB /* Pods_FriendshipPal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F0697EC809271D91C2E9D1D7 /* Pods_FriendshipPal.framework */; };
 		AF0CC7111B8E8EE9000611DB /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF0CC7101B8E8EE9000611DB /* User.swift */; };
 		AF486C721B8A912600948FEF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF486C711B8A912600948FEF /* AppDelegate.swift */; };
 		AF486C741B8A912600948FEF /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF486C731B8A912600948FEF /* LoginViewController.swift */; };
@@ -53,6 +54,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		32B344504168942F08C6AF64 /* Pods-FriendshipPal.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FriendshipPal.release.xcconfig"; path = "Pods/Target Support Files/Pods-FriendshipPal/Pods-FriendshipPal.release.xcconfig"; sourceTree = "<group>"; };
+		7527FBA6A127CC0E006DFC36 /* Pods-FriendshipPal.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FriendshipPal.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FriendshipPal/Pods-FriendshipPal.debug.xcconfig"; sourceTree = "<group>"; };
 		AF0CC7101B8E8EE9000611DB /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		AF486C6C1B8A912600948FEF /* FriendshipPal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FriendshipPal.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AF486C701B8A912600948FEF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -91,6 +94,7 @@
 		AFF8C23A1BBA2EE200A4C889 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		AFF8C23C1BBA2EEA00A4C889 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		AFF8C23E1BBA2EF200A4C889 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
+		F0697EC809271D91C2E9D1D7 /* Pods_FriendshipPal.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FriendshipPal.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,6 +121,7 @@
 				AFF8C2241BBA2DDC00A4C889 /* FBSDKLoginKit.framework in Frameworks */,
 				AFF8C2191BBA2B8800A4C889 /* Bolts.framework in Frameworks */,
 				AFF8C21A1BBA2B8800A4C889 /* Parse.framework in Frameworks */,
+				3249D09793B394A6632B1CBB /* Pods_FriendshipPal.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -130,6 +135,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		96D689B78D56ABFA72D80CCA /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				F0697EC809271D91C2E9D1D7 /* Pods_FriendshipPal.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		AF486C631B8A912600948FEF = {
 			isa = PBXGroup;
 			children = (
@@ -156,6 +169,8 @@
 				AFF8C2201BBA2DDC00A4C889 /* FBSDKCoreKit.framework */,
 				AFF8C2211BBA2DDC00A4C889 /* FBSDKLoginKit.framework */,
 				AFF8C2221BBA2DDC00A4C889 /* FBSDKShareKit.framework */,
+				CB66BC1E324200733FD6ABD0 /* Pods */,
+				96D689B78D56ABFA72D80CCA /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -214,6 +229,15 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		CB66BC1E324200733FD6ABD0 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				7527FBA6A127CC0E006DFC36 /* Pods-FriendshipPal.debug.xcconfig */,
+				32B344504168942F08C6AF64 /* Pods-FriendshipPal.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -221,9 +245,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = AF486C8B1B8A912600948FEF /* Build configuration list for PBXNativeTarget "FriendshipPal" */;
 			buildPhases = (
+				607EB7EC3032DE2766FB0263 /* Check Pods Manifest.lock */,
 				AF486C681B8A912600948FEF /* Sources */,
 				AF486C691B8A912600948FEF /* Frameworks */,
 				AF486C6A1B8A912600948FEF /* Resources */,
+				E6995A88E48035CC56B88A61 /* Embed Pods Frameworks */,
+				68397C0790634C304E4BB57C /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -310,6 +337,54 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		607EB7EC3032DE2766FB0263 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		68397C0790634C304E4BB57C /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FriendshipPal/Pods-FriendshipPal-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E6995A88E48035CC56B88A61 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FriendshipPal/Pods-FriendshipPal-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		AF486C681B8A912600948FEF /* Sources */ = {
@@ -451,6 +526,7 @@
 		};
 		AF486C8C1B8A912600948FEF /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7527FBA6A127CC0E006DFC36 /* Pods-FriendshipPal.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -471,6 +547,7 @@
 		};
 		AF486C8D1B8A912600948FEF /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 32B344504168942F08C6AF64 /* Pods-FriendshipPal.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
