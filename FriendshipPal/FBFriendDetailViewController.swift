@@ -139,7 +139,7 @@ class FBFriendDetailViewController: UIViewController {
             relation_query.getFirstObjectInBackgroundWithBlock {
                 (user_relation: PFObject?, error: NSError?) -> Void in
                 if error != nil {
-                    print(error)
+                    print("In Like a Friend, Failed to get user")
                 }
                 else if let user_relation = user_relation {
                     liked_friends = user_relation.valueForKey("liked_friends") as! [PFUser]
@@ -153,6 +153,9 @@ class FBFriendDetailViewController: UIViewController {
                 }
                 
             }
+            
+            //TODO... In the background check if current user is present in the userInFocus's liked friends
+            // If yes,  then add him to both of our mutually liked tables
         }
         
     }
@@ -171,7 +174,7 @@ class FBFriendDetailViewController: UIViewController {
             relation_query.getFirstObjectInBackgroundWithBlock {
                 (user_relation: PFObject?, error: NSError?) -> Void in
                 if error != nil {
-                    print(error)
+                    print("In DisLike a Friend, Failed to get user")
                 }
                 else if let user_relation = user_relation {
                     disliked_friends = user_relation.valueForKey("disliked_friends") as! [PFUser]
