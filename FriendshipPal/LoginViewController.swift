@@ -27,6 +27,10 @@ class LoginViewController: UIViewController {
     override func viewDidAppear(animated: Bool) {
         if (FBSDKAccessToken.currentAccessToken() != nil)
         {
+            if PFUser.currentUser()?.sessionToken != nil{
+                print("User \(PFUser.currentUser())")
+            }
+            
             loginWithAccessToken(FBSDKAccessToken.currentAccessToken())
         }
     }

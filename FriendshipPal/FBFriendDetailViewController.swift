@@ -35,10 +35,6 @@ class FBFriendDetailViewController: UIViewController {
     
     
     func getNearByUsers(){
-        // Get all those users who are
-        // 1. Not Disliked
-        // 2. Not Present in already liked list
-        // 3. Are near by 50 miles for now
         
         let relation_query = PFQuery(className: "Relations")
         relation_query.whereKey("user", equalTo: PFUser.currentUser()!)
@@ -56,15 +52,20 @@ class FBFriendDetailViewController: UIViewController {
             else if let user_relation = user_relation {
                 liked_friends = user_relation["liked_friends"] as! [PFUser]
                 disliked_friends = user_relation["disliked_friends"] as! [PFUser]
+                self.excludeLikedDislikedFriends(liked_friends, disliked_friends: disliked_friends)
+                
             }
         }
-    
-        //This logic is messed up. Need to rethink on how to do this
         
+        
+    }
+    
+    func excludeLikedDislikedFriends(liked_friends : [PFUser], disliked_friends : [PFUser])
+    {
         let excludeLikedDislikedUserQuery = PFQuery(className: "Relations")
         excludeLikedDislikedUserQuery.whereKey("user", notContainedIn: liked_friends + disliked_friends)
         excludeLikedDislikedUserQuery.whereKey("user", notEqualTo: PFUser.currentUser()!)
-    
+        
         excludeLikedDislikedUserQuery.findObjectsInBackgroundWithBlock{
             (objects : [PFObject]?, error : NSError?) -> Void in
             if(error != nil){
@@ -78,9 +79,6 @@ class FBFriendDetailViewController: UIViewController {
             }
             
         }
-        
-        
-        
     }
     
     func displayUserInFocus(){
@@ -124,7 +122,66 @@ class FBFriendDetailViewController: UIViewController {
         dislikeButton.alpha = 1
     }
     
+    func updateMutualLikes(friend : PFUser){
+        
+        var liked_friends : [PFUser] = []
+        var userInFocus_mutually_liked_friends : [PFUser] = []
+        
+        let currentUser : PFUser = PFUser.currentUser()!
+        let relation_query = PFQuery(className: "Relations")
+        relation_query.whereKey("user", equalTo: friend)
+        
+        relation_query.getFirstObjectInBackgroundWithBlock {
+            (user_relation: PFObject?, error: NSError?) -> Void in
+            if error != nil {
+                print("In updateMutualLikes a Friend, Failed to get user")
+            }
+            else if let user_relation = user_relation {
+                liked_friends = user_relation.valueForKey("liked_friends") as! [PFUser]
+                if liked_friends.contains(currentUser){
+                    userInFocus_mutually_liked_friends = user_relation.valueForKey("mutually_liked_friends") as! [PFUser]
+                    userInFocus_mutually_liked_friends.append(currentUser)
+                    user_relation["mutually_liked_friends"] = userInFocus_mutually_liked_friends
+                    user_relation.saveInBackground()
+                    
+                    self.updateCurrentUserMutualFriend(friend)
+                    
+                    print ("Found mutual like")
+                }
+                else{
+                    print("No mutual like yet")
+                }
+            }
+            
+        }
+        
+    }
     
+    
+    func updateCurrentUserMutualFriend(friend : PFUser){
+        
+        var mutually_liked_friends : [PFUser] = []
+        
+        let currentUser : PFUser = PFUser.currentUser()!
+        let relation_query = PFQuery(className: "Relations")
+        relation_query.whereKey("user", equalTo: currentUser)
+        
+        relation_query.getFirstObjectInBackgroundWithBlock {
+            (user_relation: PFObject?, error: NSError?) -> Void in
+            if error != nil {
+                print("In updateCurrentUserMutualFriend a Friend, Failed to get user")
+            }
+            else if let user_relation = user_relation {
+                mutually_liked_friends = user_relation.valueForKey("mutually_liked_friends") as! [PFUser]
+                mutually_liked_friends.append(friend)
+                user_relation["mutually_liked_friends"] = mutually_liked_friends
+                user_relation.saveInBackground()
+            }
+            
+        }
+
+        
+    }
     
     @IBAction func likeFriend(sender: UIButton) {
         
@@ -147,6 +204,9 @@ class FBFriendDetailViewController: UIViewController {
                     liked_friends.append(self.userInFocus!)
                     
                     user_relation["liked_friends"] = liked_friends
+                    
+                    self.updateMutualLikes(self.userInFocus!)
+                    
                     user_relation.saveInBackground()
                     
                     self.allUsers.removeAtIndex(0)
