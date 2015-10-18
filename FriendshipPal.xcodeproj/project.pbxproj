@@ -16,6 +16,13 @@
 		AF486C7C1B8A912600948FEF /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = AF486C7A1B8A912600948FEF /* LaunchScreen.xib */; };
 		AF486C881B8A912600948FEF /* FriendshipPalTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF486C871B8A912600948FEF /* FriendshipPalTests.swift */; };
 		AF649BF11B9525B8000C7D29 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF649BF01B9525B8000C7D29 /* SettingsViewController.swift */; };
+		AF6981F91BD2E90A00DDFAC4 /* ExampleOverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF6981F41BD2E90A00DDFAC4 /* ExampleOverlayView.swift */; settings = {ASSET_TAGS = (); }; };
+		AF6981FA1BD2E90A00DDFAC4 /* CustomKolodaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF6981F51BD2E90A00DDFAC4 /* CustomKolodaView.swift */; settings = {ASSET_TAGS = (); }; };
+		AF6981FB1BD2E90A00DDFAC4 /* CustomOverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF6981F61BD2E90A00DDFAC4 /* CustomOverlayView.swift */; settings = {ASSET_TAGS = (); }; };
+		AF6981FC1BD2E90A00DDFAC4 /* OverlayView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AF6981F71BD2E90A00DDFAC4 /* OverlayView.xib */; settings = {ASSET_TAGS = (); }; };
+		AF6981FD1BD2E90A00DDFAC4 /* CustomOverlayView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AF6981F81BD2E90A00DDFAC4 /* CustomOverlayView.xib */; settings = {ASSET_TAGS = (); }; };
+		AF6981FF1BD310F200DDFAC4 /* RelationshipMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF6981FE1BD310F200DDFAC4 /* RelationshipMapper.swift */; settings = {ASSET_TAGS = (); }; };
+		AF6982011BD31B6800DDFAC4 /* ParseErrorHandlingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF6982001BD31B6800DDFAC4 /* ParseErrorHandlingController.swift */; settings = {ASSET_TAGS = (); }; };
 		AF853EA31B93EEE400BC9308 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF853EA21B93EEE400BC9308 /* TabBarViewController.swift */; };
 		AF855A561BA8EEBD00370B2C /* LikedFriendDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF855A551BA8EEBD00370B2C /* LikedFriendDetailViewController.swift */; };
 		AF8D7F881BAA393D0046338B /* UtilityExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF8D7F871BAA393D0046338B /* UtilityExtensions.swift */; };
@@ -68,6 +75,13 @@
 		AF486C861B8A912600948FEF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AF486C871B8A912600948FEF /* FriendshipPalTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendshipPalTests.swift; sourceTree = "<group>"; };
 		AF649BF01B9525B8000C7D29 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		AF6981F41BD2E90A00DDFAC4 /* ExampleOverlayView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExampleOverlayView.swift; sourceTree = "<group>"; };
+		AF6981F51BD2E90A00DDFAC4 /* CustomKolodaView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomKolodaView.swift; sourceTree = "<group>"; };
+		AF6981F61BD2E90A00DDFAC4 /* CustomOverlayView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomOverlayView.swift; sourceTree = "<group>"; };
+		AF6981F71BD2E90A00DDFAC4 /* OverlayView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OverlayView.xib; sourceTree = "<group>"; };
+		AF6981F81BD2E90A00DDFAC4 /* CustomOverlayView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomOverlayView.xib; sourceTree = "<group>"; };
+		AF6981FE1BD310F200DDFAC4 /* RelationshipMapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RelationshipMapper.swift; sourceTree = "<group>"; };
+		AF6982001BD31B6800DDFAC4 /* ParseErrorHandlingController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParseErrorHandlingController.swift; sourceTree = "<group>"; };
 		AF853EA21B93EEE400BC9308 /* TabBarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		AF855A551BA8EEBD00370B2C /* LikedFriendDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LikedFriendDetailViewController.swift; sourceTree = "<group>"; };
 		AF8D7F871BAA393D0046338B /* UtilityExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UtilityExtensions.swift; sourceTree = "<group>"; };
@@ -200,6 +214,13 @@
 				AF486C6F1B8A912600948FEF /* Supporting Files */,
 				AF8D7F871BAA393D0046338B /* UtilityExtensions.swift */,
 				AFED18BB1BB8CB7800B984CE /* Reachability.swift */,
+				AF6981F41BD2E90A00DDFAC4 /* ExampleOverlayView.swift */,
+				AF6981F51BD2E90A00DDFAC4 /* CustomKolodaView.swift */,
+				AF6981F61BD2E90A00DDFAC4 /* CustomOverlayView.swift */,
+				AF6981F71BD2E90A00DDFAC4 /* OverlayView.xib */,
+				AF6981F81BD2E90A00DDFAC4 /* CustomOverlayView.xib */,
+				AF6981FE1BD310F200DDFAC4 /* RelationshipMapper.swift */,
+				AF6982001BD31B6800DDFAC4 /* ParseErrorHandlingController.swift */,
 			);
 			path = FriendshipPal;
 			sourceTree = "<group>";
@@ -324,6 +345,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				AF486C771B8A912600948FEF /* Main.storyboard in Resources */,
+				AF6981FC1BD2E90A00DDFAC4 /* OverlayView.xib in Resources */,
+				AF6981FD1BD2E90A00DDFAC4 /* CustomOverlayView.xib in Resources */,
 				AF486C7C1B8A912600948FEF /* LaunchScreen.xib in Resources */,
 				AF486C791B8A912600948FEF /* Images.xcassets in Resources */,
 			);
@@ -391,16 +414,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AF6981FF1BD310F200DDFAC4 /* RelationshipMapper.swift in Sources */,
 				AF0CC7111B8E8EE9000611DB /* User.swift in Sources */,
 				AF486C741B8A912600948FEF /* LoginViewController.swift in Sources */,
 				AF853EA31B93EEE400BC9308 /* TabBarViewController.swift in Sources */,
+				AF6981F91BD2E90A00DDFAC4 /* ExampleOverlayView.swift in Sources */,
 				AF486C721B8A912600948FEF /* AppDelegate.swift in Sources */,
 				AF8E55691B96761B00B8456D /* FBFriendDetailViewController.swift in Sources */,
 				AFD625611B98A0CC0008D079 /* LikedFriendsListViewController.swift in Sources */,
 				AFED18BC1BB8CB7800B984CE /* Reachability.swift in Sources */,
 				AF855A561BA8EEBD00370B2C /* LikedFriendDetailViewController.swift in Sources */,
+				AF6981FA1BD2E90A00DDFAC4 /* CustomKolodaView.swift in Sources */,
+				AF6981FB1BD2E90A00DDFAC4 /* CustomOverlayView.swift in Sources */,
 				AF8D7F881BAA393D0046338B /* UtilityExtensions.swift in Sources */,
 				AF649BF11B9525B8000C7D29 /* SettingsViewController.swift in Sources */,
+				AF6982011BD31B6800DDFAC4 /* ParseErrorHandlingController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

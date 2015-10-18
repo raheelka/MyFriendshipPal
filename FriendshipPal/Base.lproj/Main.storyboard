@@ -2,7 +2,6 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Login View Controller-->
@@ -76,70 +75,70 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WCD-jh-Yhb">
-                                <rect key="frame" x="34" y="408" width="98" height="120"/>
-                                <animations/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="98" id="ZaI-c0-R8E"/>
-                                    <constraint firstAttribute="height" constant="120" id="qcN-a7-d7L"/>
-                                </constraints>
-                                <state key="normal" image="Hearts-100"/>
-                                <connections>
-                                    <action selector="likeFriend:" destination="9th-v7-h9F" eventType="touchUpInside" id="ulh-Qt-Reu"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j5V-nV-yl0">
-                                <rect key="frame" x="469" y="426" width="84" height="84"/>
-                                <animations/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="84" id="AqA-Rx-ZOV"/>
-                                    <constraint firstAttribute="height" constant="84" id="D80-yA-SPX"/>
-                                </constraints>
-                                <state key="normal" image="Dislike-100"/>
-                                <state key="disabled" title="Disabled"/>
-                                <connections>
-                                    <action selector="unlikeFriend:" destination="9th-v7-h9F" eventType="touchUpInside" id="PQA-0E-Wqp"/>
-                                </connections>
-                            </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="maI-HJ-Q2w">
-                                <rect key="frame" x="152" y="95" width="296" height="298"/>
-                                <animations/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="298" id="uPt-Eo-qpU"/>
-                                    <constraint firstAttribute="width" constant="296" id="vbI-bv-WYc"/>
-                                </constraints>
-                            </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q2q-B7-GAg">
                                 <rect key="frame" x="226" y="408" width="148" height="21"/>
                                 <animations/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="21" id="hTy-p8-Cjt"/>
-                                    <constraint firstAttribute="width" constant="148" id="p82-aI-Wat"/>
+                                    <constraint firstAttribute="width" constant="148" id="Hb6-6f-GvB"/>
+                                    <constraint firstAttribute="height" constant="21" id="o8K-Lt-nQ1"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0jJ-JG-Es7" customClass="KolodaView" customModule="Koloda">
+                                <rect key="frame" x="145" y="81" width="310" height="284"/>
+                                <animations/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="310" id="1sM-BI-5SX"/>
+                                    <constraint firstAttribute="height" constant="284" id="q4x-JC-URQ"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HyB-l6-gFY">
+                                <rect key="frame" x="174" y="454" width="252" height="67"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j5V-nV-yl0">
+                                        <rect key="frame" x="190" y="8" width="49" height="51"/>
+                                        <animations/>
+                                        <state key="normal" image="Hearts-100"/>
+                                        <state key="disabled" title="Disabled"/>
+                                        <connections>
+                                            <action selector="rightButtonTapped" destination="9th-v7-h9F" eventType="touchUpInside" id="8UH-9x-Kvf"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uYH-nD-fUq">
+                                        <rect key="frame" x="8" y="12" width="43" height="44"/>
+                                        <animations/>
+                                        <state key="normal" image="Dislike-100"/>
+                                        <connections>
+                                            <action selector="leftButtonTapped" destination="9th-v7-h9F" eventType="touchUpInside" id="iQx-Sd-50A"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <animations/>
+                                <color key="backgroundColor" red="0.20000000300000001" green="0.20000000300000001" blue="0.20000000300000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="252" id="GIK-k7-9kj"/>
+                                    <constraint firstAttribute="height" constant="67" id="L45-vJ-wt3"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <animations/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.20000000300000001" green="0.20000000300000001" blue="0.20000000300000001" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="q2q-B7-GAg" firstAttribute="top" secondItem="maI-HJ-Q2w" secondAttribute="bottom" constant="15" id="CHn-Xu-sbs"/>
-                            <constraint firstItem="maI-HJ-Q2w" firstAttribute="centerX" secondItem="TwV-4c-ZTR" secondAttribute="centerX" id="Lfl-em-cc5"/>
-                            <constraint firstItem="q2q-B7-GAg" firstAttribute="centerX" secondItem="TwV-4c-ZTR" secondAttribute="centerX" id="QKU-4c-KVZ"/>
-                            <constraint firstItem="WCD-jh-Yhb" firstAttribute="leading" secondItem="TwV-4c-ZTR" secondAttribute="leadingMargin" constant="14" id="RdB-Gd-0Yf"/>
-                            <constraint firstItem="ZZR-gr-egY" firstAttribute="top" secondItem="WCD-jh-Yhb" secondAttribute="bottom" constant="23" id="SX4-Rb-JXb"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="j5V-nV-yl0" secondAttribute="trailing" constant="27" id="Wbv-sd-iw0"/>
-                            <constraint firstItem="maI-HJ-Q2w" firstAttribute="top" secondItem="mJe-1e-SlM" secondAttribute="bottom" constant="75" id="djD-du-9J8"/>
-                            <constraint firstItem="ZZR-gr-egY" firstAttribute="top" secondItem="j5V-nV-yl0" secondAttribute="bottom" constant="41" id="l76-06-sgi"/>
+                            <constraint firstItem="0jJ-JG-Es7" firstAttribute="top" secondItem="mJe-1e-SlM" secondAttribute="bottom" constant="61" id="MVC-aY-vZ6"/>
+                            <constraint firstItem="q2q-B7-GAg" firstAttribute="top" secondItem="0jJ-JG-Es7" secondAttribute="bottom" constant="43" id="PoX-x7-Z62"/>
+                            <constraint firstItem="q2q-B7-GAg" firstAttribute="centerX" secondItem="TwV-4c-ZTR" secondAttribute="centerX" id="cqd-qJ-H7m"/>
+                            <constraint firstItem="HyB-l6-gFY" firstAttribute="top" secondItem="q2q-B7-GAg" secondAttribute="bottom" constant="25" id="f38-Qa-xE6"/>
+                            <constraint firstItem="0jJ-JG-Es7" firstAttribute="centerX" secondItem="TwV-4c-ZTR" secondAttribute="centerX" id="isG-NK-WZk"/>
+                            <constraint firstItem="HyB-l6-gFY" firstAttribute="centerX" secondItem="TwV-4c-ZTR" secondAttribute="centerX" id="xcf-4a-1pI"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Friends" image="friends" id="qDm-Rj-gFR"/>
                     <connections>
-                        <outlet property="dislikeButton" destination="j5V-nV-yl0" id="S6f-qW-6bL"/>
-                        <outlet property="likeButton" destination="WCD-jh-Yhb" id="QnC-vX-gPA"/>
+                        <outlet property="kolodaView" destination="0jJ-JG-Es7" id="BnM-JV-cpq"/>
                         <outlet property="name_userInFocus" destination="q2q-B7-GAg" id="c1Y-A1-PV1"/>
-                        <outlet property="profilePic" destination="maI-HJ-Q2w" id="FNK-lq-1i9"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="COh-J5-xzL" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -188,7 +187,7 @@
                                     <constraint firstAttribute="width" constant="122" id="Trr-4f-JNZ"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>

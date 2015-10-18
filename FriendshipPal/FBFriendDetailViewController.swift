@@ -9,30 +9,49 @@
 import UIKit
 import Parse
 import Koloda
+import pop
 
+private var numberOfCards: UInt = 100
 
-class FBFriendDetailViewController: UIViewController {
-
-    @IBOutlet weak var profilePic: UIImageView!
+class FBFriendDetailViewController: UIViewController, KolodaViewDataSource, KolodaViewDelegate  {
     
     @IBOutlet weak var name_userInFocus: UILabel!
+    @IBOutlet weak var kolodaView: KolodaView!
     
-    @IBOutlet weak var dislikeButton: UIButton!
-    @IBOutlet weak var likeButton: UIButton!
     
-    //We need to have an info button showing more pics of the users
-    
-    //Note this will only have 100 at max. Change query to get more if needed
     var allUsers : [PFUser] = []
+    let currentUser = PFUser.currentUser()!
+    var relationshipMapper = RelationshipMapper()
     
-    var userInFocus : PFUser?
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+    }
     
     override func viewDidLoad(){
         super.viewDidLoad()
         self.getNearByUsers()
-        
+        self.kolodaView.dataSource = self
+        self.kolodaView.delegate = self
+        self.modalTransitionStyle = UIModalTransitionStyle.FlipHorizontal
     }
     
+    func setDisplayNameForCardAtIndex(index : Int)
+    {
+        if (index < allUsers.count)
+        {
+            let userInFocus : PFUser = self.allUsers[index]
+            userInFocus.fetchInBackgroundWithBlock {
+                (object : PFObject?, error : NSError?) -> Void in
+                if(error == nil){
+                    self.name_userInFocus.text = userInFocus.valueForKey("name") as? String
+                }
+            }
+        }
+        else
+        {
+            self.name_userInFocus.text = ""
+        }
+    }
     
     func getNearByUsers(){
         
@@ -75,184 +94,102 @@ class FBFriendDetailViewController: UIViewController {
                 for object in objects{
                     self.allUsers.append(object["user"] as! PFUser)
                 }
-                self.displayUserInFocus()
+                self.initializeKolodaView()
             }
             
         }
     }
+
     
-    func displayUserInFocus(){
-        if (!self.allUsers.isEmpty){
-            self.userInFocus = self.allUsers[0]
-            
-            userInFocus?.fetchInBackgroundWithBlock {
-                (object : PFObject?, error : NSError?) -> Void in
-                
+    func initializeKolodaView(){
+        self.kolodaView.dataSource = self
+        self.kolodaView.delegate = self
+        self.setDisplayNameForCardAtIndex(0)
+    }
+    
+    
+
+    
+    //MARK ************** KOLODA *********************
+    
+    //MARK: IBActions
+    @IBAction func leftButtonTapped() {
+        kolodaView?.swipe(SwipeResultDirection.Left)
+    }
+    
+    @IBAction func rightButtonTapped() {
+        kolodaView?.swipe(SwipeResultDirection.Right)
+    }
+
+    
+    //MARK: KolodaViewDataSource
+    func kolodaNumberOfCards(koloda: KolodaView) -> UInt {
+        return UInt(allUsers.count)
+    }
+    
+    func kolodaViewForCardAtIndex(koloda: KolodaView, index: UInt) -> UIView {
+        let userInFocus : PFUser = self.allUsers[Int(index)]
+        let profilePicImageView : UIImageView = UIImageView()
+        userInFocus.fetchInBackgroundWithBlock {
+            (object : PFObject?, error : NSError?) -> Void in
+            if(error == nil){
                 let profilePicUrl : String = object?.valueForKey("profile_pic_url") as! String
-                self.setImageFromRemoteLocation(profilePicUrl, imageView: self.profilePic)
-                self.name_userInFocus.text = self.userInFocus?.valueForKey("name") as? String
-            
+                self.setImageFromRemoteLocation(profilePicUrl, imageView: profilePicImageView)
             }
+        }
+        return profilePicImageView
+    }
+    
+    func kolodaViewForCardOverlayAtIndex(koloda: KolodaView, index: UInt) -> OverlayView? {
+        return NSBundle.mainBundle().loadNibNamed("OverlayView",
+            owner: self, options: nil)[0] as? OverlayView
+    }
+    
+    //MARK: KolodaViewDelegate
+    
+    func kolodaDidSwipedCardAtIndex(koloda: KolodaView, index: UInt, direction: SwipeResultDirection) {
+        //TODO ** DO NOT DELETE **
+        // kolodaView.reloadData() should be a possibility here. This reloads all the items from the datasource
+        // Once all 100 are empty, we should reload the datasource from here
+        
+        self.setDisplayNameForCardAtIndex(Int(index)+1)
+        
+        if (direction == SwipeResultDirection.Left){
+            relationshipMapper.dislikeAFriend(PFUser.currentUser()!, friend: self.allUsers[Int(index)])
+        }
+        else if (direction == SwipeResultDirection.Right){
+            relationshipMapper.likeAFriend(PFUser.currentUser()!, friend: self.allUsers[Int(index)])
+        }
+        
+        
+    }
+    
+    func kolodaDidRunOutOfCards(koloda: KolodaView) {
+        //Example: reloading
+        //This function is called when kolodaView runs out of cards
+        //Not sure what this does yet kolodaView.resetCurrentCardNumber()
+    }
+    
+    func kolodaDidSelectCardAtIndex(koloda: KolodaView, index: UInt) {
+        //This gets called when the current card is selected
+    }
+    
+    func kolodaShouldApplyAppearAnimation(koloda: KolodaView) -> Bool {
+        return true
+    }
+    
+    func kolodaShouldMoveBackgroundCard(koloda: KolodaView) -> Bool {
+        return true
+    }
+    
+    func kolodaShouldTransparentizeNextCard(koloda: KolodaView) -> Bool {
+        return true
+    }
+    
+    func kolodaBackgroundCardAnimation(koloda: KolodaView) -> POPPropertyAnimation? {
+        return nil
+    }
 
-        }
-        else
-        {
-            //Display a dummy image and grey out the like buttons
-            //Display no more users to like and handle that case
-        }
-        
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-    func enableLikeButton(){
-        likeButton.enabled = true
-        likeButton.alpha = 1
-        dislikeButton.enabled = false
-        dislikeButton.alpha = 0.5
-    }
-    
-    func enableDislikeButton(){
-        likeButton.enabled = false
-        likeButton.alpha = 0.5
-        dislikeButton.enabled = true
-        dislikeButton.alpha = 1
-    }
-    
-    func updateMutualLikes(friend : PFUser){
-        
-        var liked_friends : [PFUser] = []
-        var userInFocus_mutually_liked_friends : [PFUser] = []
-        
-        let currentUser : PFUser = PFUser.currentUser()!
-        let relation_query = PFQuery(className: "Relations")
-        relation_query.whereKey("user", equalTo: friend)
-        
-        relation_query.getFirstObjectInBackgroundWithBlock {
-            (user_relation: PFObject?, error: NSError?) -> Void in
-            if error != nil {
-                print("In updateMutualLikes a Friend, Failed to get user")
-            }
-            else if let user_relation = user_relation {
-                liked_friends = user_relation.valueForKey("liked_friends") as! [PFUser]
-                if liked_friends.contains(currentUser){
-                    userInFocus_mutually_liked_friends = user_relation.valueForKey("mutually_liked_friends") as! [PFUser]
-                    userInFocus_mutually_liked_friends.append(currentUser)
-                    user_relation["mutually_liked_friends"] = userInFocus_mutually_liked_friends
-                    user_relation.saveInBackground()
-                    
-                    self.updateCurrentUserMutualFriend(friend)
-                    
-                    print ("Found mutual like")
-                }
-                else{
-                    print("No mutual like yet")
-                }
-            }
-            
-        }
-        
-    }
-    
-    
-    func updateCurrentUserMutualFriend(friend : PFUser){
-        
-        var mutually_liked_friends : [PFUser] = []
-        
-        let currentUser : PFUser = PFUser.currentUser()!
-        let relation_query = PFQuery(className: "Relations")
-        relation_query.whereKey("user", equalTo: currentUser)
-        
-        relation_query.getFirstObjectInBackgroundWithBlock {
-            (user_relation: PFObject?, error: NSError?) -> Void in
-            if error != nil {
-                print("In updateCurrentUserMutualFriend a Friend, Failed to get user")
-            }
-            else if let user_relation = user_relation {
-                mutually_liked_friends = user_relation.valueForKey("mutually_liked_friends") as! [PFUser]
-                mutually_liked_friends.append(friend)
-                user_relation["mutually_liked_friends"] = mutually_liked_friends
-                user_relation.saveInBackground()
-            }
-            
-        }
-
-        
-    }
-    
-    @IBAction func likeFriend(sender: UIButton) {
-        
-        if (!self.allUsers.isEmpty){
-            
-            let user : PFUser = PFUser.currentUser()!
-            
-            let relation_query = PFQuery(className: "Relations")
-            relation_query.whereKey("user", equalTo: user)
-            
-            var liked_friends : [PFUser] = []
-            
-            relation_query.getFirstObjectInBackgroundWithBlock {
-                (user_relation: PFObject?, error: NSError?) -> Void in
-                if error != nil {
-                    print("In Like a Friend, Failed to get user")
-                }
-                else if let user_relation = user_relation {
-                    liked_friends = user_relation.valueForKey("liked_friends") as! [PFUser]
-                    liked_friends.append(self.userInFocus!)
-                    
-                    user_relation["liked_friends"] = liked_friends
-                    
-                    self.updateMutualLikes(self.userInFocus!)
-                    
-                    user_relation.saveInBackground()
-                    
-                    self.allUsers.removeAtIndex(0)
-                    self.displayUserInFocus()
-                }
-                
-            }
-            
-            //TODO... In the background check if current user is present in the userInFocus's liked friends
-            // If yes,  then add him to both of our mutually liked tables
-        }
-        
-    }
-    
-    @IBAction func unlikeFriend(sender: UIButton) {
-        
-        if (!self.allUsers.isEmpty){
-            
-            let user : PFUser = PFUser.currentUser()!
-            
-            let relation_query = PFQuery(className: "Relations")
-            relation_query.whereKey("user", equalTo: user)
-            
-            var disliked_friends : [PFUser] = []
-            
-            relation_query.getFirstObjectInBackgroundWithBlock {
-                (user_relation: PFObject?, error: NSError?) -> Void in
-                if error != nil {
-                    print("In DisLike a Friend, Failed to get user")
-                }
-                else if let user_relation = user_relation {
-                    disliked_friends = user_relation.valueForKey("disliked_friends") as! [PFUser]
-                    disliked_friends.append(self.userInFocus!)
-                    
-                    user_relation["disliked_friends"] = disliked_friends
-                    user_relation.saveInBackground()
-                    
-                    self.allUsers.removeAtIndex(0)
-                    self.displayUserInFocus()
-                }
-                
-            }
-        }
-
-        
-    }
 
 
 

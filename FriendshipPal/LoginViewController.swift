@@ -25,12 +25,8 @@ class LoginViewController: UIViewController {
     }
     
     override func viewDidAppear(animated: Bool) {
-        if (FBSDKAccessToken.currentAccessToken() != nil)
+        if (FBSDKAccessToken.currentAccessToken() != nil && PFUser.currentUser()?.sessionToken != nil)
         {
-            if PFUser.currentUser()?.sessionToken != nil{
-                print("User \(PFUser.currentUser())")
-            }
-            
             loginWithAccessToken(FBSDKAccessToken.currentAccessToken())
         }
     }
@@ -87,8 +83,6 @@ class LoginViewController: UIViewController {
                     let valueDict : NSDictionary = result as! NSDictionary
                     
                     self.setUserProfileFromJson(valueDict, user: user)
-                    
-                    // Need to do this to avoid blanking out liked friends and disliked friends
                     if(user["user_id"] == nil){
                         user["user_id"] = valueDict.objectForKey("id") as? String
                         self.createEmptyRelation(user)
