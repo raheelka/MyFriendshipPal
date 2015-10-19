@@ -17,6 +17,10 @@ class ParseErrorHandlingController {
         let alert = UIAlertController(title: "Please log in again!", message:"Your session has timed out. Please log in again", preferredStyle: .Alert)
         let action = UIAlertAction(title: "Logout Now", style: .Default) { _ in
             PFUser.logOut()
+            let storyboard = UIStoryboard(name: "Main", bundle : nil)
+            let loginVC = storyboard.instantiateViewControllerWithIdentifier("loginViewController") as! LoginViewController
+            let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+            appDelegate.window?.rootViewController = loginVC
         }
         alert.addAction(action)
     }
