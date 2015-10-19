@@ -25,40 +25,24 @@ class LoginViewController: UIViewController {
     }
     
     override func viewDidAppear(animated: Bool) {
-        if (FBSDKAccessToken.currentAccessToken() != nil && PFUser.currentUser()?.sessionToken != nil)
+        if ((PFUser.currentUser()) != nil)
         {
-            loginWithAccessToken(FBSDKAccessToken.currentAccessToken())
+            self.showFacebookFriendList()
         }
     }
     
     @IBAction func loginUser(sender: UIButton) {
-        if let accessToken: FBSDKAccessToken = FBSDKAccessToken.currentAccessToken() {
-            self.loginWithAccessToken(accessToken)
-        } else {
             let permissions = ["public_profile", "email","user_friends"]
             loginWithReadPermissions(permissions)
-        }
     }
     
-    
-    func loginWithAccessToken(accessToken : FBSDKAccessToken){
-        PFFacebookUtils.logInInBackgroundWithAccessToken(accessToken, block: {
-            (user: PFUser?, error: NSError?) -> Void in
-            if user != nil {
-                self.getCurrentUserData(user!)
-                print("Access token present ... User logged in through Facebook!")
-            } else {
-                print("Uh oh. There was an error logging in.")
-            }
-        })
-    }
     
     
     func loginWithReadPermissions(permissions : [String]){
         PFFacebookUtils.logInInBackgroundWithReadPermissions(permissions, block: {
             (user: PFUser?, error: NSError?) -> Void in
             if let user = user {
-                self.getCurrentUserData(user)
+                self.getCurrentUserFacebookData(user)
                 print("User logged in through facebook")
                 
             } else {
@@ -76,7 +60,7 @@ class LoginViewController: UIViewController {
     }
     
     
-    func getCurrentUserData(user : PFUser){
+    func getCurrentUserFacebookData(user : PFUser){
         if((FBSDKAccessToken.currentAccessToken()) != nil){
             FBSDKGraphRequest(graphPath: "me", parameters: ["fields": "id, name, first_name, last_name, picture.type(large), email"]).startWithCompletionHandler({ (connection, result, error) -> Void in
                 if (error == nil){
