@@ -9,6 +9,7 @@
 import UIKit
 import FBSDKCoreKit
 import FBSDKLoginKit
+import Parse
 
 
 @UIApplicationMain
@@ -26,10 +27,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         Parse.setApplicationId("CiWI8C34LOJrza0IiTKooEd7mheZFkrUKpV4ez0Y",
             clientKey: "6VrGE6oCp0npyj853SaxuVwfdqaD5S8Vekn6O91U")
+        PFFacebookUtils.initializeFacebookWithApplicationLaunchOptions(launchOptions)
         PFUser.enableRevocableSessionInBackground()
 
         PFAnalytics.trackAppOpenedWithLaunchOptions(launchOptions)
-        PFFacebookUtils.initializeFacebookWithApplicationLaunchOptions(launchOptions)
+        
+        self.showLoginScreen()
 
         return FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
     }
@@ -59,6 +62,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationWillTerminate(application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+    }
+    
+    func showLoginScreen()
+    {
+        if(PFUser.currentUser()==nil)
+        {
+            let storyboard = UIStoryboard(name: "Main", bundle : nil)
+            let loginVC = storyboard.instantiateViewControllerWithIdentifier("loginViewController") as! LoginViewController
+            self.window?.rootViewController = loginVC
+        }
+        
     }
 
 

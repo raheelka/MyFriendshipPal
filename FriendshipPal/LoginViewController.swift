@@ -56,7 +56,8 @@ class LoginViewController: UIViewController {
     func showFacebookFriendList()
     {
         let tabBarController = self.storyboard!.instantiateViewControllerWithIdentifier("tabBarController") as! TabBarViewController
-        self.presentViewController(tabBarController, animated: true, completion: nil)
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        appDelegate.window?.rootViewController = tabBarController
     }
     
     

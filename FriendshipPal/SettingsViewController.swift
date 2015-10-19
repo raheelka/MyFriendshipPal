@@ -19,19 +19,22 @@ class SettingsViewController: UIViewController {
     @IBAction func logoutUser(sender: AnyObject) {
         if PFUser.currentUser()?.sessionToken != nil {
             PFUser.logOut()
-            let loginViewController = self.storyboard!.instantiateViewControllerWithIdentifier("loginViewController") as! LoginViewController
-            presentViewController(loginViewController, animated: true, completion: nil)
-            
+            self.presentLoginScreen()
         }
-        
     }
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setProfilePic()
         setUserLabel()
-        
-
-        // Do any additional setup after loading the view.
+    }
+    
+    func presentLoginScreen()
+    {
+        let loginVC = self.storyboard!.instantiateViewControllerWithIdentifier("loginViewController") as! LoginViewController
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        appDelegate.window?.rootViewController = loginVC
     }
     
     func setProfilePic(){

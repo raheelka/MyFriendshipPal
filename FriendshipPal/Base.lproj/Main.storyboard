@@ -23,14 +23,17 @@
                                     <constraint firstAttribute="height" constant="61" id="RTj-SR-klC"/>
                                     <constraint firstAttribute="width" constant="308" id="jaj-xp-dd6"/>
                                 </constraints>
-                                <state key="normal" title="Button" image="loginfb"/>
+                                <state key="normal" image="loginfb">
+                                    <color key="titleColor" red="0.098039217289999994" green="0.098039217289999994" blue="0.098039217289999994" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" red="0.098039217289999994" green="0.098039217289999994" blue="0.098039217289999994" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
                                 <connections>
                                     <action selector="loginUser:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="997-de-pd6"/>
                                 </connections>
                             </button>
                         </subviews>
                         <animations/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.098039217289999994" green="0.098039217289999994" blue="0.098039217289999994" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="9ep-e3-zqj" firstAttribute="centerY" secondItem="kh9-bI-dsS" secondAttribute="centerY" id="GZi-kC-sI6"/>
                             <constraint firstItem="9ep-e3-zqj" firstAttribute="centerX" secondItem="kh9-bI-dsS" secondAttribute="centerX" id="Kxo-ni-lmx"/>
@@ -40,7 +43,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="773" y="254"/>
+            <point key="canvasLocation" x="634" y="254"/>
         </scene>
         <!--Tab Bar View Controller-->
         <scene sceneID="3zI-T1-vJL">
@@ -83,7 +86,7 @@
                                     <constraint firstAttribute="height" constant="21" id="o8K-Lt-nQ1"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0jJ-JG-Es7" customClass="KolodaView" customModule="Koloda">
@@ -117,7 +120,7 @@
                                     </button>
                                 </subviews>
                                 <animations/>
-                                <color key="backgroundColor" red="0.20000000300000001" green="0.20000000300000001" blue="0.20000000300000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.098039217289999994" green="0.098039217289999994" blue="0.098039217289999994" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="252" id="GIK-k7-9kj"/>
                                     <constraint firstAttribute="height" constant="67" id="L45-vJ-wt3"/>
@@ -125,7 +128,7 @@
                             </view>
                         </subviews>
                         <animations/>
-                        <color key="backgroundColor" red="0.20000000300000001" green="0.20000000300000001" blue="0.20000000300000001" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.098039217289999994" green="0.098039217289999994" blue="0.098039217289999994" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="0jJ-JG-Es7" firstAttribute="top" secondItem="mJe-1e-SlM" secondAttribute="bottom" constant="61" id="MVC-aY-vZ6"/>
                             <constraint firstItem="q2q-B7-GAg" firstAttribute="top" secondItem="0jJ-JG-Es7" secondAttribute="bottom" constant="43" id="PoX-x7-Z62"/>
@@ -183,16 +186,17 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QP0-QB-N7c">
                                 <rect key="frame" x="239" y="289" width="122" height="21"/>
                                 <animations/>
+                                <color key="backgroundColor" red="0.098039217289999994" green="0.098039217289999994" blue="0.098039217289999994" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="122" id="Trr-4f-JNZ"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <animations/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.098039217289999994" green="0.098039217289999994" blue="0.098039217289999994" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="QP0-QB-N7c" firstAttribute="centerX" secondItem="KVG-wl-fHN" secondAttribute="centerX" id="4zk-Qb-6e4"/>
                             <constraint firstItem="UIi-d3-H6K" firstAttribute="top" secondItem="Ku7-vW-3Wr" secondAttribute="bottom" constant="50" id="Svb-Cy-hxw"/>
