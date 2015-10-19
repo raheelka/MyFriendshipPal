@@ -99,6 +99,7 @@ class LoginViewController: UIViewController {
             else
             {
                 print("Error in saving user to parse")
+                ParseErrorHandlingController.handleParseError(error!)
             }
             
         })
@@ -121,6 +122,7 @@ class LoginViewController: UIViewController {
             }
             else{
                 print("Could not save Relations")
+                ParseErrorHandlingController.handleParseError(error!)
             }
         })
         
